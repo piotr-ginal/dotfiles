@@ -5,13 +5,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PATH=$(pyenv root)/shims:$PATH
 
-# ---- fnm ----
-FNM_PATH="/home/ginal/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/ginal/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
 # ---- fzf (for zsh) ----
 source <(fzf --zsh)
 

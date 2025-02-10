@@ -106,5 +106,4 @@ alias cppwd='pwd | tr -d "\n" | wl-copy'
 alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
-alias v=nvim
 alias h=hx
