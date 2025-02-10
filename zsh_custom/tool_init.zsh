@@ -1,0 +1,23 @@
+# --- pyenv ---
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PATH=$(pyenv root)/shims:$PATH
+
+# ---- fnm ----
+FNM_PATH="/home/ginal/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/ginal/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# ---- fzf (for zsh) ----
+source <(fzf --zsh)
+
+
+# ---- bat for man pages ----
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+
+# ---- rust -----
+source $HOME/.cargo/env
