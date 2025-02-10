@@ -13,11 +13,13 @@
 - cargo
 
 ## Tools
+- git
 - ripgrep
 - batcat
 - fzf
 - fdfind
 - wl-clipboard
+- delta pager
 - neofetch
 
 ## Other
