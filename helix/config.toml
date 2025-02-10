@@ -1,0 +1,71 @@
+# theme = "bogster"  # everblush is also cool
+theme = "ayu_dark"
+
+[editor]
+mouse = false
+cursorline = true
+bufferline="always"
+line-number = "relative"
+# rulers = [120]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal.space]
+q = ":quit"
+
+[keys.normal]
+# selection
+"A-x" = "extend_to_line_bounds"
+"X" = "select_line_above"
+V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+
+# view movement
+"A-right" = "jump_view_right"
+"A-left" = "jump_view_left"
+"A-down" = "jump_view_down"
+"A-up"= "jump_view_up"
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+
+# movement
+"A-u" = "page_cursor_half_up"
+"A-d" = "page_cursor_half_down"
+
+[keys.select]
+"A-x" = "extend_to_line_bounds"
+"X" = "select_line_above"
+
+V = ["extend_to_line_end"]
+
+[keys.insert]
+# view movement
+"A-right" = "jump_view_right"
+"A-left" = "jump_view_left"
+"A-down" = "jump_view_down"
+"A-up"= "jump_view_up"
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+
+# movement
+"A-u" = "page_cursor_half_up"
+"A-d" = "page_cursor_half_down"
+
+# other
+C-space = "signature_help"
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+right = ["file-encoding", "file-line-ending", "file-type"]
+separator = "|"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.soft-wrap]
+enable = true

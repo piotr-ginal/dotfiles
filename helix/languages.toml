@@ -1,0 +1,15 @@
+# before using this config:
+# pipx inject python-lsp-server python-lsp-ruff python-lsp-black
+# pipx install python-lsp-server
+# pipx install ruff
+[language-server.pylsp.config.pylsp]
+plugins.ruff.enabled = false
+plugins.black.enabled = false
+
+plugins.flake8.enabled = false
+plugins.autopep8.enabled = false
+plugins.mccabe.enabled = false
+plugins.pycodestyle.enabled = false
+plugins.pyflakes.enabled = false
+plugins.pylint.enabled = false
+plugins.yapf.enabled = false
