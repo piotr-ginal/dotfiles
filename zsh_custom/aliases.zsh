@@ -35,9 +35,6 @@ git_add_and_commit_command() {
   git commit "${options_for_git[@]}"
 }
 
-reporoot_command() {
-  cd $(git rev-parse --show-toplevel)
-}
 # ---- ps aliases ----
 alias psall="ps aux"
 alias pstree="ps axjf"
@@ -77,7 +74,8 @@ alias gac=git_add_and_commit_command
 alias gurl='git remote get-url origin | rg : -r / | rg -e "git@" -r "https://" --color never | rg -e "\.git$" -r ""'
 alias opgurl='gurl | xargs firefox'
 alias gb="git --no-pager branch"
-alias reporoot=reporoot_command
+alias reporoot="git rev-parse --show-toplevel"
+alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv
