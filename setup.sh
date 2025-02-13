@@ -6,7 +6,6 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
-exit 0
 # ---- helix config and languages config ----
 HELIX_CONFIG_DIR="$HOME/.config/helix"
 for file in config.toml languages.toml; do
@@ -43,12 +42,12 @@ fi
 
 # ---- before oh my zsh script building ----
 
-BEFORE_OHMYZSH_PATH="$(pwd)/before_ohmyzsh.zsh"
+BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
 
 echo "# ---- before oh my zsh source in .zshrc ----" > "$BEFORE_OHMYZSH_PATH"
-COMPLETION_PATH="$(pwd)/zsh_completions"
+COMPLETION_PATH="$(pwd)/zsh/zsh_completions"
 echo "fpath=($COMPLETION_PATH \$fpath)" >> "$BEFORE_OHMYZSH_PATH"
-ZSH_CUSTOM_PATH="$(pwd)/zsh_custom"
+ZSH_CUSTOM_PATH="$(pwd)/zsh/zsh_custom"
 echo "ZSH_CUSTOM=$ZSH_CUSTOM_PATH" >> "$BEFORE_OHMYZSH_PATH"
 SCRIPTS_PATH="$(pwd)/scripts"
 echo "PATH=\"$SCRIPTS_PATH:\$PATH\"" >> "$BEFORE_OHMYZSH_PATH"

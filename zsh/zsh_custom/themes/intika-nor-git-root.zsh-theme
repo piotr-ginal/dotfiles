@@ -29,7 +29,7 @@ function ssh_connection {
 function git_prompt_info_with_root {
   local root
   root=$(git rev-parse --show-toplevel 2>/dev/null)
-  
+
   if [[ -n "$root" && -w "$root/.git" ]]; then
     if [[ "$PWD" != "$root" ]]; then
       echo " (${PROMPT_GIT_COLOR}$(basename "$root") "

@@ -9,4 +9,3 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='bold'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[redirection]='bold'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=246'
-
