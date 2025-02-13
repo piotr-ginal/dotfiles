@@ -16,27 +16,6 @@ for file in config.toml languages.toml; do
     fi
 done
 
-# ---- ZSH_CUSTOM configuration ----
-ZSH_CUSTOM_LINE="ZSH_CUSTOM=$(pwd)/zsh_custom"
-SOURCE_OH_MY_ZSH_LINE="source \$ZSH/oh-my-zsh.sh"
-
-if [[ ! -f "$HOME/.zshrc" ]]; then
-    echo "Warning: .zshrc file does not exist. Skipping ZSH_CUSTOM configuration."
-else
-    if grep -q '^ZSH_CUSTOM=' "$HOME/.zshrc"; then
-        sed -i 's|^ZSH_CUSTOM=.*|'"$ZSH_CUSTOM_LINE"'|' "$HOME/.zshrc"
-        echo "Updated ZSH_CUSTOM in .zshrc."
-    else
-        if grep -q "$SOURCE_OH_MY_ZSH_LINE" "$HOME/.zshrc"; then
-            ESCAPED_SOURCE_OH_MY_ZSH_LINE=$(echo "$SOURCE_OH_MY_ZSH_LINE" | sed 's/[\/&]/\\&/g')
-            sed -i "/${ESCAPED_SOURCE_OH_MY_ZSH_LINE}/i ${ZSH_CUSTOM_LINE}" "$HOME/.zshrc"
-            echo "Added ZSH_CUSTOM to .zshrc before sourcing oh-my-zsh."
-        else
-            echo "$SOURCE_OH_MY_ZSH_LINE not found in .zshrc"
-        fi
-    fi
-fi
-
 # ---- GIT_CONFIG configuration ----
 GIT_CONFIG_PATH="$(pwd)/git_config"
 
@@ -53,4 +32,39 @@ EOF
     echo "Added include path to .gitconfig."
 else
     echo "Include path already exists in .gitconfig."
+fi
+
+# ---- before oh my zsh script building ----
+
+BEFORE_OHMYZSH_PATH="$(pwd)/before_ohmyzsh.zsh"
+
+echo "# ---- before oh my zsh source in .zshrc ----" > "$BEFORE_OHMYZSH_PATH"
+COMPLETION_PATH="$(pwd)/zsh_completions"
+echo "fpath=($COMPLETION_PATH \$fpath)" >> "$BEFORE_OHMYZSH_PATH"
+ZSH_CUSTOM_PATH="$(pwd)/zsh_custom"
+echo "ZSH_CUSTOM=$ZSH_CUSTOM_PATH" >> "$BEFORE_OHMYZSH_PATH"
+SCRIPTS_PATH="$(pwd)/scripts"
+echo "PATH=\"$SCRIPTS_PATH:\$PATH\"" >> "$BEFORE_OHMYZSH_PATH"
+
+
+# ---- before oh my zsh file insertion ----
+
+SOURCE_OH_MY_ZSH_LINE="source \$ZSH/oh-my-zsh.sh"
+SOURCE_BEFORE_OHMYZSH_LINE="source $BEFORE_OHMYZSH_PATH"
+
+if [[ ! -f "$HOME/.zshrc" ]]; then
+    echo "Warning: .zshrc file does not exist. Skipping configuration."
+else
+    # Insert source before_ohmyzsh.zsh line
+    if grep -q "$SOURCE_OH_MY_ZSH_LINE" "$HOME/.zshrc"; then
+        if ! grep -q "$SOURCE_BEFORE_OHMYZSH_LINE" "$HOME/.zshrc"; then
+            ESCAPED_SOURCE_OH_MY_ZSH_LINE=$(echo "$SOURCE_OH_MY_ZSH_LINE" | sed 's/[\/&]/\\&/g')
+            sed -i "/${ESCAPED_SOURCE_OH_MY_ZSH_LINE}/i ${SOURCE_BEFORE_OHMYZSH_LINE}" "$HOME/.zshrc"
+            echo "Added source for ${SOURCE_BEFORE_OHMYZSH_LINE} to .zshrc before sourcing oh-my-zsh."
+        else
+            echo "Source for ${SOURCE_BEFORE_OHMYZSH_LINE} already exists in .zshrc."
+        fi
+    else
+        echo "$SOURCE_OH_MY_ZSH_LINE not found in .zshrc"
+    fi
 fi
