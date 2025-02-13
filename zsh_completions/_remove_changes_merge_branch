@@ -1,0 +1,14 @@
+#compdef remove_changes_merge_branch
+
+root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+if [[ -n "$root" && -w "$root/.git" ]]; then
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local branches
+    branches=(${(f)"$(git branch --list | sed 's/ //g' | sed 's/*//g')"})
+    _describe -t branches 'branch' branches
+  else
+    _message 'Not inside a Git repository'
+  fi
+  return
+fi
