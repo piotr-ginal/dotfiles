@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# ---- repo root check ----
+if [ ! -d ".git" ]; then
+        echo "Please run this script from the root directory of the dotfiles repository."
+    exit 1
+fi
+
+exit 0
 # ---- helix config and languages config ----
 HELIX_CONFIG_DIR="$HOME/.config/helix"
 for file in config.toml languages.toml; do
