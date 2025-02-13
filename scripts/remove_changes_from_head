@@ -1,0 +1,27 @@
+#!/bin/bash
+
+root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+if [[ -n "$root" && -w "$root/.git" ]]; then
+    echo "Inside git repo, proceeding"
+else
+    echo "Not inside git repo, exiting"
+    exit 1
+fi
+
+if [[ -n $(git status --porcelain) ]]; then
+  echo "There are uncommitted changes."
+  exit 2
+fi
+
+COMMIT_HASH=$(git rev-parse HEAD)
+
+git revert --no-commit "${COMMIT_HASH}"
+
+git commit --amend --allow-empty --no-edit
+
+CURRENT_DATE_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+
+echo "${CURRENT_DATE_TIME} ${COMMIT_HASH} ${root}" >> ~/.commit_removal_log
+
+echo "All changes from the HEAD commit (${COMMIT_HASH}) have been removed, keeping the metadata intact."
