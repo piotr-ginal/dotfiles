@@ -1,0 +1,67 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <branch-name>"
+    exit 1
+fi
+
+BRANCH_NAME=$1
+
+root=$(git rev-parse --show-toplevel 2>/dev/null)
+
+if [[ -n "$root" && -w "$root/.git" ]]; then
+    echo "Inside git repo, proceeding"
+else
+    echo "Not inside git repo, exiting"
+    exit 1
+fi
+
+if git branch --list | grep -q "\b${BRANCH_NAME}\b"; then
+    echo "Branch '${BRANCH_NAME}' exists, proceeding."
+else
+    echo "Branch '${BRANCH_NAME}' does not exist."
+    exit 1
+fi
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$CURRENT_BRANCH" != "master" ] && [ "$CURRENT_BRANCH" != "main" ]; then
+  echo -n "You are on branch '$CURRENT_BRANCH', not 'master' or 'main'. Do you want to continue? [Y/n]: "
+  read -r response
+  response=${response:-N}
+  if [ "$response" != "Y" ] && [ "$response" != "y" ]; then
+    echo "Aborting."
+    exit 1
+  fi
+fi
+
+check_command_status() {
+  local error_message="$1"
+
+  local status_code=$?
+
+  if [ $status_code -ne 0 ]; then
+    echo "$error_message"
+    exit $status_code
+  fi
+}
+
+echo_green() {
+  local green="\e[32m"
+  local reset="\e[0m"
+  echo -e "${green}$1${reset}"
+}
+
+echo_green "Removing changes from HEAD commit"
+remove_changes_from_head
+
+check_command_status "Command 'remove_changes_from_head' failed"
+
+echo_green "Getting changes from ${BRANCH_NAME} to index"
+git merge --squash "${BRANCH_NAME}"
+
+check_command_status "Failed to squash merge"
+
+echo_green "Commiting changes from ${BRANCH_NAME}"
+git commit --amend --no-edit --allow-empty
+
+check_command_status "Failed to ammend"
