@@ -74,3 +74,17 @@ else
         echo "$SOURCE_OH_MY_ZSH_LINE not found in .zshrc"
     fi
 fi
+
+# ---- zsh syntax highlighting ----
+
+SOURCE_LINE="source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+RCFILE="$HOME/.zshrc"
+
+if [[ -f "$RCFILE" ]]; then
+    sed -i "\#${SOURCE_LINE}#d" "$RCFILE"
+    echo "$SOURCE_LINE" >> "$RCFILE"
+    echo "Updated $RCFILE with the syntax-highlighting sourcing line."
+else
+    echo "Warning: $RCFILE does not exist. Skipping configuration."
+fi
+
