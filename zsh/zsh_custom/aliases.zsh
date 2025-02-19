@@ -109,3 +109,8 @@ alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
 alias h=hx
+
+# ---- system aliases ----
+alias rescan="nmcli device wifi list --rescan yes"
+alias poweroff="sudo poweroff"
+alias reboot="sudo reboot"
