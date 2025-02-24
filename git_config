@@ -1,6 +1,3 @@
-# [include]
-#        path = ~/.oh-my-zsh/custom/git_config
-
 [pager]
         branch = false
 [core]
