@@ -20,7 +20,8 @@ q = ":quit"
 # selection
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
-V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+"A-V" = ["goto_first_nonwhitespace", "extend_to_line_end"]
+V = ["extend_to_line_end"]
 
 # view movement
 "A-right" = "jump_view_right"
