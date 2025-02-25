@@ -5,6 +5,9 @@
 
 if grep -iq "microsoft" /proc/sys/kernel/osrelease; then
 
+    # ---- cd aliases ----
+    alias cdwin='cd /mnt/c/Users/$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d "\r")'
+
     # ---- misc aliases ----
     alias cppwd='pwd | tr -d "\n" | clip.exe'
 
