@@ -109,6 +109,7 @@ alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
 alias h=hx
+alias op="fzf --print0 | xargs -0 -o hx"
 
 # ---- system aliases ----
 alias rescan="nmcli device wifi list --rescan yes"
