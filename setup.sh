@@ -51,6 +51,8 @@ ZSH_CUSTOM_PATH="$(pwd)/zsh/zsh_custom"
 echo "ZSH_CUSTOM=$ZSH_CUSTOM_PATH" >> "$BEFORE_OHMYZSH_PATH"
 SCRIPTS_PATH="$(pwd)/scripts"
 echo "PATH=\"$SCRIPTS_PATH:\$PATH\"" >> "$BEFORE_OHMYZSH_PATH"
+DOTFILES_PATH_EXPORT="export DOTFILES_REPO_ROOT=$(pwd)"
+echo "$DOTFILES_PATH_EXPORT" >> "$BEFORE_OHMYZSH_PATH"
 
 
 # ---- before oh my zsh file insertion ----
@@ -87,4 +89,3 @@ if [[ -f "$RCFILE" ]]; then
 else
     echo "Warning: $RCFILE does not exist. Skipping configuration."
 fi
-

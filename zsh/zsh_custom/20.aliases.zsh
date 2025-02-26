@@ -115,3 +115,6 @@ alias op="fzf --print0 | xargs -0 -o hx"
 alias rescan="nmcli device wifi list --rescan yes"
 alias poweroff="sudo poweroff"
 alias reboot="sudo reboot"
+
+# ---- cd aliases ----
+alias dot="cd $DOTFILES_REPO_ROOT"
