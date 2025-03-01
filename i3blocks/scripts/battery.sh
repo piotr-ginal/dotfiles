@@ -3,7 +3,7 @@
 minimal_warning=15
 minimal_warning_critical=10
 
-battery=$(cat /sys/class/power_supply/BAT1/capacity)
+battery=$(cat /sys/class/power_supply/BAT*/capacity)
 
 if [ "$battery" -le "$minimal_warning" ]; then
     if [ "$battery" -le "$minimal_warning_critical" ]; then
@@ -15,7 +15,7 @@ else
     background_color="#565143"
 fi
 
-battery_status=$(cat /sys/class/power_supply/BAT1/status)
+battery_status=$(cat /sys/class/power_supply/BAT*/status)
 
 if [[ "$battery_status" == "Charging" ]]; then
     background_color="#008000"
