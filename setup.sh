@@ -96,3 +96,19 @@ if [[ -f "$RCFILE" ]]; then
 else
     echo "Warning: $RCFILE does not exist. Skipping configuration."
 fi
+
+# ---- Create symlinks for config directories ----
+CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway")
+for config_dir in "${CONFIG_DIRS[@]}"; do
+    TARGET="$HOME/.config/$config_dir"
+    SOURCE="$(pwd)/$config_dir"
+    if [[ -L "$TARGET" && "$(readlink "$TARGET")" != "$SOURCE" ]]; then
+        rm "$TARGET"
+    fi
+    if [[ ! -e "$TARGET" ]]; then
+        ln -s "$SOURCE" "$TARGET"
+        echo "Created symbolic link for $config_dir."
+    else
+        echo "Symbolic link for $config_dir already exists."
+    fi
+done
