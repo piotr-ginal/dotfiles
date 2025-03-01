@@ -25,3 +25,9 @@
 
 ## Other
 - firefox
+
+
+# Remember
+```
+$ git submodule update --init --recursive
+```
