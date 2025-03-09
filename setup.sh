@@ -6,6 +6,9 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
+# ---- update submodules ----
+git submodule update --init --recursive
+
 # ---- helix config and languages config ----
 HELIX_CONFIG_DIR="$HOME/.config/helix"
 for file in config.toml languages.toml; do
