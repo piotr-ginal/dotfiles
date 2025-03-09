@@ -25,7 +25,7 @@
 - ripgrep
 - batcat
 - fzf
-- fdfind
+- fd-find
 - wl-clipboard
 - pulseaudio-utils
 - grimshot
