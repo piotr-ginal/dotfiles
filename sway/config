@@ -6,7 +6,7 @@ set $down Down
 set $up Up
 set $right Right
 # set $term foot
-set $term kitty
+set $term alacritty
 set $menu fuzzel -I -l 5 | xargs swaymsg exec
 
 include /etc/sway/config-vars.d/*
