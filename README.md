@@ -1,5 +1,9 @@
 # Requirements
 
+## Terminal
+- alacritty
+- kitty
+
 ## Shell
 - zsh
 - oh my zsh
@@ -13,6 +17,9 @@
 - pipx
 - cargo
 
+## Window managers
+- sway
+
 ## Tools
 - git
 - ripgrep
@@ -20,14 +27,10 @@
 - fzf
 - fdfind
 - wl-clipboard
+- pulseaudio-utils
+- grimshot
 - delta pager
 - neofetch
 
-## Other
+## Browsers
 - firefox
-
-
-# Remember
-```
-$ git submodule update --init --recursive
-```
