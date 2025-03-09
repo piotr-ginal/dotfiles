@@ -1,0 +1,47 @@
+# Sway Keybindings Cheat Sheet
+Every Sway keybinding combination starts with the MOD key. In this configuration, the MOD key is set to the HOME button.
+
+## General
+- **Open Terminal:** `MOD+Return`
+- **Close Window:** `MOD+Shift+q`
+- **Open program launcher:** `MOD+d`
+- **Reload Sway:** `MOD+Shift+c`
+- **Exit Wayland Session:** `MOD+Shift+e`
+
+## Window Focus
+- **Focus Left:** `MOD+left`
+- **Focus Down:** `MOD+down`
+- **Focus Up:** `MOD+up`
+- **Focus Right:** `MOD+right`
+
+## Move Window
+- **Move Left:** `MOD+Shift+left`
+- **Move Down:** `MOD+Shift+down`
+- **Move Up:** `MOD+Shift+up`
+- **Move Right:** `MOD+Shift+right`
+
+## Workspaces
+- **Switch to Workspace n:** `MOD+n` (where n is 1-9)
+- **Move Container to Workspace n:** `MOD+Shift+n` (where n is 1-9)
+
+## Screenshots
+- **Copy Area Screenshot to Clipboard:** `MOD+p`
+- **Save Area Screenshot to ~/.screenshots:** `MOD+o`
+- **Color Picker:** `MOD+Shift+p`
+
+## Split Direction
+- **Horizontal Split:** `MOD+b`
+- **Vertical Split:** `MOD+v`
+- **Toggle Split Layout:** `MOD+e`
+
+## Layouts
+- **Fullscreen:** `MOD+f`
+
+## Resize Mode
+- **Enter Resize Mode:** `MOD+r`
+- **Resize Left:** `resize mode + left`
+- **Resize Down:** `resize mode + down`
+- **Resize Up:** `resize mode + up`
+- **Resize Right:** `resize mode + right`
+- **Return to Default Mode:** `resize mode + Return`
+- **Exit Resize Mode:** `resize mode + Escape`
