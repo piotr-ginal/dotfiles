@@ -91,3 +91,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# open sway cheat sheet
+bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
