@@ -98,7 +98,7 @@ else
 fi
 
 # ---- Create symlinks for config directories ----
-CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway")
+CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty")
 for config_dir in "${CONFIG_DIRS[@]}"; do
     TARGET="$HOME/.config/$config_dir"
     SOURCE="$(pwd)/$config_dir"

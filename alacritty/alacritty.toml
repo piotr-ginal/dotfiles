@@ -1,0 +1,40 @@
+[font]
+size = 16.0
+
+[colors.bright]
+black = "#415367"
+blue = "#36b2d4"
+cyan = "#59dcd8"
+green = "#7fdc59"
+magenta = "#b759dc"
+red = "#dc7759"
+white = "#e5ded6"
+yellow = "#dcb659"
+
+[colors.cursor]
+cursor = "#e5ded6"
+text = "#161c23"
+
+[colors.normal]
+black = "#13181e"
+blue = "#36b2d4"
+cyan = "#59dcd8"
+green = "#59dcb7"
+magenta = "#b759dc"
+red = "#dc7759"
+white = "#abb2bf"
+yellow = "#dcb659"
+
+[colors.primary]
+background = "#161c23"
+foreground = "#e5ded6"
+
+[colors.selection]
+background = "#232d38"
+text = "#e5ded6"
+
+[cursor.style]
+shape = "Block"
+
+[window]
+opacity = 0.8
