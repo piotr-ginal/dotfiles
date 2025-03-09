@@ -57,7 +57,7 @@ bindsym $mod+p exec grimshot copy area
 # grim select area screenshot, img saved to ~/.screenshots
 bindsym $mod+o exec grimshot save area ~/.screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png
 # basic color picker
-bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
 # change split direction
 bindsym $mod+b splith
@@ -91,5 +91,3 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-bindsym $mod+l exec ~/four.sh
