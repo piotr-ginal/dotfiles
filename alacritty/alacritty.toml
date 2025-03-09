@@ -34,7 +34,7 @@ background = "#232d38"
 text = "#e5ded6"
 
 [cursor.style]
-shape = "Block"
+shape = "Beam"
 
 [window]
 opacity = 0.8
