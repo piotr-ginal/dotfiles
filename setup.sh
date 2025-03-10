@@ -112,3 +112,18 @@ for config_dir in "${CONFIG_DIRS[@]}"; do
         echo "Symbolic link for $config_dir already exists."
     fi
 done
+
+# ---- wallpapers ----
+
+TARGET="$HOME/.wallpapers"
+SOURCE="$(pwd)/wallpapers"
+if [[ -L "$TARGET" && "$(readlink "$TARGET")" != "$SOURCE" ]]; then
+    echo "$TARGET allready exists, skipping"
+else
+    if [[ ! -e "$TARGET" ]]; then
+        ln -s "$SOURCE" "$TARGET"
+        echo "Created symbolic link for wallpapers."
+    else
+        echo "Symbolic link for wallpapers already exists."
+    fi
+fi
