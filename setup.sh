@@ -117,13 +117,16 @@ done
 
 TARGET="$HOME/.wallpapers"
 SOURCE="$(pwd)/wallpapers"
-if [[ -L "$TARGET" && "$(readlink "$TARGET")" != "$SOURCE" ]]; then
-    echo "$TARGET allready exists, skipping"
-else
-    if [[ ! -e "$TARGET" ]]; then
-        ln -s "$SOURCE" "$TARGET"
-        echo "Created symbolic link for wallpapers."
-    else
+
+if [[ -L "$TARGET" ]]; then
+    if [[ "$(readlink "$TARGET")" == "$SOURCE" ]]; then
         echo "Symbolic link for wallpapers already exists."
+    else
+        echo "$TARGET exists as a symlink to a different location, skipping."
     fi
+elif [[ -e "$TARGET" ]]; then
+    echo "$TARGET already exists as a directory, skipping."
+else
+    ln -s "$SOURCE" "$TARGET"
+    echo "Created symbolic link for wallpapers."
 fi
