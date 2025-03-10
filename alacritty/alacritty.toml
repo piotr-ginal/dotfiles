@@ -36,5 +36,8 @@ text = "#e5ded6"
 [cursor.style]
 shape = "Beam"
 
+[cursor.vi_mode_style]
+shape = "Block"
+
 [window]
 opacity = 0.8
