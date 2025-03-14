@@ -81,6 +81,7 @@ alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 alias rmenv=delete_pyenv_virtualenv
 alias mkenv=create_pyenv_virtualenv
 alias acenv=activate_pyenv_virtualenv
+alias ac='acenv $(lsenv 2>&1 | awk '"'"'{print $2}'"'"' | fzf --height 40%)'
 alias lsenv='pyenv virtualenvs --bare --skip-aliases | rg ".envs." -r " "'
 alias deenv="source deactivate"
 alias envpurge='pyenv virtualenvs --bare --skip-aliases | grep -E "[^\/]+$" -o --color=never | xargs -d "\n" -I {} pyenv virtualenv-delete -f {}'; alias purgeenv=envpurge
