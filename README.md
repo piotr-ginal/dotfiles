@@ -23,6 +23,7 @@
 ## Tools
 - git
 - ripgrep
+- htop
 - batcat
 - fzf
 - fd-find
