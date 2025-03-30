@@ -6,7 +6,15 @@ output HDMI-A-1 Position 0,0
 output eDP-1 Position 2560,0
 
 # bind workspaces to monitors
-exec_always sway_monitors_setup
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output HDMI-A-1
+workspace 7 output HDMI-A-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
 
 input "1267:12932:ASUE1306:00_04F3:3284_Touchpad" {
     dwt enabled
