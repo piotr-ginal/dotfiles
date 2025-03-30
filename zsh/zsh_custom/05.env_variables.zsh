@@ -12,5 +12,5 @@ export PATH="$PATH:/home/ginal/.local/nvim/usr/bin"
 export SSH_ASKPASS_REQUIRE=force
 export SSH_ASKPASS=/usr/bin/systemd-ask-password
 
-# --- ansible ----
-export ANSIBLE_STDOUT_CALLBACK=yaml
+# ---- ansible ----
+export ANSIBLE_CALLBACK_RESULT_FORMAT=yaml
