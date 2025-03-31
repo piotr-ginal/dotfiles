@@ -40,6 +40,10 @@ V = ["extend_to_line_end"]
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
 
+# movement
+"A-u" = "page_cursor_half_up"
+"A-d" = "page_cursor_half_down"
+
 V = ["extend_to_line_end"]
 
 [keys.insert]
