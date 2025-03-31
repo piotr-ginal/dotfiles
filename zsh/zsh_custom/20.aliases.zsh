@@ -117,10 +117,11 @@ alias h=hx
 alias op="fzf --print0 | xargs -0 -o hx"
 
 # ---- system aliases ----
+alias copy='tr -d "\n" | wl-copy'
 alias rescan="nmcli device wifi list --rescan yes"
 alias poweroff="sudo poweroff"
 alias reboot="sudo reboot"
-alias lock="i3lock -c 000000"
+alias lock="swaylock -c 000000"
 
 # ---- cd aliases ----
 alias dot="cd $DOTFILES_REPO_ROOT"
