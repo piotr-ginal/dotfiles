@@ -109,6 +109,10 @@ alias cppwd='pwd | tr -d "\n" | wl-copy'
 alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
+hx() {
+    command hx "$@"
+    printf '\033[0 q'
+}
 alias h=hx
 alias op="fzf --print0 | xargs -0 -o hx"
 
