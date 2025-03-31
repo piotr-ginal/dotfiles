@@ -8,7 +8,7 @@ if [[ "$mic_mute_status" == "[off]" ]]; then
     bg_color="#565143"
 else
     mic_status="on"
-    bg_color="#FF0000"
+    bg_color="#8B0000"
 fi
 
 echo "<span background='#232D38'> mic </span><span background='${bg_color}'> ${mic_status} </span>"
