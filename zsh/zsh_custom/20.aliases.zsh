@@ -76,6 +76,7 @@ alias opgurl='gurl | xargs firefox'
 alias gb="git --no-pager branch"
 alias reporoot="git rev-parse --show-toplevel"
 alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
+alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv
