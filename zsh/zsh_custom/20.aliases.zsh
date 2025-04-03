@@ -104,7 +104,7 @@ alias forall='f() { for d in */; do (cd "$d" && eval "$@"); done }; f' # execute
 alias fb="fzf --preview 'batcat {} --color=always' --height=45%"
 alias f='selected_dir=$(fdfind --type d --hidden --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv | fzf --height=45%) && [ -n "$selected_dir" ] && cd "$selected_dir"'
 alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= && export HTTPS_PROXY="
-alias cppwd='pwd | tr -d "\n" | wl-copy'
+alias cppwd='pwd | copy'
 
 # ---- zsh aliases ---
 alias reload="source ~/.zshrc"
@@ -118,7 +118,7 @@ alias h=hx
 alias op="fzf --print0 | xargs -0 -o hx"
 
 # ---- system aliases ----
-alias copy='tr -d "\n" | wl-copy'
+alias copy="sed -z '$ s/\n$//' | wl-copy"
 alias rescan="nmcli device wifi list --rescan yes"
 alias poweroff="sudo poweroff"
 alias reboot="sudo reboot"
