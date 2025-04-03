@@ -29,6 +29,8 @@ Workspaces
 ----------
 - Switch to Workspace n: MOD+n (where n is 1-9)
 - Move Container to Workspace n: MOD+Shift+n (where n is 1-9)
+- Switch to the next workspace: MOD+.
+- Switch to the previous workspace: MOD+,
 
 Screenshots
 -----------
