@@ -1,5 +1,8 @@
 # Requirements
 
+# Fonts
+- JetBrainsMono Nerd Font (Bold Italic Regular)
+
 ## Terminal
 - alacritty
 - kitty
