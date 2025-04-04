@@ -1,0 +1,38 @@
+set $accent "#88857b"
+
+bar {
+    position top
+
+    status_command i3blocks
+
+    colors {
+        background #141c21d8
+        statusline #93a1a1
+        separator #141c21
+
+        # colour of border, background, and text
+        focused_workspace #141c21 $accent #141c21
+        active_workspace #141c21 #232d38 #bfbaac
+        inactive_workspace #141c21 #141c21 #bfbaac
+        urgent_workspace #141c21 #b08500 #bfbaac
+    }
+}
+
+# colour of border, background, text, indicator, and child_border
+client.focused $accent #263640 #93a1a1 #696ebf $accent
+client.focused_inactive #263640 #b08500 #93a1a1 #263640 #263640
+client.unfocused #263640 #b08500 #93a1a1 #263640 #263640
+client.urgent #263640 #b08500 #93a1a1 #263640 #263640
+client.placeholder #263640 #b08500 #93a1a1 #263640 #263640
+client.background #263640
+
+set $border_width 3
+
+for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] floating enable
+for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] focus
+for_window [class=".*"] border pixel $border_width
+hide_edge_borders smart
+gaps inner 12
+smart_gaps on
+
+default_border pixel $border_width
