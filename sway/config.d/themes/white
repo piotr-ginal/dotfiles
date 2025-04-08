@@ -1,4 +1,4 @@
-set $accent "#88857b"
+set $accent "#bfbdb6"
 
 bar {
     position top
