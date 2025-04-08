@@ -6,6 +6,8 @@ bar {
 
     status_command i3blocks
 
+    font pango:JetBrainsMono Nerd Font Bold 10
+
     colors {
         background #141c21d8
         statusline #93a1a1
