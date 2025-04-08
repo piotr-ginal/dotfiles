@@ -23,6 +23,7 @@ q = ":quit"
 "X" = "select_line_above"
 "A-V" = ["goto_first_nonwhitespace", "extend_to_line_end"]
 V = ["extend_to_line_end"]
+"A-ret" = "vsplit"
 
 # view movement
 "A-right" = "jump_view_right"
