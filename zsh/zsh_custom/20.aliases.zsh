@@ -39,7 +39,7 @@ git_add_and_commit_command() {
 alias psall="ps aux"
 alias pstree="ps axjf"
 
-# --- pyenv command functions ----
+# ---- pyenv command functions ----
 create_pyenv_virtualenv() {
   if [ $# -ne 2 ]; then
     echo "Error: mkenv requires 2 arguments"
@@ -106,7 +106,7 @@ alias f='selected_dir=$(fdfind --type d --hidden --exclude .git --exclude node_m
 alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= && export HTTPS_PROXY="
 alias cppwd='pwd | copy'
 
-# ---- zsh aliases ---
+# ---- zsh aliases ----
 alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
@@ -120,7 +120,6 @@ alias op="fzf --print0 | xargs -0 -o hx"
 # ---- system aliases ----
 alias copy="sed -z '$ s/\n$//' | wl-copy"
 alias rescan="nmcli device wifi list --rescan yes"
-alias poweroff="sudo poweroff"
 alias reboot="sudo reboot"
 alias lock="swaylock -c 000000"
 
