@@ -1,3 +1,6 @@
+[main]
+font=JetBrainsMono Nerd Font:style=Bold:size=12
+
 [colors]
 background=141c21ff
 text=bfbaacff
