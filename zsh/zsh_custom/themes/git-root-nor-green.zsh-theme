@@ -8,7 +8,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✓%{$reset_color%}"
 
 
 PROMPT_TIME_COLOR="%{$fg[white]%}"
-PROMPT_CWD_COLOR="%{$fg[green]%}"
+PROMPT_CWD_COLOR="%{$reset_color%}"
 PROMPT_GIT_COLOR="%{$fg[white]%}"
 RESET_COLOR="%{$reset_color%}"
 
