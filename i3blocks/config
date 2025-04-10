@@ -39,6 +39,7 @@ markup=pango
 separator=false
 command=~/.config/i3blocks/scripts/load.sh
 markup=pango
+interval=1
 
 [time]
 separator=false
