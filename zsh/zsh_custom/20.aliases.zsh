@@ -71,7 +71,7 @@ delete_pyenv_virtualenv() {
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
 alias gac=git_add_and_commit_command
-alias gurl='git remote get-url origin | rg : -r / | rg -e "git@" -r "https://" --color never | rg -e "\.git$" -r ""'
+alias gurl='git remote get-url $(git remote | head -n1 | tr -d "\n") | rg : -r / | rg -e "git@" -r "https://" --color never | rg -e "\.git$" -r ""'
 alias opgurl='gurl | xargs firefox'
 alias gb="git --no-pager branch"
 alias reporoot="git rev-parse --show-toplevel"
