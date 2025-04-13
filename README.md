@@ -21,6 +21,7 @@
 - sway
 
 ## Tools
+- eza
 - git
 - ripgrep
 - htop
