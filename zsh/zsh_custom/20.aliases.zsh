@@ -150,3 +150,7 @@ alias lock="swaylock -c 000000"
 
 # ---- cd aliases ----
 alias dot="cd $DOTFILES_REPO_ROOT"
+alias ls='eza'
+alias l='eza --icons -lah'
+alias la='eza --icons -lAh'
+alias ll='eza --icons -lh'
