@@ -41,12 +41,18 @@ alias pstree="ps axjf"
 
 # ---- pyenv command functions ----
 create_pyenv_virtualenv() {
-  if [ $# -ne 2 ]; then
-    echo "Error: mkenv requires 2 arguments"
-    echo "	mkenv <python version> <name>"
+  if [ $# -eq 1 ]; then
+    local env_name="$1"
+    echo "using $(pyenv global), no version supplied for '$env_name'."
+    pyenv virtualenv "$env_name"
+  elif [ $# -eq 2 ]; then
+    pyenv virtualenv "$1" "$2"
+  else
+    echo "Error: mkenv requires 1 or 2 arguments"
+    echo "    mkenv <name> (uses pyenv global Python version)"
+    echo "    mkenv <python version> <name>"
     return 1
   fi
-  pyenv virtualenv "$1" "$2"
 }
 
 activate_pyenv_virtualenv() {
