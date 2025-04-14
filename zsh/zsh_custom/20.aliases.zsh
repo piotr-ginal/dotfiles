@@ -75,7 +75,7 @@ delete_pyenv_virtualenv() {
 
 activate_pyenv_environment() {
   local selected_env
-  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40%)
+  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40% --layout=reverse --info inline)
 
   if [[ -n "$selected_env" ]]; then
     acenv "$selected_env"
@@ -84,7 +84,7 @@ activate_pyenv_environment() {
 
 remove_pyenv_environment() {
   local selected_env
-  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40%)
+  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40% --layout=reverse --info inline)
 
   if [[ -n "$selected_env" ]]; then
     rmenv "$selected_env"
