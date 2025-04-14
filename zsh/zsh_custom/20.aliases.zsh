@@ -73,6 +73,24 @@ delete_pyenv_virtualenv() {
   pyenv virtualenv-delete -f "$1"
 }
 
+activate_pyenv_environment() {
+  local selected_env
+  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40%)
+
+  if [[ -n "$selected_env" ]]; then
+    acenv "$selected_env"
+  fi
+}
+
+remove_pyenv_environment() {
+  local selected_env
+  selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40%)
+
+  if [[ -n "$selected_env" ]]; then
+    rmenv "$selected_env"
+  fi
+}
+
 # ---- git aliases ----
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
@@ -88,7 +106,8 @@ alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relativ
 alias rmenv=delete_pyenv_virtualenv
 alias mkenv=create_pyenv_virtualenv
 alias acenv=activate_pyenv_virtualenv
-alias ac='acenv $(lsenv 2>&1 | awk '"'"'{print $2}'"'"' | fzf --height 40%)'
+alias ac='activate_pyenv_environment'
+alias rme='remove_pyenv_environment'
 alias lsenv='pyenv virtualenvs --bare --skip-aliases | rg ".envs." -r " "'
 alias deenv="source deactivate"
 alias envpurge='pyenv virtualenvs --bare --skip-aliases | grep -E "[^\/]+$" -o --color=never | xargs -d "\n" -I {} pyenv virtualenv-delete -f {}'; alias purgeenv=envpurge
