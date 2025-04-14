@@ -8,7 +8,7 @@ bar {
     font pango:JetBrainsMono Nerd Font Bold 10
 
     colors {
-        background #141c21d8
+        background #141c21f3
         statusline #93a1a1
         separator #141c21
 
