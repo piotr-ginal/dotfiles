@@ -18,4 +18,6 @@ rg --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
                fi" \
     --layout=reverse \
     --preview-window=up:30% \
-    --bind "enter:execute(file=\$(echo {} | cut -d: -f1); hx \"\$file\")"
+    --bind "enter:execute(file=\$(echo {} | cut -d: -f1); \
+                      line=\$(echo {} | cut -d: -f2); \
+                      hx \"\$file\" +\$line)"
