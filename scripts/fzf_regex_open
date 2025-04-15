@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <regex>"
+    exit 1
+fi
+
+regex="$1"
+
+rg --no-heading --line-number "$regex" . | fzf \
+    --preview "file=\$(echo {} | cut -d: -f1); \
+               line=\$(echo {} | cut -d: -f2); \
+               if [ -n \"\$line\" ]; then \
+                   start_line=\$((line > 2 ? line - 2 : 1)); \
+                   batcat --style=numbers --color=always --highlight-line=\$line \"\$file\" -r \$start_line:; \
+               else \
+                   echo 'No match found in preview'; \
+               fi" \
+    --preview-window=up:30% \
+    --bind "enter:execute(file=\$(echo {} | cut -d: -f1); hx \"\$file\")"
