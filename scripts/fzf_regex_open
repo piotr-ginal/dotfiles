@@ -7,7 +7,7 @@ fi
 
 regex="$1"
 
-rg --no-heading --line-number "$regex" . | fzf \
+rg --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
     --preview "file=\$(echo {} | cut -d: -f1); \
                line=\$(echo {} | cut -d: -f2); \
                if [ -n \"\$line\" ]; then \
