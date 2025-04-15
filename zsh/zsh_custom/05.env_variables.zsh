@@ -16,7 +16,6 @@ export SSH_ASKPASS=/usr/bin/systemd-ask-password
 export ANSIBLE_CALLBACK_RESULT_FORMAT=yaml
 
 # ---- fzf ----
-
 export FZF_DEFAULT_OPTS='
   --color=fg:-1,fg+:#BFBDB6,bg:-1,bg+:#161c23
   --color=hl:#1C9BAC,hl+:#59DCD8,info:#20AFC1,marker:#1C9BAC
@@ -24,3 +23,6 @@ export FZF_DEFAULT_OPTS='
   --color=border:#BFBDB6,label:#aeaeae,query:#d9d9d9
   --border="none" --border-label="" --preview-window="border-rounded" --prompt="> "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
+
+# ---- batcat ----
+export BAT_THEME="Nord"
