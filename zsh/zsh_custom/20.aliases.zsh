@@ -153,4 +153,5 @@ alias dot="cd $DOTFILES_REPO_ROOT"
 alias ls='eza'
 alias l='eza --icons -lah'
 alias la='eza --icons -lAh'
+alias lt='eza --icons -T'
 alias ll='eza --icons -lh'
