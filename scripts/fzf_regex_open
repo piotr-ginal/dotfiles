@@ -19,5 +19,5 @@ rg --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
     --layout=reverse \
     --preview-window=up:40% \
     --bind "enter:execute(file=\$(echo {} | cut -d: -f1); \
-                      line=\$(echo {} | cut -d: -f2); \
-                      hx \"\$file\" +\$line)"
+            line=\$(echo {} | cut -d: -f2); \
+            hx \"\$file\" +\$line)"
