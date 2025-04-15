@@ -141,6 +141,7 @@ hx() {
 }
 alias h=hx
 alias op="fzf --print0 | xargs -0 -o hx"
+alias opr="fzf_regex_open"
 
 # ---- system aliases ----
 alias copy="sed -z '$ s/\n$//' | wl-copy"
