@@ -109,3 +109,6 @@ symlink_path: {foreground: "#B3E5FC"}
 control_char: {foreground: "#20AFC1"}
 broken_symlink: {foreground: "#FF8A80"}
 broken_path_overlay: {foreground: "#607D8B"}
+
+extensions:
+  toml: {icon: {glyph: }}
