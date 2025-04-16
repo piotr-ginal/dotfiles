@@ -5,7 +5,7 @@ mic_mute_status=$(amixer get Capture | grep -E -o '\[on\]|\[off\]' | head -n 1)
 
 if [[ "$mic_mute_status" == "[off]" ]]; then
     mic_status="muted"
-    bg_color="#565143"
+    bg_color="#0F1419"
 else
     mic_status="on"
     bg_color="#8B0000"

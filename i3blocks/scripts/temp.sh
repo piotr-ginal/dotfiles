@@ -10,7 +10,7 @@ if [ "$temperature" -ge "$minimal_warning_critical" ]; then
 elif [ "$temperature" -ge "$minimal_warning" ]; then
     background_color="#FF4D00"  # Warning temperature
 else
-    background_color="#565143"   # Normal temperature
+    background_color="#0F1419"   # Normal temperature
 fi
 
 echo "<span background='#232D38'> CPU </span><span background='${background_color}'> ${temperature}°C </span>"

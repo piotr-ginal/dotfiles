@@ -7,6 +7,6 @@ if [[ "$mute_status" == "[off]" ]]; then
     volume="muted"
 else
     volume=$(amixer get Master | grep -o '[0-9]*%' | head -n 1)
-fi    
+fi
 
-echo "<span background='#232D38'> volume </span><span background='#565143'> ${volume} </span>"
+echo "<span background='#232D38'> volume </span><span background='#0F1419'> ${volume} </span>"

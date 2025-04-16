@@ -12,7 +12,7 @@ if [ "$battery" -le "$minimal_warning" ]; then
         background_color="#FF4D00"
     fi
 else
-    background_color="#565143"
+    background_color="#0F1419"
 fi
 
 battery_status=$(cat /sys/class/power_supply/BAT*/status)
