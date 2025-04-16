@@ -28,13 +28,13 @@ client.urgent #263640 #b08500 #93a1a1 #263640 #263640
 client.placeholder #263640 #b08500 #93a1a1 #263640 #263640
 client.background #263640
 
-set $border_width 3
+set $border_width 2
 
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] floating enable
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] focus
 for_window [class=".*"] border pixel $border_width
 hide_edge_borders smart
-gaps inner 12
+gaps inner 5
 smart_gaps on
 
 default_border pixel $border_width
