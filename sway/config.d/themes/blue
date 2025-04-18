@@ -22,7 +22,7 @@ bar {
 }
 
 # colour of border, background, text, indicator, and child_border
-client.focused $accent #263640 #93a1a1 #696ebf $accent
+client.focused $accent #263640 #93a1a1 $accent $accent
 client.focused_inactive #263640 #b08500 #93a1a1 #263640 #263640
 client.unfocused #263640 #b08500 #93a1a1 #263640 #263640
 client.urgent #263640 #b08500 #93a1a1 #263640 #263640
