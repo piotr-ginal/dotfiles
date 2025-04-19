@@ -87,7 +87,7 @@ remove_pyenv_environment() {
   selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40% --layout=reverse --info inline)
 
   if [[ -n "$selected_env" ]]; then
-    rmenv "$selected_env"
+    pyenv virtualenv-delete -f "$selected_env"
   fi
 }
 
