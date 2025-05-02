@@ -9,3 +9,10 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='bold'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[redirection]='bold'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=246'
+ZSH_HIGHLIGHT_STYLES[arg0]='fg=153'
+
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=38'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=38'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=38'
+
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=153,underline'
