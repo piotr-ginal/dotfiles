@@ -17,10 +17,10 @@ export ANSIBLE_CALLBACK_RESULT_FORMAT=yaml
 
 # ---- fzf ----
 export FZF_DEFAULT_OPTS='
-  --color=fg:-1,fg+:#BFBDB6,bg:-1,bg+:#161c23
+  --color=fg:-1,fg+:#BFBDB6,bg:-1,bg+:#156772
   --color=hl:#1C9BAC,hl+:#59DCD8,info:#20AFC1,marker:#1C9BAC
   --color=prompt:#B3E5FC,spinner:#B3E5FC,pointer:#59DCD8,header:#87afaf
-  --color=border:#BFBDB6,label:#aeaeae,query:#d9d9d9
+  --color=gutter:-1,border:#BFBDB6,label:#aeaeae,query:#d9d9d9
   --border="none" --border-label="" --preview-window="border-rounded" --prompt="> "
   --marker=">" --pointer="◆" --separator="─" --scrollbar="│"'
 
