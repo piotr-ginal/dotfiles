@@ -139,8 +139,12 @@ hx() {
     command hx "$@"
     printf '\033[0 q'
 }
+fzf_helix_open_file() {
+  fzf --print0 --height=~40% | xargs -0 -o hx "$@"
+  printf '\033[0 q'
+}
 alias h=hx
-alias op="fzf --print0 | xargs -0 -o hx"
+alias op="fzf_helix_open_file"
 alias opr="fzf_regex_open"
 
 # ---- system aliases ----

@@ -21,3 +21,5 @@ rg --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
     --bind "enter:execute(file=\$(echo {} | cut -d: -f1); \
             line=\$(echo {} | cut -d: -f2); \
             hx \"\$file\" +\$line)"
+
+printf '\033[0 q'
