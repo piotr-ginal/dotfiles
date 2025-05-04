@@ -1,0 +1,116 @@
+#!/bin/bash
+
+print_usage() {
+    echo "Usage: $(basename "$0") [-h|--help] [-q|--quiet] [-f|--force] <file1> [file2] ..."
+    echo ""
+    echo "Options:"
+    echo "  -h, --help    Show this help message and exit"
+    echo "  -q, --quiet   Suppress output messages"
+    echo "  -f, --force   Overwrite existing destination files"
+    echo ""
+    echo "Examples:"
+    echo "  $(basename "$0") document.txt              # Renames to document.txt.old"
+    echo "  $(basename "$0") document.txt.old          # Renames to document.txt"
+    echo "  $(basename "$0") file1.txt file2.txt       # Process multiple files"
+    echo "  $(basename "$0") --force doc.txt doc.old   # Overwrite existing files if needed"
+}
+
+log_message() {
+    if [ "$QUIET_MODE" != "true" ]; then
+        echo "$1"
+    fi
+}
+
+QUIET_MODE="false"
+FORCE_MODE="false"
+FILES=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            print_usage
+            exit 0
+            ;;
+        -q|--quiet)
+            QUIET_MODE="true"
+            shift
+            ;;
+        -f|--force)
+            FORCE_MODE="true"
+            shift
+            ;;
+        -*)
+            echo "Error: Unknown option: $1" >&2
+            print_usage
+            exit 1
+            ;;
+        *)
+            FILES+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [ ${#FILES[@]} -eq 0 ]; then
+    echo "Error: No files specified" >&2
+    print_usage
+    exit 1
+fi
+
+toggle_old_suffix() {
+    local file="$1"
+
+    if [ ! -e "$file" ]; then
+        echo "Error: File '$file' does not exist" >&2
+        return 1
+    fi
+
+    if [ ! -f "$file" ]; then
+        echo "Error: '$file' is not a regular file" >&2
+        return 1
+    fi
+
+    local newname
+    if [[ "$file" == *.old ]]; then
+        newname="${file%.old}"
+        local action="Removed .old:"
+    else
+        newname="${file}.old"
+        local action="Added .old:"
+    fi
+
+    if [ -e "$newname" ] && [ "$FORCE_MODE" != "true" ]; then
+        echo "Error: Cannot rename '$file' to '$newname', file already exists (use --force to override)" >&2
+        return 1
+    fi
+
+    if mv "$file" "$newname"; then
+        log_message "$action $file -> $newname"
+        return 0
+    else
+        echo "Error: Failed to rename '$file' to '$newname'" >&2
+        return 1
+    fi
+}
+
+SUCCESS=0
+FAILURE=0
+
+for file in "${FILES[@]}"; do
+    if toggle_old_suffix "$file"; then
+        ((SUCCESS++))
+    else
+        ((FAILURE++))
+    fi
+done
+
+if [ "$QUIET_MODE" != "true" ]; then
+    echo ""
+    echo "Summary: $SUCCESS file(s) processed successfully, $FAILURE file(s) failed"
+fi
+
+if [ $FAILURE -gt 0 ]; then
+    exit 1
+else
+    exit 0
+fi
