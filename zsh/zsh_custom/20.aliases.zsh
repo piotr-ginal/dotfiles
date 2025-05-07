@@ -131,6 +131,7 @@ alias f='selected_dir=$(fdfind --type d --hidden --exclude .git --exclude node_m
 alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= && export HTTPS_PROXY="
 alias cppwd='pwd | copy'
 alias curs="printf '\033[0 q'"
+alias cdd="dir=\$(d | fzf --height=~40% | awk '{ print \$1 }') && [ -n \"\$dir\" ] && cd -\$dir"
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
