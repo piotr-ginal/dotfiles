@@ -104,6 +104,7 @@ alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relativ
 
 # ---- github aliases ----
 alias ghinv="gh_accept_invitation"
+alias ghcolabls="gh_collaborator_repo"
 
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv

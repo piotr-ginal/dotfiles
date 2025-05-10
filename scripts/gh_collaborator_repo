@@ -1,0 +1,16 @@
+#!/bin/bash
+
+repos=$(gh api graphql -f query='
+{
+  viewer {
+    repositories(first: 100, affiliations: [COLLABORATOR]) {
+      nodes {
+        nameWithOwner
+      }
+    }
+  }
+}' | jq '.data.viewer.repositories.nodes[].nameWithOwner' | rg '"' -r '' | fzf --height=~40%)
+
+if [ -n $repos ]; then
+  echo $repos
+fi
