@@ -105,6 +105,9 @@ alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relativ
 # ---- github aliases ----
 alias ghinv="gh_accept_invitation"
 alias ghcolabls="gh_collaborator_repo"
+alias ghrepols="gh repo list --json nameWithOwner -L 1000 --jq '.[].nameWithOwner' | fzf --height=~40%"
+alias ghcl='repo_name=$(ghrepols) && [ -n $repo_name ] && gh repo clone $repo_name'
+alias ghclcol='repo_name=$(gh_collaborator_repo) && [ -n $repo_name ] && gh repo clone $repo_name'
 
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv
