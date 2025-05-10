@@ -132,7 +132,7 @@ alias pyclean="find . \( -name __pycache__ -o -name .ruff_cache -o -name .mypy_c
 alias c=clear
 alias nf='neofetch --ascii ~/.config/neofetch/ascii_art'
 alias bat="batcat"
-alias forall='f() { for d in */; do (cd "$d" && eval "$@"); done }; f' # execute command in each child directory eg forall "ls && gst"
+alias forall='do_for_all() { for d in */; do (cd "$d" && eval "$@"); done }; do_for_all' # execute command in each child directory eg forall "ls && gst"
 alias fb="fzf --preview 'batcat {} --color=always' --height=45%"
 alias f='selected_dir=$(fdfind --type d --hidden --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv | fzf --height=55% --preview "eza --color=always {}" --preview-window=down:50%) && [ -n "$selected_dir" ] && cd "$selected_dir"'
 alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= && export HTTPS_PROXY="
