@@ -102,6 +102,9 @@ alias reporoot="git rev-parse --show-toplevel"
 alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 
+# ---- github aliases ----
+alias ghinv="gh_accept_invitation"
+
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv
 alias mkenv=create_pyenv_virtualenv

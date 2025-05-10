@@ -23,6 +23,7 @@
 ## Tools
 - eza
 - git
+- github cli
 - ripgrep
 - htop
 - batcat

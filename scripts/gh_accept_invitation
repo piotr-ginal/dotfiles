@@ -1,0 +1,26 @@
+#!/bin/bash
+
+invitations=$(gh api /user/repository_invitations)
+
+if [[ -z "$invitations" || "$invitations" == "[]" ]]; then
+  echo "no invitations"
+  exit 0
+fi
+
+choices=$(echo "$invitations" | jq -r '.[] | "\(.id)\t\(.repository.full_name)"')
+
+selected=$(echo "$choices" | fzf --ansi --delimiter="\t" --with-nth=2 --height=~40%)
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+invitation_id=$(echo "$selected" | cut -f1)
+
+gh api --silent -X PATCH "/user/repository_invitations/$invitation_id"
+
+if [[ $? -eq 0 ]]; then
+  echo "OK"
+else
+  echo "NOK"
+fi
