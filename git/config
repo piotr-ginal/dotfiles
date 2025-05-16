@@ -1,0 +1,18 @@
+[core]
+        editor = hx
+        pager = delta
+
+[interactive]
+        diffFilter = delta --color-only
+
+[delta]
+        navigage=True
+
+[merge]
+        conflictstyle = diff3
+
+[diff]
+        colorMoved = default
+
+[init]
+        defaultBranch = main
