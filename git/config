@@ -1,6 +1,7 @@
 [core]
         editor = hx
         pager = delta
+        compression = 9
 
 [interactive]
         diffFilter = delta --color-only
