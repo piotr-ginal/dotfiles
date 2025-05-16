@@ -19,3 +19,8 @@
 
 [init]
         defaultBranch = main
+
+[advice]
+        addEmptyPathspec = false
+        pushNonFastForward = false
+        statusHints = false
