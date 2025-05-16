@@ -24,3 +24,6 @@
         addEmptyPathspec = false
         pushNonFastForward = false
         statusHints = false
+
+[status]
+    showStash = true
