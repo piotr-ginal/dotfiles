@@ -15,6 +15,7 @@
 
 [diff]
         colorMoved = default
+        context = 3
 
 [init]
         defaultBranch = main
