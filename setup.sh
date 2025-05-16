@@ -25,24 +25,6 @@ for file in config.toml languages.toml; do
     fi
 done
 
-# ---- GIT_CONFIG configuration ----
-GIT_CONFIG_PATH="$(pwd)/git_config"
-
-if [[ ! -f "$HOME/.gitconfig" ]]; then
-    echo "Warning: .gitconfig file does not exist, creating a new one"
-    touch "$HOME/.gitconfig"
-fi
-
-if ! grep -q "\[include\]" "$HOME/.gitconfig" || ! grep -q "path = ${GIT_CONFIG_PATH}" "$HOME/.gitconfig"; then
-    cat <<EOF >> "$HOME/.gitconfig"
-[include]
-        path = ${GIT_CONFIG_PATH}
-EOF
-    echo "Added include path to .gitconfig."
-else
-    echo "Include path already exists in .gitconfig."
-fi
-
 # ---- before oh my zsh script building ----
 
 BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
