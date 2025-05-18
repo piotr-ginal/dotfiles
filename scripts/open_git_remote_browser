@@ -1,0 +1,23 @@
+#!/bin/bash
+
+lines_array=()
+num_lines=0
+selected_url=""
+
+mapfile -t lines_array < <(convert_git_remotes_ssh_to_http 2>/dev/null | grep -v '^[[:space:]]*$')
+
+num_lines=${#lines_array[@]}
+
+if (( num_lines == 0 )); then
+  exit 1
+elif (( num_lines == 1 )); then
+  selected_url="${lines_array[0]}"
+else
+  selected_url=$(printf "%s\n" "${lines_array[@]}" | fzf)
+fi
+
+if [[ -n "$selected_url" ]]; then
+  firefox "$selected_url"
+else
+  exit 1
+fi

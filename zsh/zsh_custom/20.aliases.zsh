@@ -95,8 +95,8 @@ remove_pyenv_environment() {
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
 alias gac=git_add_and_commit_command
-alias opgurl='gurl | xargs firefox'
 alias gurl='convert_git_remotes_ssh_to_http'
+alias opgurl='open_git_remote_browser'
 alias gb="git --no-pager branch"
 alias reporoot="git rev-parse --show-toplevel"
 alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
