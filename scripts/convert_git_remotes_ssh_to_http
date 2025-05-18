@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  echo "error: not a git repository." >&2
+  exit 1
+fi
+
+for remote_name in $(git remote); do
+  current_url=$(git remote get-url "$remote_name" 2>/dev/null)
+
+  if [[ -z "$current_url" ]] || [[ "$current_url" != git@* ]]; then
+    continue
+  fi
+
+  https_url="$current_url"
+
+  converted_url_dot_git=$(echo "$current_url" | sed -E 's/^git@([^:]+):(.+)\.git$/https:\/\/\1\/\2/')
+
+  if [[ "$converted_url_dot_git" != "$current_url" ]]; then
+      https_url="$converted_url_dot_git"
+  else
+      converted_url_no_dot_git=$(echo "$current_url" | sed -E 's/^git@([^:]+):(.+)$/https:\/\/\1\/\2/')
+      if [[ "$converted_url_no_dot_git" != "$current_url" ]]; then
+          https_url="$converted_url_no_dot_git"
+      fi
+  fi
+
+  if [[ "$https_url" != "$current_url" ]] && [[ "$https_url" == https://* ]]; then
+    echo "$https_url"
+  fi
+done
