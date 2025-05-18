@@ -103,6 +103,8 @@ alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
 
+unalias grs
+
 # ---- github aliases ----
 alias ghinv="gh_accept_invitation"
 alias ghcolabls="gh_collaborator_repo"
