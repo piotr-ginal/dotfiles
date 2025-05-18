@@ -101,6 +101,7 @@ alias gb="git --no-pager branch"
 alias reporoot="git rev-parse --show-toplevel"
 alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
+alias gap="git add -p"
 
 # ---- github aliases ----
 alias ghinv="gh_accept_invitation"
