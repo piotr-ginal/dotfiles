@@ -5,6 +5,7 @@
   register: url_check
   loop: "{{ ttf_urls }}"
   no_log: true
+  tags: fonts
 
 - name: Download fonts
   ansible.builtin.get_url:
@@ -16,3 +17,4 @@
   retries: 3
   delay: 5
   no_log: true
+  tags: fonts
