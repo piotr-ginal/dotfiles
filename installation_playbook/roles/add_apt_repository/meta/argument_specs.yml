@@ -1,0 +1,38 @@
+---
+argument_specs:
+  main:
+    options:
+
+      repo_type:
+        type: "str"
+        choices:
+          - "deb"
+          - "deb-src"
+        required: false
+        default: "deb"
+
+      repo_url:
+        type: "str"
+        required: true
+
+      key_url:
+        type: "str"
+        required: true
+
+      key_filename:
+        type: str
+        required: true
+
+      repo_distribution:
+        type: str
+        required: true
+
+      repo_filename:
+        type: str
+        required: true
+
+      components:
+        type: "list"
+        elements: "str"
+        required: true
+        description: "A list of components, eg. contrib, non-free"
