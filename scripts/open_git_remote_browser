@@ -1,5 +1,24 @@
 #!/bin/bash
 
+modify_repo_url_for_branch() {
+  local url="$1"
+  local modified_url="$url"
+  local current_branch
+  current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+  if [[ -n "$current_branch" && "$current_branch" != "main" && "$current_branch" != "master" ]]; then
+    local base_url="${url%.git}"
+    base_url="${base_url%/}"
+
+    if [[ "$url" == *"github.com"* ]]; then
+      modified_url="${base_url}/tree/${current_branch}"
+    elif [[ "$url" == *"gitlab.com"* ]]; then
+      modified_url="${base_url}/-/tree/${current_branch}"
+    fi
+  fi
+  echo "$modified_url"
+}
+
 lines_array=()
 num_lines=0
 selected_url=""
@@ -17,7 +36,8 @@ else
 fi
 
 if [[ -n "$selected_url" ]]; then
-  firefox "$selected_url"
+  final_url=$(modify_repo_url_for_branch "$selected_url")
+  firefox "$final_url"
 else
   exit 1
 fi
