@@ -33,7 +33,6 @@
 - pulseaudio-utils
 - grimshot
 - delta pager
-- neofetch
 
 ## Browsers
 - firefox

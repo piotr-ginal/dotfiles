@@ -141,7 +141,6 @@ alias pyclean="find . \( -name __pycache__ -o -name .ruff_cache -o -name .mypy_c
 
 # ---- misc aliases ----
 alias c=clear
-alias nf='neofetch --ascii ~/.config/neofetch/ascii_art'
 alias bat="batcat"
 alias forall='do_for_all() { for d in */; do (cd "$d" && eval "$@"); done }; do_for_all' # execute command in each child directory eg forall "ls && gst"
 alias fb="fzf --preview 'batcat {} --color=always' --height=45%"
