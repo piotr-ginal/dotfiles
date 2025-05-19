@@ -1,5 +1,8 @@
 # My dotfiles
 
+![Sway without any windows open](./assets/images/sway_screenshot.png)
+![Alacritty and helix open](./assets/images/sway_alacritty_screenshot.png)
+
 ## Key Components
 
 - Sway
