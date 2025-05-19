@@ -91,6 +91,13 @@ remove_pyenv_environment() {
   fi
 }
 
+# ---- misc functions ----
+rg_with_delta() {
+  local pattern="$1"
+  shift  # move arguments in place - 'use' $1 (the pattern)
+  rg --json -C 2 "$pattern" "$@" | delta
+}
+
 # ---- git aliases ----
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
@@ -143,6 +150,7 @@ alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= &
 alias cppwd='pwd | copy'
 alias curs="printf '\033[0 q'"
 alias cdd="dir=\$(d | fzf --height=~40% | awk '{ print \$1 }') && [ -n \"\$dir\" ] && cd -\$dir"
+alias rgg=rg_with_delta
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
