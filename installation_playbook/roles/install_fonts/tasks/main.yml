@@ -1,4 +1,12 @@
 ---
+- name: Ensure fonts directory exists
+  ansible.builtin.file:
+    path: "{{ fonts_directory }}"
+    state: directory
+    mode: '0751'
+    recurse: true
+  tags: fonts
+
 - name: Filter urls
   stat:
     path: "{{ fonts_directory }}/{{ item | basename }}"
