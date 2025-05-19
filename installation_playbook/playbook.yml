@@ -1,0 +1,11 @@
+---
+- name: Installation playbok
+  hosts: localhost
+  become_method: sudo
+
+  tasks:
+    - name: Install fonts
+      include_role:
+        name: install_fonts
+      vars:
+        force_check: false
