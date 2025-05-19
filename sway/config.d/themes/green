@@ -5,7 +5,7 @@ bar {
 
     status_command i3blocks
 
-    font pango:JetBrainsMono Nerd Font Bold 10
+    font pango:JetBrainsMonoNL Nerd Font Mono Bold 10
 
     colors {
         background #141c21f3

@@ -40,9 +40,15 @@
 ## Fonts
 
 ```sh
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
-&& cd ~/.local/share/fonts \
-&& unzip JetBrainsMono.zip \
-&& rm JetBrainsMono.zip \
-&& fc-cache -fv
+mkdir -p "${HOME}/.local/share/fonts"
+
+JB_NL_BOLD="https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Bold/JetBrainsMonoNLNerdFontMono-Bold.ttf"
+JB_NL_REGULAR="https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFontMono-Regular.ttf"
+JB_NL_ITALIC="https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Italic/JetBrainsMonoNLNerdFontMono-Italic.ttf"
+
+wget -P "${FONT_DIR}" "${JB_NL_BOLD}"
+wget -P "${FONT_DIR}" "${JB_NL_REGULAR}"
+wget -P "${FONT_DIR}" "${JB_NL_ITALIC}"
+
+fc-cache -fv
 ```
