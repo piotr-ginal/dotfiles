@@ -1,25 +1,45 @@
-# Requirements
+# My dotfiles
 
-## Terminal
+## Key Components
+
+- Sway
+- Alacritty
+- Zsh (with Oh My Zsh)
+- Helix (hx)
+
+## Target Operating Systems
+
+Primarily used and tested on:
+
+- Debian
+- Ubuntu
+
+## Usage
+
+Clone this repo and run the `setup.sh` script
+
+## Requirements
+
+### Terminal
 - alacritty
 - kitty
 
-## Shell
+### Shell
 - zsh
 - oh my zsh
 - [zsh syntax highlight](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
-## Editors
+### Editors
 - helix
 
-## Python
+### Python
 - pyenv
 - pipx
 
-## Window managers
+### Window managers
 - sway
 
-## Tools
+### Tools
 - eza
 - git
 - github cli
@@ -33,13 +53,13 @@
 - grimshot
 - delta pager
 
-## Other
+### Other
 - cargo
 
-## Browsers
+### Browsers
 - firefox
 
-## Fonts
+### Fonts
 
 ```sh
 mkdir -p "${HOME}/.local/share/fonts"
