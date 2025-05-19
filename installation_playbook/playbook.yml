@@ -36,3 +36,30 @@
         repo_filename: "mozilla.list"
         components: ["main"]
       tags: apt_sources
+
+    - name: Update local apt index files
+      ansible.builtin.apt:
+        update_cache: yes
+      become: yes
+      tags: apt_sources, packages_install
+
+    - name: Install apt packages
+      ansible.builtin.apt:
+        pkg:
+        - zsh
+        - sway
+        - htop
+        - git
+        - ripgrep
+        - pipx
+        - bat
+        - fd-find
+        - wl-clipboard
+        - pulseaudio-utils
+        - grimshot
+        - git-delta
+        - kitty
+        - firefox
+        - zsh-syntax-highlighting
+      become: yes
+      tags: packages_install
