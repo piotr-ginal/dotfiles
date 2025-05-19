@@ -22,6 +22,7 @@
         repo_distribution: "stable"
         repo_filename: "github-cli.list"
         components: ["main"]
+      tags: apt_sources
 
     - name: Add firefox apt repo
       include_role:
@@ -34,3 +35,4 @@
         repo_distribution: "mozilla"
         repo_filename: "mozilla.list"
         components: ["main"]
+      tags: apt_sources
