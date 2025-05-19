@@ -10,3 +10,27 @@
       vars:
         force_check: false
       tags: fonts
+
+    - name: Add github cli apt repo
+      include_role:
+        name: add_apt_repository
+      vars:
+        repo_type: "deb"
+        repo_url: "https://cli.github.com/packages"
+        key_url: "https://cli.github.com/packages/githubcli-archive-keyring.gpg"
+        key_filename: "githubcli-archive-keyring.gpg"
+        repo_distribution: "stable"
+        repo_filename: "github-cli.list"
+        components: ["main"]
+
+    - name: Add firefox apt repo
+      include_role:
+        name: add_apt_repository
+      vars:
+        repo_type: "deb"
+        repo_url: "https://packages.mozilla.org/apt"
+        key_url: "https://packages.mozilla.org/apt/repo-signing-key.gpg"
+        key_filename: "packages.mozilla.org.asc"
+        repo_distribution: "mozilla"
+        repo_filename: "mozilla.list"
+        components: ["main"]
