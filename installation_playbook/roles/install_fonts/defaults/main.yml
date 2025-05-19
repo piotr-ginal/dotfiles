@@ -1,0 +1,10 @@
+---
+ttf_urls:
+  # JetBrainsMono (No Ligatures) Nerd Font Bold
+  - "https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Bold/JetBrainsMonoNLNerdFontMono-Bold.ttf"
+  # JetBrainsMono (No Ligatures) Nerd Font Regular
+  - "https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Regular/JetBrainsMonoNLNerdFontMono-Regular.ttf"
+  # JetBrainsMono (No Ligatures) Nerd Font Italic
+  - "https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.4.0/patched-fonts/JetBrainsMono/NoLigatures/Italic/JetBrainsMonoNLNerdFontMono-Italic.ttf"
+fonts_directory: "{{ ansible_env.HOME }}/.local/share/fonts"
+force_check: false
