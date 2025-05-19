@@ -1,0 +1,26 @@
+---
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+  become: true
+
+- name: Download key file
+  ansible.builtin.get_url:
+    url: '{{ key_url }}'
+    dest: '/etc/apt/keyrings/{{ key_filename }}'
+    mode: 'go+r'
+  become: true
+
+- name: Capture architecture from dpkg
+  ansible.builtin.command:
+    cmd: dpkg --print-architecture
+  register: arch_out
+  changed_when: false
+
+- name: Render repo list template
+  ansible.builtin.template:
+    src: apt_list_template.j2
+    dest: '/etc/apt/sources.list.d/{{ repo_filename }}'
+  become: true
