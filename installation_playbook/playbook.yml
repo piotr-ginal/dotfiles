@@ -9,3 +9,4 @@
         name: install_fonts
       vars:
         force_check: false
+      tags: fonts
