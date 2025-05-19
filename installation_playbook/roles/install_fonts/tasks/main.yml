@@ -12,6 +12,7 @@
     dest: "{{ fonts_directory }}/{{ item.item | basename }}"
   loop: "{{ url_check.results }}"
   when: not item.stat.exists or force_check
+  notify: Refresh font cache
   retries: 3
   delay: 5
   no_log: true
