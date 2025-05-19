@@ -15,7 +15,6 @@
 ## Python
 - pyenv
 - pipx
-- cargo
 
 ## Window managers
 - sway
@@ -33,6 +32,9 @@
 - pulseaudio-utils
 - grimshot
 - delta pager
+
+## Other
+- cargo
 
 ## Browsers
 - firefox
