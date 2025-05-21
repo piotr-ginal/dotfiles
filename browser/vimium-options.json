@@ -1,0 +1,5 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nmap gw LinkHints.activateMode\nunmap f\nmap gW LinkHints.activateModeToOpenInNewTab",
+  "settingsVersion": "2.2.1",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n  /* Smaller, thinner, dark mode hint box with orange accent */\n  background: #0f1419;\n  border: 1px solid #ff8f40;\n  border-radius: 2px;\n  box-shadow: 0 1px 4px rgba(0,0,0,0.4);\n  z-index: 999999;\n  padding: 0px 3px;\n  min-width: 12px;\n  min-height: 14px;\n  display: inline-block;\n}\n\ndiv > .vimiumHintMarker span {\n  /* Smaller, bold, orange text */\n  color: #ff8f40;\n  font-weight: bold;\n  font-size: 10px;\n  letter-spacing: 0.2px;\n  text-shadow: 0 1px 1px #0f1419;\n  line-height: 1.1;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n  /* Inverted highlight for typed character, still small */\n  color: #0f1419;\n  background: #ff8f40;\n  border-radius: 1px;\n  padding: 0 1px;\n  font-size: 10px;\n}"
+}
