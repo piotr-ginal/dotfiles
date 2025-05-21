@@ -70,3 +70,13 @@
         - firefox
       become: yes
       tags: packages_install
+
+    - name: Install oh my zsh
+      include_role:
+        name: install_oh_my_zsh
+      vars:
+        zshrc_full_path: "{{ ansible_env.HOME }}/zshrc_temp"
+        oh_my_zsh_directory: "{{ ansible_env.HOME }}/omz_temp"
+        force_zshrc: true
+        oh_my_zsh_theme: "fishy"
+      tags: oh_my_zsh, shell_only
