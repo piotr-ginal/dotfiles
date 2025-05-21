@@ -22,7 +22,7 @@
         repo_distribution: "stable"
         repo_filename: "github-cli.list"
         components: ["main"]
-      tags: apt_sources
+      tags: apt_sources, shell_only
 
     - name: Add firefox apt repo
       include_role:
@@ -41,25 +41,32 @@
       ansible.builtin.apt:
         update_cache: yes
       become: yes
-      tags: apt_sources, packages_install
+      tags: apt_sources, packages_install, shell_only
 
-    - name: Install apt packages
+    - name: Install dev command line tools
       ansible.builtin.apt:
         pkg:
         - zsh
-        - sway
         - htop
         - git
         - ripgrep
+        - gh
         - pipx
         - bat
         - fd-find
+        - git-delta
+        - zsh-syntax-highlighting
+      become: yes
+      tags: packages_install, shell_only
+
+    - name: Install apt packages - GUI
+      ansible.builtin.apt:
+        pkg:
+        - sway
         - wl-clipboard
         - pulseaudio-utils
         - grimshot
-        - git-delta
         - kitty
         - firefox
-        - zsh-syntax-highlighting
       become: yes
       tags: packages_install
