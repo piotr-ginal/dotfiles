@@ -1,0 +1,7 @@
+---
+
+- name: Check if .zshrc already exists
+  ansible.builtin.stat:
+    path: "{{ zshrc_full_path }}"
+  register: zshrc_status
+  tags: oh_my_zsh, shell_only
