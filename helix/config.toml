@@ -19,6 +19,7 @@ q = ":quit"
 
 [keys.normal]
 # selection
+"G" = "goto_last_line"
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
 "A-V" = ["goto_first_nonwhitespace", "extend_to_line_end"]
