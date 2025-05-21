@@ -182,3 +182,11 @@ alias l='eza --icons -lah'
 alias la='eza --icons -lAh'
 alias lt='eza --icons -T'
 alias ll='eza --icons -lh'
+
+# ---- docker aliases ----
+alias dcls="docker container list"
+alias dexe="docker exec -it"
+alias dils="docker image list"
+alias dlog="docker logs"
+alias dps="docker ps -a"
+alias dstop="docker stop"
