@@ -162,7 +162,8 @@ hx() {
     printf '\033[0 q'
 }
 fzf_helix_open_file() {
-  fzf --print0 --height=~40% | xargs -0 -o hx "$@"
+  sel=$(fzf --print0 --height=~40%)
+  [ -n "$sel" ] && printf '%s' "$sel" | xargs -0 -o hx "$@"
   printf '\033[0 q'
 }
 alias h=hx
