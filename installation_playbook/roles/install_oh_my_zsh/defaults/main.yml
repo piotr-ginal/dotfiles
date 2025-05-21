@@ -1,0 +1,7 @@
+---
+oh_my_zsh_directory: "{{ ansible_env.HOME }}/.oh-my-zsh"
+oh_my_zsh_mirror: "https://github.com/ohmyzsh/ohmyzsh.git"
+zshrc_full_path: "{{ ansible_env.HOME }}/.zshrc"
+oh_my_zsh_theme: "git-root-nor-green"
+terminal_type: "xterm-256color"
+force_zshrc: false
