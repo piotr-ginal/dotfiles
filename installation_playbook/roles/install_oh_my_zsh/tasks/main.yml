@@ -13,3 +13,11 @@
     mode: "0644"
   when: not zshrc_status.stat.exists or force_zshrc
   tags: oh_my_zsh, shell_only
+
+- name: Clone oh my zsh repo
+  ansible.builtin.git:
+    repo: "{{ oh_my_zsh_mirror }}"
+    dest: "{{ oh_my_zsh_directory }}"
+  environment:
+      GIT_TERMINAL_PROMPT: 0
+  tags: oh_my_zsh, shell_only
