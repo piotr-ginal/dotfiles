@@ -1,0 +1,31 @@
+.tabbrowser-tab .tab-close-button {
+  display: none !important;
+}
+
+#tabs-newtab-button {
+  display: none !important;
+}
+
+#back-button {
+  display: none !important;
+}
+
+#forward-button {
+  display: none !important;
+}
+
+#reload-button {
+  display: none !important;
+}
+
+#stop-button {
+  display: none !important;
+}
+
+#unified-extensions-button {
+  display: none !important;
+}
+
+#firefox-view-button {
+  display: none !important;
+}
