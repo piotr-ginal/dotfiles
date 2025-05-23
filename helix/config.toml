@@ -1,4 +1,3 @@
-# theme = "bogster"  # everblush is also cool
 theme = "ayu_dark"
 
 [editor]
@@ -18,7 +17,6 @@ q = ":quit"
 "A-p" = ":sh pwd | tr -d '\n' | wl-copy"
 
 [keys.normal]
-# selection
 "G" = "goto_last_line"
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
@@ -27,7 +25,6 @@ V = ["extend_to_line_end"]
 "A-ret" = "vsplit"
 "A-q" = ":quit"
 
-# view movement
 "A-right" = "jump_view_right"
 "A-left" = "jump_view_left"
 "A-down" = "jump_view_down"
@@ -36,7 +33,6 @@ V = ["extend_to_line_end"]
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
 
-# movement
 "A-u" = "page_cursor_half_up"
 "A-d" = "page_cursor_half_down"
 "A-k" = "page_cursor_half_up"
@@ -50,14 +46,12 @@ V = ["extend_to_line_end"]
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
 
-# movement
 "A-u" = "page_cursor_half_up"
 "A-d" = "page_cursor_half_down"
 
 V = ["extend_to_line_end"]
 
 [keys.insert]
-# view movement
 "A-right" = "jump_view_right"
 "A-left" = "jump_view_left"
 "A-down" = "jump_view_down"
@@ -66,11 +60,9 @@ V = ["extend_to_line_end"]
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
 
-# movement
 "A-u" = "page_cursor_half_up"
 "A-d" = "page_cursor_half_down"
 
-# other
 C-space = "signature_help"
 
 [editor.statusline]
