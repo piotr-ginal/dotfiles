@@ -39,6 +39,8 @@ V = ["extend_to_line_end"]
 # movement
 "A-u" = "page_cursor_half_up"
 "A-d" = "page_cursor_half_down"
+"A-k" = "page_cursor_half_up"
+"A-j" = "page_cursor_half_down"
 
 [keys.normal.g]
 "l" = "goto_next_change"
