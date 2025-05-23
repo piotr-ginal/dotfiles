@@ -151,6 +151,7 @@ alias curs="printf '\033[0 q'"
 alias cdd="dir=\$(d | fzf --height=~40% | awk '{ print \$1 }') && [ -n \"\$dir\" ] && cd -\$dir"
 alias rgg=rg_with_delta
 alias cppass=keepassxc_select_and_copy_password
+alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias fd=fdfind
 
 # ---- zsh aliases ----
