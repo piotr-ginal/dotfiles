@@ -13,17 +13,17 @@ General
 
 Window Focus
 ------------
-- Focus Left: MOD+left
-- Focus Down: MOD+down
-- Focus Up: MOD+up
-- Focus Right: MOD+right
+- Focus Left: MOD+h
+- Focus Down: MOD+j
+- Focus Up: MOD+k
+- Focus Right: MOD+l
 
 Move Window
 -----------
-- Move Left: MOD+Shift+left
-- Move Down: MOD+Shift+down
-- Move Up: MOD+Shift+up
-- Move Right: MOD+Shift+right
+- Move Left: MOD+Shift+h
+- Move Down: MOD+Shift+j
+- Move Up: MOD+Shift+k
+- Move Right: MOD+Shift+l
 
 Workspaces
 ----------
@@ -51,9 +51,9 @@ Layouts
 Resize Mode
 -----------
 - Enter Resize Mode: MOD+r
-- Resize Left: resize mode + left
-- Resize Down: resize mode + down
-- Resize Up: resize mode + up
-- Resize Right: resize mode + right
+- Resize Left: resize mode + h
+- Resize Down: resize mode + j
+- Resize Up: resize mode + k
+- Resize Right: resize mode + l
 - Return to Default Mode: resize mode + Return
 - Exit Resize Mode: resize mode + Escape

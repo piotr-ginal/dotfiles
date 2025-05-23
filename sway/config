@@ -1,10 +1,10 @@
 # Read `man 5 sway` for a complete reference.
 
 set $mod Mod4
-set $left Left
-set $down Down
-set $up Up
-set $right Right
+set $left h
+set $down j
+set $up k
+set $right l
 # set $term foot
 set $term alacritty
 set $menu fuzzel -I -l 5 | xargs swaymsg exec
