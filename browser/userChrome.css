@@ -29,3 +29,11 @@
 #firefox-view-button {
   display: none !important;
 }
+
+#reader-mode-button {
+  display: none !important;
+}
+
+#star-button-box {
+  display: none !important;
+}
