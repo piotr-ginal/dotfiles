@@ -166,9 +166,21 @@ fzf_helix_open_file() {
   [ -n "$sel" ] && printf '%s' "$sel" | xargs -0 -o hx "$@"
   printf '\033[0 q'
 }
+fzf_helix_git_changed_open_file() {
+  changed_files=$(git status --porcelain=v1 --no-renames | rg -v "^ *D")
+
+  if [ -n "$changed_files" ]; then
+    selected_file_clean=$(echo "$changed_files" | fzf | sed -e 's/^...//')
+    if [ -n "$selected_file_clean" ]; then
+      hx "$selected_file_clean" "$@"
+      printf '\033[0 q'
+    fi
+  fi
+}
 alias h=hx
 alias op="fzf_helix_open_file"
 alias opr="fzf_regex_open"
+alias opc="fzf_helix_git_changed_open_file"
 
 # ---- system aliases ----
 alias copy="sed -z '$ s/\n$//' | wl-copy"
