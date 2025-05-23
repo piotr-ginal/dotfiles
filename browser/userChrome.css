@@ -41,3 +41,7 @@
 #pageAction-urlbar-tab-stash_condordes_net {
   display: none !important;
 }
+
+toolbarbutton.titlebar-close {
+  display: none !important;
+}
