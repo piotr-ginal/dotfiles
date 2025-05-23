@@ -39,8 +39,8 @@ V = ["extend_to_line_end"]
 "A-j" = "page_cursor_half_down"
 
 [keys.normal.g]
-"l" = "goto_next_change"
-"k" = "goto_prev_change"
+"k" = "goto_next_change"
+"j" = "goto_prev_change"
 
 [keys.select]
 "A-x" = "extend_to_line_bounds"
