@@ -45,3 +45,7 @@
 toolbarbutton.titlebar-close {
   display: none !important;
 }
+
+#alltabs-button {
+  display: none !important;
+}
