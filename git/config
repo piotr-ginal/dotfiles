@@ -33,3 +33,6 @@
 
 [color "diff"]
         commit = cyan
+
+[rebase]
+	autoStash = true
