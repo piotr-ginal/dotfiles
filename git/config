@@ -30,3 +30,6 @@
 
 [url "git@github.com:"]
         insteadOf = "gh:"
+
+[color "diff"]
+        commit = cyan
