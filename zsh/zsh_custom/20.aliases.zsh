@@ -106,7 +106,6 @@ alias gurl='convert_git_remotes_ssh_to_http'
 alias opgurl='open_git_remote_browser'
 alias gb="git --no-pager branch"
 alias reporoot="git rev-parse --show-toplevel"
-alias cdroot='cd `reporoot`'  # single quotes for runtime evaluation
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
