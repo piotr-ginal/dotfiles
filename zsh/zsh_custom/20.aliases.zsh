@@ -167,7 +167,7 @@ fzf_helix_open_file() {
   printf '\033[0 q'
 }
 fzf_helix_git_changed_open_file() {
-  changed_files=$(git status --porcelain=v1 --no-renames | rg -v "^ *D")
+  changed_files=$(git status --short --no-renames | rg -v "^ *D")
 
   if [ -n "$changed_files" ]; then
     selected_file_clean=$(echo "$changed_files" | fzf | sed -e 's/^...//')
