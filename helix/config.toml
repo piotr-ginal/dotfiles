@@ -25,10 +25,10 @@ V = ["extend_to_line_end"]
 "A-ret" = "vsplit"
 "A-q" = ":quit"
 
-"A-right" = "jump_view_right"
-"A-left" = "jump_view_left"
-"A-down" = "jump_view_down"
-"A-up"= "jump_view_up"
+"A-l" = "jump_view_right"
+"A-h" = "jump_view_left"
+"A-j" = "jump_view_down"
+"A-k"= "jump_view_up"
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
@@ -50,10 +50,10 @@ V = ["extend_to_line_end"]
 V = ["extend_to_line_end"]
 
 [keys.insert]
-"A-right" = "jump_view_right"
-"A-left" = "jump_view_left"
-"A-down" = "jump_view_down"
-"A-up"= "jump_view_up"
+"A-l" = "jump_view_right"
+"A-h" = "jump_view_left"
+"A-j" = "jump_view_down"
+"A-k"= "jump_view_up"
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
