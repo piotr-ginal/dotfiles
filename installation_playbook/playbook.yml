@@ -37,6 +37,19 @@
         components: ["main"]
       tags: apt_sources
 
+    - name: Add docker apt repo
+      include_role:
+        name: add_apt_repository
+      vars:
+        repo_type: "deb"
+        repo_url: "https://download.docker.com/linux/debian"
+        key_url: "https://download.docker.com/linux/debian/gpg"
+        key_filename: "docker.asc"
+        repo_distribution: "bookworm"
+        repo_filename: "docker.list"
+        components: ["stable"]
+      tags: apt_sources
+
     - name: Update local apt index files
       ansible.builtin.apt:
         update_cache: yes
