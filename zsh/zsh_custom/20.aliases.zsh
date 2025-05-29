@@ -44,6 +44,15 @@ fzf_git_changed_file() {
   echo "$changed_files" | fzf "$@" | sed -e 's/^...//'
 }
 
+fzf_git_add_changed_file() {
+  local file
+  file=$(fzf_git_changed_file --height=~40%)
+  if [ -n "$file" ]; then
+    git add "$@" "$file"
+    printf '\033[0 q'
+  fi
+}
+
 # ---- ps aliases ----
 alias psall="ps aux"
 alias pstree="ps axjf"
@@ -118,6 +127,8 @@ alias reporoot="git rev-parse --show-toplevel"
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
+alias gaf="fzf_git_add_changed_file"
+alias gafp="fzf_git_add_changed_file -p"
 
 unalias grs
 
