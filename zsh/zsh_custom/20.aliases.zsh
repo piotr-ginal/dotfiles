@@ -187,6 +187,7 @@ alias copy="sed -z '$ s/\n$//' | wl-copy"
 alias rescan="nmcli device wifi list --rescan yes"
 alias reboot="sudo reboot"
 alias lock="swaylock -c 000000"
+cpp() { realpath "$@" | copy; }
 
 # ---- cd aliases ----
 alias dot="cd $DOTFILES_REPO_ROOT"
