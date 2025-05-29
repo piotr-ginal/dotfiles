@@ -35,6 +35,15 @@ git_add_and_commit_command() {
   git commit "${options_for_git[@]}"
 }
 
+fzf_git_changed_file() {
+  local changed_files
+  changed_files=$(git status --short --no-renames | rg -v "^ *D")
+  if [ -z "$changed_files" ]; then
+    return 1
+  fi
+  echo "$changed_files" | fzf "$@" | sed -e 's/^...//'
+}
+
 # ---- ps aliases ----
 alias psall="ps aux"
 alias pstree="ps axjf"
@@ -167,14 +176,11 @@ fzf_helix_open_file() {
   printf '\033[0 q'
 }
 fzf_helix_git_changed_open_file() {
-  changed_files=$(git status --short --no-renames | rg -v "^ *D")
-
-  if [ -n "$changed_files" ]; then
-    selected_file_clean=$(echo "$changed_files" | fzf | sed -e 's/^...//')
-    if [ -n "$selected_file_clean" ]; then
-      hx "$selected_file_clean" "$@"
-      printf '\033[0 q'
-    fi
+  local file
+  file=$(fzf_git_changed_file --height=~40%)
+  if [ -n "$file" ]; then
+    hx "$file" "$@"
+    printf '\033[0 q'
   fi
 }
 alias h=hx
