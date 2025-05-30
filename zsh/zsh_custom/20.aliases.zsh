@@ -49,7 +49,6 @@ fzf_git_add_changed_file() {
   file=$(fzf_git_changed_file --height=~40%)
   if [ -n "$file" ]; then
     git add "$@" "$file"
-    printf '\033[0 q'
   fi
 }
 
@@ -177,21 +176,15 @@ alias fd=fdfind
 alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
-hx() {
-    command hx "$@"
-    printf '\033[0 q'
-}
 fzf_helix_open_file() {
   sel=$(fzf --print0 --height=~40%)
   [ -n "$sel" ] && printf '%s' "$sel" | xargs -0 -o hx "$@"
-  printf '\033[0 q'
 }
 fzf_helix_git_changed_open_file() {
   local file
   file=$(fzf_git_changed_file --height=~40%)
   if [ -n "$file" ]; then
     hx "$file" "$@"
-    printf '\033[0 q'
   fi
 }
 alias h=hx
