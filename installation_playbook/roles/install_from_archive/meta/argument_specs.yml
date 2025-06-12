@@ -1,0 +1,48 @@
+---
+argument_specs:
+  main:
+    options:
+      archive_url:
+        type: "str"
+        required: true
+        description: "URL to download the archive from (zip, tar, etc.)"
+
+      binary_path_from_extract:
+        type: "str"
+        required: true
+        description: "Relative path to the binary within the extracted archive"
+
+      archive_dest:
+        type: "str"
+        required: false
+        description: "Local path where the archive will be downloaded. If not specified, defaults to /tmp/archivename"
+
+      extract_dest:
+        type: "str"
+        required: false
+        description: "Directory where the archive will be extracted. If not specified, defaults to /tmp/extracted"
+
+      binary_target_dir:
+        type: "str"
+        required: false
+        description: "Directory where the binary will be placed after extraction. If not specified, defaults to /usr/local/bin"
+
+      become_to_move:
+        type: "bool"
+        required: false
+        description: "Whether to use become when moving the binary to the target directory. Defaults to true"
+
+      force:
+        type: "bool"
+        required: false
+        description: "Force installation even if binary exists and version matches. Defaults to false"
+
+      expected_version:
+        type: "str"
+        required: false
+        description: "Expected version string to check against"
+
+      version_check_flags:
+        type: "list[str]"
+        required: false
+        description: "Command-line flags to pass to the binary when checking its version. Defaults to ['--version']"
