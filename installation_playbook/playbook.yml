@@ -67,7 +67,6 @@
         - pipx
         - bat
         - fd-find
-        - git-delta
         - zsh-syntax-highlighting
       become: yes
       tags: packages_install, shell_only
