@@ -18,11 +18,17 @@
     ansible.builtin.command: "{{ binary_target_path }} {{ version_check_flags | join(' ')}}"
     register: command_output
     changed_when: false
-    when: is_executable
+    when: is_executable and expected_version is defined
 
-  - name: Set proceed with install fact
+  - name: Set proceed with install fact - version check
     ansible.builtin.set_fact:
       proceed_with_install: "{{ not ( is_executable and expected_version in command_output.stdout )}}"
+    when: expected_version is defined
+
+  - name: Set proceed with install fact - no version check
+    ansible.builtin.set_fact:
+      proceed_with_install: "{{ not is_executable}}"
+    when: expected_version is not defined
 
   when: not force
 
