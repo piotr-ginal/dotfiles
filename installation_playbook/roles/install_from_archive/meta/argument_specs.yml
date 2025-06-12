@@ -43,6 +43,7 @@ argument_specs:
         description: "Expected version string to check against"
 
       version_check_flags:
-        type: "list[str]"
+        type: list
+        elements: str
         required: false
         description: "Command-line flags to pass to the binary when checking its version. Defaults to ['--version']"
