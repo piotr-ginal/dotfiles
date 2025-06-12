@@ -1,0 +1,16 @@
+---
+- name: Ensure git is installed
+  ansible.builtin.apt:
+    pkg: git
+  become: yes
+  tags: dotfiles, shell_only
+
+- name: Clone dotfiles repo
+  ansible.builtin.git:
+    repo: "{{ dotfiles_repo_mirror }}"
+    dest: "{{ dotfiles_repo_root }}"
+    update: "{{ update_repo }}"
+    accept_hostkey: true
+  environment:
+      GIT_TERMINAL_PROMPT: 0
+  tags: dotfiles, shell_only
