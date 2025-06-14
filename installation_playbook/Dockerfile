@@ -1,14 +1,17 @@
 FROM debian:bookworm-slim
 
-RUN apt update && apt install sudo pipx -y && apt-get clean
-
-RUN useradd -ms /bin/bash linuxuser
-
-RUN echo "linuxuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/linuxuser && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends sudo pipx && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    useradd -ms /bin/bash linuxuser && \
+    echo "linuxuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/linuxuser && \
     chmod 0440 /etc/sudoers.d/linuxuser
 
 USER linuxuser
+WORKDIR /home/linuxuser
 
-RUN pipx install --include-deps ansible
+RUN pipx install --include-deps ansible && \
+    rm -rf ~/.cache/pipx
 
 ENV PATH="/home/linuxuser/.local/bin:${PATH}"
