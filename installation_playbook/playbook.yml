@@ -83,22 +83,17 @@
       become: yes
       tags: packages_install
 
-    - name: Place configs
-      include_role:
-        name: configure_dotfiles
-      vars:
-        dotfiles_repo_root: "{{ ansible_env.HOME }}/.dotfiles"
-      tags: shell_only, dotfiles
-
     - name: Install oh my zsh
       include_role:
         name: install_oh_my_zsh
       vars:
-        zshrc_full_path: "{{ ansible_env.HOME }}/.zshrc"
-        oh_my_zsh_directory: "{{ ansible_env.HOME }}/.oh-my-zsh"
         force_zshrc: true
-        oh_my_zsh_theme: "git-root-nor-green"
       tags: oh_my_zsh, shell_only
+
+    - name: Place configs
+      include_role:
+        name: configure_dotfiles
+      tags: shell_only, dotfiles
 
     - name: Install fzf from archive
       include_role:
