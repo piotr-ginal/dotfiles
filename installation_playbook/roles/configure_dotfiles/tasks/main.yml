@@ -21,3 +21,7 @@
     state: directory
     mode: '0755'
   tags: dotfiles, shell_only
+
+- name: Create config symlinks
+  include_tasks: create_symlinks.yml
+  tags: dotfiles, shell_only
