@@ -25,3 +25,9 @@
 - name: Create config symlinks
   include_tasks: create_symlinks.yml
   tags: dotfiles, shell_only
+
+- name: Template before oh my zsh script file
+  ansible.builtin.template:
+    src: before_omz_template.j2
+    dest: "{{ before_omz_file_path }}"
+  tags: dotfiles
