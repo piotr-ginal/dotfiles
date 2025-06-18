@@ -1,0 +1,37 @@
+---
+
+- name: Create symlinks for config directories
+  ansible.builtin.file:
+    src: "{{ dotfiles_repo_root }}/{{ item }}"
+    dest: "{{ target_config_directory }}/{{ item }}"
+    state: link
+    force: true
+  loop: "{{ config_directories }}"
+  tags: dotfiles, shell_only
+
+- name: Create wallpapers dir symlink
+  ansible.builtin.file:
+    src: "{{ dotfiles_repo_root }}/wallpapers"
+    dest: "{{ wallpaper_dir_link_dest }}"
+    state: link
+    force: true
+  tags: dotfiles
+
+- name: Link helix configs
+  tags: dotfiles, shell_only
+  block:
+    - name: Ensure helix config directory exists
+      ansible.builtin.file:
+        path: "{{ target_config_directory }}/helix"
+        state: directory
+        mode: '0755'
+
+    - name: Link helix config toml
+      ansible.builtin.file:
+        src: "{{ dotfiles_repo_root }}/{{ item }}"
+        dest: "{{ target_config_directory }}/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - "helix/config.toml"
+        - "helix/languages.toml"
