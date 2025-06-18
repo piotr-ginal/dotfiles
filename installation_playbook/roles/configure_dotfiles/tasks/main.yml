@@ -14,3 +14,10 @@
   environment:
       GIT_TERMINAL_PROMPT: 0
   tags: dotfiles, shell_only
+
+- name: Ensure config directory exists
+  ansible.builtin.file:
+    path: "{{ target_config_directory }}"
+    state: directory
+    mode: '0755'
+  tags: dotfiles, shell_only
