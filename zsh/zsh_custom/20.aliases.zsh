@@ -217,5 +217,5 @@ alias dps="docker ps -a"
 alias drun="docker run"
 alias dstop="docker stop"
 
-# ---- browser aliases ----
-alias gmail=open_gmail_with_account
+# ---- google service aliases ----
+alias gmail="open_google_service_with_account https://mail.google.com/mail/u/"
