@@ -216,3 +216,6 @@ alias dlog="docker logs"
 alias dps="docker ps -a"
 alias drun="docker run"
 alias dstop="docker stop"
+
+# ---- browser aliases ----
+alias gmail=open_gmail_with_account
