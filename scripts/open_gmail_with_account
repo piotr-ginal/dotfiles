@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# file format:
+# foo@example.com;foo description
+# bar@example.com;bar description
+
+ACCOUNT_LIST_FILE="$HOME/.scriptfiles/gmail_accounts"
+
+selected_user=$(column -t -s ';' "$ACCOUNT_LIST_FILE" | fzf --height=~40% | awk '{print $1}')
+
+[ -n "$selected_user" ] && firefox "https://mail.google.com/mail/u/?authuser=${selected_user}"
