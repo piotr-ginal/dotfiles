@@ -3,19 +3,19 @@
   ansible.builtin.file:
     path: "{{ fonts_directory }}"
     state: directory
-    mode: '0751'
+    mode: "0751"
     recurse: true
   tags: fonts
 
 - name: Install font config package
   ansible.builtin.apt:
     pkg: fontconfig
-    update_cache: yes
+    update_cache: true
   become: true
   tags: fonts
 
 - name: Filter urls
-  stat:
+  ansible.builtin.stat:
     path: "{{ fonts_directory }}/{{ item | basename }}"
   register: url_check
   loop: "{{ ttf_urls }}"
@@ -26,6 +26,7 @@
   ansible.builtin.get_url:
     url: "{{ item.item }}"
     dest: "{{ fonts_directory }}/{{ item.item | basename }}"
+    mode: "0644"
   loop: "{{ url_check.results }}"
   when: not item.stat.exists or force_check
   notify: Refresh font cache

@@ -1,5 +1,4 @@
 ---
-
 - name: Create symlinks for config directories
   ansible.builtin.file:
     src: "{{ dotfiles_repo_root }}/{{ item }}"
@@ -24,7 +23,7 @@
       ansible.builtin.file:
         path: "{{ target_config_directory }}/helix"
         state: directory
-        mode: '0755'
+        mode: "0755"
 
     - name: Link helix config toml
       ansible.builtin.file:

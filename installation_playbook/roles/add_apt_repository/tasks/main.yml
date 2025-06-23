@@ -3,15 +3,15 @@
   ansible.builtin.file:
     path: /etc/apt/keyrings
     state: directory
-    mode: '0755'
+    mode: "0755"
   become: true
   tags: apt_sources
 
 - name: Download key file
   ansible.builtin.get_url:
-    url: '{{ key_url }}'
-    dest: '/etc/apt/keyrings/{{ key_filename }}'
-    mode: 'go+r'
+    url: "{{ key_url }}"
+    dest: "/etc/apt/keyrings/{{ key_filename }}"
+    mode: "go+r"
   become: true
   tags: apt_sources
 
@@ -25,6 +25,7 @@
 - name: Render repo list template
   ansible.builtin.template:
     src: apt_list_template.j2
-    dest: '/etc/apt/sources.list.d/{{ repo_filename }}'
+    dest: "/etc/apt/sources.list.d/{{ repo_filename }}"
+    mode: "0644"
   become: true
   tags: apt_sources
