@@ -1,3 +1,5 @@
 ---
 - name: Refresh font cache
   ansible.builtin.command: fc-cache -f
+  register: fc_cache_result
+  changed_when: "'caching' in fc_cache_result.stdout"

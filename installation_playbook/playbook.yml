@@ -1,18 +1,18 @@
 ---
 - name: Installation playbok
   hosts: localhost
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   tasks:
     - name: Install fonts
-      include_role:
+      ansible.builtin.include_role:
         name: install_fonts
       vars:
         force_check: false
       tags: fonts
 
     - name: Add github cli apt repo
-      include_role:
+      ansible.builtin.include_role:
         name: add_apt_repository
       vars:
         repo_type: "deb"
@@ -25,7 +25,7 @@
       tags: apt_sources, shell_only
 
     - name: Add firefox apt repo
-      include_role:
+      ansible.builtin.include_role:
         name: add_apt_repository
       vars:
         repo_type: "deb"
@@ -38,7 +38,7 @@
       tags: apt_sources
 
     - name: Add docker apt repo
-      include_role:
+      ansible.builtin.include_role:
         name: add_apt_repository
       vars:
         repo_type: "deb"
@@ -52,51 +52,51 @@
 
     - name: Update local apt index files
       ansible.builtin.apt:
-        update_cache: yes
-      become: yes
+        update_cache: true
+      become: true
       tags: apt_sources, packages_install, shell_only
 
     - name: Install dev command line tools
       ansible.builtin.apt:
         pkg:
-        - zsh
-        - htop
-        - git
-        - ripgrep
-        - gh
-        - pipx
-        - bat
-        - fd-find
-        - zsh-syntax-highlighting
-      become: yes
+          - zsh
+          - htop
+          - git
+          - ripgrep
+          - gh
+          - pipx
+          - bat
+          - fd-find
+          - zsh-syntax-highlighting
+      become: true
       tags: packages_install, shell_only
 
     - name: Install apt packages - GUI
       ansible.builtin.apt:
         pkg:
-        - sway
-        - wl-clipboard
-        - pulseaudio-utils
-        - grimshot
-        - kitty
-        - firefox
-      become: yes
+          - sway
+          - wl-clipboard
+          - pulseaudio-utils
+          - grimshot
+          - kitty
+          - firefox
+      become: true
       tags: packages_install
 
     - name: Install oh my zsh
-      include_role:
+      ansible.builtin.include_role:
         name: install_oh_my_zsh
       vars:
         force_zshrc: true
       tags: oh_my_zsh, shell_only
 
     - name: Place configs
-      include_role:
+      ansible.builtin.include_role:
         name: configure_dotfiles
       tags: shell_only, dotfiles
 
     - name: Install fzf from archive
-      include_role:
+      ansible.builtin.include_role:
         name: install_from_archive
         apply:
           tags:
@@ -108,7 +108,7 @@
       tags: archive_bin
 
     - name: Install delta from archive
-      include_role:
+      ansible.builtin.include_role:
         name: install_from_archive
         apply:
           tags:
