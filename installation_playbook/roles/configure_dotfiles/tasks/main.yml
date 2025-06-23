@@ -2,32 +2,33 @@
 - name: Ensure git is installed
   ansible.builtin.apt:
     pkg: git
-  become: yes
+  become: true
   tags: dotfiles, shell_only
 
-- name: Clone dotfiles repo
+- name: Clone dotfiles repo # noqa latest[git]
   ansible.builtin.git:
     repo: "{{ dotfiles_repo_mirror }}"
     dest: "{{ dotfiles_repo_root }}"
     update: "{{ update_repo }}"
     accept_hostkey: true
   environment:
-      GIT_TERMINAL_PROMPT: 0
+    GIT_TERMINAL_PROMPT: "0"
   tags: dotfiles, shell_only
 
 - name: Ensure config directory exists
   ansible.builtin.file:
     path: "{{ target_config_directory }}"
     state: directory
-    mode: '0755'
+    mode: "0755"
   tags: dotfiles, shell_only
 
 - name: Create config symlinks
-  include_tasks: create_symlinks.yml
+  ansible.builtin.include_tasks: create_symlinks.yml
   tags: dotfiles, shell_only
 
 - name: Template before oh my zsh script file
   ansible.builtin.template:
     src: before_omz_template.j2
     dest: "{{ before_omz_file_path }}"
+    mode: "0644"
   tags: dotfiles

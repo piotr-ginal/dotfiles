@@ -3,69 +3,69 @@
   ansible.builtin.set_fact:
     binary_target_path: "{{ binary_target_dir }}/{{ binary_path_from_extract | basename }}"
 
-- block:
-
-  - name: Check if binary already exists
-    stat:
-      path: "{{ binary_target_path }}"
-    register: binary_target_state
-
-  - name: Set is executable fact
-    ansible.builtin.set_fact:
-      is_executable: "{{ binary_target_state.stat.exists and binary_target_state.stat.executable }}"
-
-  - name: Check binary version
-    ansible.builtin.command: "{{ binary_target_path }} {{ version_check_flags | join(' ')}}"
-    register: command_output
-    changed_when: false
-    when: is_executable and expected_version is defined
-
-  - name: Set proceed with install fact - version check
-    ansible.builtin.set_fact:
-      proceed_with_install: "{{ not ( is_executable and expected_version in command_output.stdout )}}"
-    when: expected_version is defined
-
-  - name: Set proceed with install fact - no version check
-    ansible.builtin.set_fact:
-      proceed_with_install: "{{ not is_executable}}"
-    when: expected_version is not defined
-
+- name: Run install check
   when: not force
+  block:
+    - name: Check if binary already exists
+      ansible.builtin.stat:
+        path: "{{ binary_target_path }}"
+      register: binary_target_state
 
-- block:
-  - name: Download archive
-    ansible.builtin.get_url:
-      url: "{{ archive_url }}"
-      dest: "{{ archive_dest }}"
-      mode: 0644
+    - name: Set is executable fact
+      ansible.builtin.set_fact:
+        is_executable: "{{ binary_target_state.stat.exists and binary_target_state.stat.executable }}"
 
-  - name: Create extraction directory
-    ansible.builtin.file:
-      path: "{{ extract_dest }}"
-      state: directory
-      mode: '0755'
+    - name: Check binary version
+      ansible.builtin.command: "{{ binary_target_path }} {{ version_check_flags | join(' ') }}"
+      register: command_output
+      changed_when: false
+      when: is_executable and expected_version is defined
 
-  - name: Extract tar.gz archive
-    ansible.builtin.unarchive:
-      src: "{{ archive_dest }}"
-      dest: "{{ extract_dest }}"
-      remote_src: yes
+    - name: Set proceed with install fact - version check
+      ansible.builtin.set_fact:
+        proceed_with_install: "{{ not (is_executable and expected_version in command_output.stdout) }}"
+      when: expected_version is defined
 
-  - name: Move binary to target path
-    ansible.builtin.copy:
-      src: "{{ extract_dest }}/{{ binary_path_from_extract }}"
-      dest: "{{ binary_target_path }}"
-      mode: '0755'
-      remote_src: yes
-    become: "{{ become_to_move }}"
+    - name: Set proceed with install fact - no version check
+      ansible.builtin.set_fact:
+        proceed_with_install: "{{ not is_executable }}"
+      when: expected_version is not defined
 
-  - name: Remove archive
-    ansible.builtin.file:
-      path: "{{ archive_dest }}"
-      state: "absent"
-
-  - name: Remove archive extract dest
-    ansible.builtin.file:
-      path: "{{ extract_dest }}"
-      state: "absent"
+- name: Download and install binary
   when: force or proceed_with_install
+  block:
+    - name: Download archive
+      ansible.builtin.get_url:
+        url: "{{ archive_url }}"
+        dest: "{{ archive_dest }}"
+        mode: "0644"
+
+    - name: Create extraction directory
+      ansible.builtin.file:
+        path: "{{ extract_dest }}"
+        state: directory
+        mode: "0755"
+
+    - name: Extract tar.gz archive
+      ansible.builtin.unarchive:
+        src: "{{ archive_dest }}"
+        dest: "{{ extract_dest }}"
+        remote_src: true
+
+    - name: Move binary to target path
+      ansible.builtin.copy:
+        src: "{{ extract_dest }}/{{ binary_path_from_extract }}"
+        dest: "{{ binary_target_path }}"
+        mode: "0755"
+        remote_src: true
+      become: "{{ become_to_move }}"
+
+    - name: Remove archive
+      ansible.builtin.file:
+        path: "{{ archive_dest }}"
+        state: "absent"
+
+    - name: Remove archive extract dest
+      ansible.builtin.file:
+        path: "{{ extract_dest }}"
+        state: "absent"
