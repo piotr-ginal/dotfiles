@@ -113,3 +113,7 @@ else
     ln -s "$SOURCE" "$TARGET"
     echo "Created symbolic link for wallpapers."
 fi
+
+# ---- yazi packages ----
+
+ya pkg install >/dev/null  # sync packages, yazi/package.toml
