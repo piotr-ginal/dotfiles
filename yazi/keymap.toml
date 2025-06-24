@@ -1,0 +1,10 @@
+[mgr]
+append_keymap = [
+  { on = "<A-,>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
+  { on = "<A-.>", run = "tab_switch 1 --relative", desc = "Switch to next tab" },
+  { on = [ "g", "d" ], run = "cd ~/downloads", desc = "Go ~/downloads" },
+  { on = [ "g", "u" ], run = "cd ~/uni", desc = "Go ~/uni" },
+  { on = "<A-w>", run = "close", desc = "Close the current tab, or quit if it's last" },
+  { on = "<A-u>", run = "arrow -50%", desc = "Move cursor up half page" },
+  { on = "<A-d>", run = "arrow 50%", desc = "Move cursor down half page" },
+]
