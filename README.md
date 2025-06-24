@@ -38,6 +38,7 @@ Clone this repo and run the `setup.sh` script
 ### Python
 - pyenv
 - pipx
+- ptpython
 
 ### Window managers
 - sway
