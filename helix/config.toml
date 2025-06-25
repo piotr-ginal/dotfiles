@@ -5,6 +5,7 @@ mouse = false
 cursorline = true
 bufferline="always"
 line-number = "relative"
+jump-label-alphabet = "sadjklewcmpgh"
 # rulers = [120]
 
 [editor.cursor-shape]
