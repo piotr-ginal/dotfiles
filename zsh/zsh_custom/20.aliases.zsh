@@ -115,6 +115,14 @@ rg_with_delta() {
   rg --json -C 2 "$pattern" "$@" | delta
 }
 
+yazi_wrapper_change_pwd() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 # ---- git aliases ----
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
@@ -171,6 +179,7 @@ alias rgg=rg_with_delta
 alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias fd=fdfind
+alias y=yazi_wrapper_change_pwd
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
