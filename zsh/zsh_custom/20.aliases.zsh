@@ -204,6 +204,7 @@ alias opc="fzf_helix_git_changed_open_file"
 # ---- system aliases ----
 alias copy="sed -z '$ s/\n$//' | wl-copy"
 alias rescan="nmcli device wifi list --rescan yes"
+alias scanfor=wait_for_wifi_network
 alias reboot="sudo reboot"
 alias lock="swaylock -c 000000"
 cpp() { realpath "$@" | copy; }

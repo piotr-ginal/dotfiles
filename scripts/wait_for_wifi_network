@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SSID="$1"
+
+if [ -z "$SSID" ]; then
+  echo "Usage: $0 <SSID>"
+  exit 1
+fi
+
+while true; do
+  OUTPUT=$(nmcli -f SSID device wifi list --rescan yes 2>/dev/null)
+  if [ $? -ne 0 ]; then
+    exit 2
+  fi
+
+  echo "$OUTPUT" | grep -Fq "$SSID"
+
+  if [ $? -eq 0 ]; then
+    echo "network '$SSID' found"
+    exit 0
+  fi
+done
