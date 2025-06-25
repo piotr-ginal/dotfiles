@@ -4,7 +4,8 @@
 prepend_keymap = [  # higher prio than default
   { on = "<A-,>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
   { on = "<A-.>", run = "tab_switch 1 --relative", desc = "Switch to next tab" },
-  { on = [ "g", "d" ], run = "cd ~/downloads", desc = "Go ~/downloads" },
+  { on = [ "g", "d" ], run = "cd ~/.dotfiles", desc = "Go ~/.dotfiles" },
+  { on = [ "g", "D" ], run = "cd ~/downloads", desc = "Go ~/downloads" },
   { on = [ "g", "u" ], run = "cd ~/uni", desc = "Go ~/uni" },
   { on = "<A-w>", run = "close", desc = "Close the current tab, or quit if it's last" },
   { on = "<A-u>", run = "arrow -50%", desc = "Move cursor up half page" },
