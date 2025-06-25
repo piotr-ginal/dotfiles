@@ -1,7 +1,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [mgr]
-append_keymap = [
+prepend_keymap = [  # higher prio than default
   { on = "<A-,>", run = "tab_switch -1 --relative", desc = "Switch to previous tab" },
   { on = "<A-.>", run = "tab_switch 1 --relative", desc = "Switch to next tab" },
   { on = [ "g", "d" ], run = "cd ~/downloads", desc = "Go ~/downloads" },
