@@ -4,6 +4,8 @@ font=JetBrainsMonoNL Nerd Font Mono:style=Bold:size=12
 [colors]
 background=141c21d8
 text=bfbaacff
+input=bfbaacff
+prompt=bfbaacff
 match=bfbaacff
 selection=289c93d0
 selection-text=141c21ff
