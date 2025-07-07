@@ -61,6 +61,8 @@ bindsym $mod+p exec grimshot copy area
 bindsym $mod+o exec grimshot save area ~/.screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png
 # basic color picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+# toggle screen recording
+bindsym $mod+Shift+r exec ~/.dotfiles/scripts/toggle_screenrecording; exec pkill -SIGRTMIN+12 i3blocks
 
 # change split direction
 bindsym $mod+b splith
