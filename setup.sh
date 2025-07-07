@@ -40,7 +40,7 @@ echo "PATH=\"$SCRIPTS_PATH:\$PATH\"" >> "$BEFORE_OHMYZSH_PATH"
 DOTFILES_PATH_EXPORT="export DOTFILES_REPO_ROOT=$(pwd)"
 echo "$DOTFILES_PATH_EXPORT" >> "$BEFORE_OHMYZSH_PATH"
 
-ENABLED_PLUGINS="zsh-ssh git"
+ENABLED_PLUGINS="colored-man-pages zsh-ssh git"
 echo "plugins=($ENABLED_PLUGINS \$plugins)" >> "$BEFORE_OHMYZSH_PATH"
 
 echo 'precmd() { print -n "\033[5 q" }' >> "$BEFORE_OHMYZSH_PATH"
