@@ -1,0 +1,42 @@
+.notification {
+  background-color: #0f1419;
+  border: 1px solid #bfbdb6;
+  border-radius: 0px;
+  margin: 6px 12px;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 6px;
+}
+
+.control-center {
+  background-color: #0f1419;
+  border: 2px solid #bfbdb6;
+  border-radius: 0px;
+}
+
+.summary {
+  background: transparent;
+  color: #bfbdb6;
+}
+
+.body {
+  background: transparent;
+  color: #bfbdb6;
+}
+
+.notification-default-action,
+.notification-action {
+  background-color: #0f1419;
+  border: 1px solid #bfbdb6;
+  border-radius: 0px;
+  color: #bfbdb6;
+  margin: 6px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  background-color: #1a1f2b;
+  color: #bfbdb6;
+}
