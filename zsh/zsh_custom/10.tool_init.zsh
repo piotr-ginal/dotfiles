@@ -10,9 +10,6 @@ export PATH=$(pyenv root)/shims:$PATH
 # ---- fzf (for zsh) ----
 source <(fzf --zsh)
 
-# ---- bat for man pages ----
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-
 # ---- rust -----
 source $HOME/.cargo/env
 
