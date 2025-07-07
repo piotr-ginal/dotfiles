@@ -13,3 +13,15 @@ plugins.pycodestyle.enabled = false
 plugins.pyflakes.enabled = false
 plugins.pylint.enabled = false
 plugins.yapf.enabled = false
+
+[language-server.pyrefly]
+command = "pyrefly"
+args = ["lsp"]
+
+[[language]]
+name = "python"
+language-servers = [
+  { name = "pyrefly", except-features = ["rename-symbol"] },
+  "ruff",
+  "pylsp",
+]
