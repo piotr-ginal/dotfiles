@@ -27,8 +27,6 @@ start_recording() {
     wf-recorder -f "$filepath" &
     local pid=$!
     echo "$pid" > "$PIDFILE"
-
-    exit 0
 }
 
 stop_recording() {
@@ -37,12 +35,12 @@ stop_recording() {
     kill -INT "$pid" 2>/dev/null
 
     rm -f "$PIDFILE"
-
-    exit 0
 }
 
 if is_recording; then
     stop_recording
+    notify-send -t 2000 -u normal "Screen recording finished" "saved to $RECORDING_DIR"
 else
     start_recording
+    notify-send -t 2000 -u normal "Starting screen recording"
 fi
