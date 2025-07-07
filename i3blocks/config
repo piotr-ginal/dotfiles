@@ -1,5 +1,13 @@
 interval=5
 
+[volume]
+separator=false
+command=~/.config/i3blocks/scripts/recording.sh
+separator=true
+signal=12
+interval=10
+markup=pango
+
 [cpu_temperature]
 separator=false
 command=~/.config/i3blocks/scripts/temp.sh
