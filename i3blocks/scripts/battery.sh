@@ -27,7 +27,7 @@ else
         if [ "$battery" -le "$minimal_warning_critical" ]; then
             notify-send -u critical "Battery Critical" "Battery level is critically low"
         else
-            notify-send -u normal "Battery Warning" "Battery level is low"
+            notify-send -u normal -t 2000 "Battery Warning" "Battery level is low"
         fi
 
         touch "$notification_state_file"
