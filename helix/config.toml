@@ -15,6 +15,7 @@ select = "underline"
 
 [keys.normal.space]
 q = ":quit"
+"A-Q" = ":quit!"
 "A-p" = ":sh pwd | tr -d '\n' | wl-copy"
 
 [keys.normal]
@@ -33,6 +34,7 @@ V = ["extend_to_line_end"]
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
+"A-W" = ":buffer-close!"
 
 "A-u" = "page_cursor_half_up"
 "A-d" = "page_cursor_half_down"
