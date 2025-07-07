@@ -16,3 +16,5 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=38'
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=38'
 
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=153,underline'
+
+ZSH_HIGHLIGHT_STYLES[autodirectory]=none
