@@ -1,0 +1,48 @@
+#!/bin/bash
+
+RECORDING_DIR="$HOME/.screenrecordings"
+PIDFILE="/tmp/wf-recorder.pid"
+
+mkdir -p "$RECORDING_DIR"
+
+is_recording() {
+    if [ -f "$PIDFILE" ]; then
+        local pid=$(cat "$PIDFILE")
+        if kill -0 "$pid" 2>/dev/null; then
+            return 0
+        else
+            rm -f "$PIDFILE"
+            return 1
+        fi
+    else
+        return 1
+    fi
+}
+
+start_recording() {
+    local timestamp=$(date +"%Y%m%d-%H%M%S")
+    local filename="recording-${timestamp}.mp4"
+    local filepath="$RECORDING_DIR/$filename"
+
+    wf-recorder -f "$filepath" &
+    local pid=$!
+    echo "$pid" > "$PIDFILE"
+
+    exit 0
+}
+
+stop_recording() {
+    local pid=$(cat "$PIDFILE")
+
+    kill -INT "$pid" 2>/dev/null
+
+    rm -f "$PIDFILE"
+
+    exit 0
+}
+
+if is_recording; then
+    stop_recording
+else
+    start_recording
+fi
