@@ -31,6 +31,9 @@
 [url "git@github.com:"]
         insteadOf = "gh:"
 
+[url "git@github.com:piotr-ginal/"]
+        insteadOf = "pg:"
+
 [color "diff"]
         commit = cyan
 
