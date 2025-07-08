@@ -56,9 +56,13 @@ Clone this repo and run the `setup.sh` script
 - pulseaudio-utils
 - grimshot
 - delta pager
+- tmux
+- yazi
 
 ### Other
 - cargo
+- i3blocks
+- swaync
 
 ### Browsers
 - firefox
