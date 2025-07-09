@@ -26,3 +26,6 @@ export FZF_DEFAULT_OPTS='
 
 # ---- batcat ----
 export BAT_THEME="Nord"
+
+# ---- git delta pager ----
+export DELTA_FEATURES=
