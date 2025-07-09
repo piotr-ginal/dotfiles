@@ -52,6 +52,10 @@ fzf_git_add_changed_file() {
   fi
 }
 
+git_delta_pager_toggle_feature () {
+  eval "export DELTA_FEATURES='$(delta_features_toggle $1)'"
+}
+
 # ---- ps aliases ----
 alias psall="ps aux"
 alias pstree="ps axjf"
@@ -136,6 +140,7 @@ alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
 alias gaf="fzf_git_add_changed_file"
 alias gafp="fzf_git_add_changed_file -p"
+alias dtgl=git_delta_pager_toggle_feature
 
 unalias grs
 
