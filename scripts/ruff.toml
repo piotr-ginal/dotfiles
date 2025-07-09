@@ -1,0 +1,19 @@
+lint.select = ["ALL", "E302"]
+line-length=120
+lint.ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D107",
+    "N818",
+    "D213",  # ignore rules causing conflicts
+    "D211",
+    "S311",
+    "FIX002",
+    "TD003",
+    "CPY001",
+]
+preview = true
