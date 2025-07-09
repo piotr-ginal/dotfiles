@@ -1,0 +1,69 @@
+#!/usr/bin/python3
+"""To toggle delta features such as `side-by-side` on and off, one solution is to use a shell function like.
+
+delta-toggle () {
+        eval "export DELTA_FEATURES='$(delta_features_toggle $1 | tee /dev/stderr)'"
+}
+
+where `delta_features_toggle` is this Python script.
+"""
+
+import os
+import sys
+
+TOGGLABLE_DELTA_FEATURES: set[str] = {"line-numbers", "side-by-side"}
+DELTA_FEATURES_ENV_VAR: str = "DELTA_FEATURES"
+
+
+def _get_currently_enabled_delta_features(delta_features_env_var: str) -> set[str]:
+    current_features_settings = os.getenv(delta_features_env_var) or "+"
+
+    assert current_features_settings  # noqa: S101
+    assert current_features_settings.startswith("+")  # noqa: S101
+
+    return set(filter(bool, current_features_settings[1:].split(" ")))
+
+
+def print_toggled_features(prefix: str) -> None:
+
+    matching_features = [opt for opt in TOGGLABLE_DELTA_FEATURES if opt.startswith(prefix)]
+
+    if len(matching_features) > 1:
+        sys.stderr.write(f"Multiple matching features: {matching_features}")
+        sys.exit(1)
+
+    [matching_feature] = matching_features
+    enabled_features = _get_currently_enabled_delta_features(DELTA_FEATURES_ENV_VAR)
+
+    if matching_feature in enabled_features:
+        enabled_features.remove(matching_feature)
+    else:
+        enabled_features.add(matching_feature)
+
+    sys.stdout.write(f"+{' '.join(sorted(enabled_features))}\n")
+
+
+def _handle_no_args() -> None:
+    sys.stdout.write(f"{os.getenv(DELTA_FEATURES_ENV_VAR)}\n")
+
+    enabled_features = _get_currently_enabled_delta_features(DELTA_FEATURES_ENV_VAR)
+
+    for feature in enabled_features:
+        sys.stderr.write(f"+ {feature}\n")
+
+    for feature in TOGGLABLE_DELTA_FEATURES.difference(enabled_features):
+        sys.stderr.write(f"- {feature}\n")
+
+
+def main() -> None:
+    try:
+        [prefix] = sys.argv[1:]
+    except ValueError:
+        _handle_no_args()
+        sys.exit(0)
+    else:
+        print_toggled_features(prefix)
+
+
+if __name__ == "__main__":
+    main()
