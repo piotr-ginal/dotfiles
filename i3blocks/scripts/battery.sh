@@ -3,7 +3,8 @@
 minimal_warning=15
 minimal_warning_critical=10
 
-notification_state_file="/tmp/battery_notification_state"
+notification_state_normal="/tmp/battery_notification_state_normal"
+notification_state_critical="/tmp/battery_notification_state_critical"
 
 battery=$(cat /sys/class/power_supply/BAT*/capacity)
 
@@ -21,16 +22,14 @@ fi
 
 if [[ "$battery_status" == "Charging" ]]; then
     background_color="#008000"
-    rm -f "$notification_state_file"
+    rm -f "$notification_state_normal" "$notification_state_critical"
 else
-    if [ "$battery" -le "$minimal_warning" ] && [ ! -f "$notification_state_file" ]; then
-        if [ "$battery" -le "$minimal_warning_critical" ]; then
-            notify-send -u critical "Battery Critical" "Battery level is critically low"
-        else
-            notify-send -u normal -t 2000 "Battery Warning" "Battery level is low"
-        fi
-
-        touch "$notification_state_file"
+    if [ "$battery" -le "$minimal_warning_critical" ] && [ ! -f "$notification_state_critical" ]; then
+        notify-send -u critical "Battery Critical" "Battery level is critically low"
+        touch "$notification_state_critical"
+    elif [ "$battery" -le "$minimal_warning" ] && [ ! -f "$notification_state_normal" ]; then
+        notify-send -u normal -t 5000 "Battery Warning" "Battery level is low"
+        touch "$notification_state_normal"
     fi
 fi
 
