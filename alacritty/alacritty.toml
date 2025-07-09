@@ -28,7 +28,7 @@ cursor = "#e5ded6"
 text = "#161c23"
 
 [colors.normal]
-black = "#13181e"
+black = "#555555"
 blue = "#36b2d4"
 cyan = "#59dcd8"
 green = "#59dcb7"
