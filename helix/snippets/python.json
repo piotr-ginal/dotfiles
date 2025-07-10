@@ -1,0 +1,11 @@
+{
+  "Define main and entry": {
+    "prefix": "defmain",
+    "body": [
+      "def main() -> None:",
+      "    ${1:pass}\n\n",
+      "if __name__ == \"__main__\":",
+      "    main()"
+    ]
+  }
+}
