@@ -44,3 +44,23 @@ feature_citations = false
 [language-server.scls.environment]
 RUST_LOG = "info,simple-completion-language-server=info"
 LOG_FILE = "/tmp/completion.log"
+
+[[language]]
+name = "yaml"
+scope = "source.yaml"
+file-types = [
+  "yml",
+  "yaml",
+  { glob = ".prettierrc" },
+  { glob = ".clangd" },
+  { glob = ".clang-format" },
+  { glob = ".clang-tidy" },
+  "sublime-syntax"
+]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+language-servers = [
+  { name = "yaml-language-server", except-features = ["hover"]},
+  { name = "ansible-language-server"}
+]
+injection-regex = "yml|yaml"
