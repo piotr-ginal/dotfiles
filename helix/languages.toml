@@ -21,7 +21,26 @@ args = ["lsp"]
 [[language]]
 name = "python"
 language-servers = [
+  { name = "scls" },
   { name = "pylsp", except-features = ["format"] },
   { name = "pyrefly", only-features = ["diagnostics"] },
   { name = "ruff" },
 ]
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+max_completion_items = 100
+feature_words = true
+feature_snippets = true
+snippets_first = true
+snippets_inline_by_word_tail = false
+feature_unicode_input = false
+feature_paths = false
+feature_citations = false
+
+
+[language-server.scls.environment]
+RUST_LOG = "info,simple-completion-language-server=info"
+LOG_FILE = "/tmp/completion.log"
