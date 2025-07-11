@@ -56,3 +56,6 @@ opacity = 0.95
 
 [env]
 WINIT_X11_SCALE_FACTOR="1.0"
+
+[selection]
+semantic_escape_chars=",│`|:\"' ()[]{}<>\t/"
