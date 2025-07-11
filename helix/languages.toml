@@ -60,6 +60,7 @@ file-types = [
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
 language-servers = [
+  { name = "scls" },
   { name = "yaml-language-server", except-features = ["hover"]},
   { name = "ansible-language-server"}
 ]
