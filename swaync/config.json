@@ -1,0 +1,10 @@
+{
+  "positionX": "center",
+  "positionY": "center",
+  "urgencyConfig": {
+    "critical": {
+      "positionX": "center",
+      "positionY": "center"
+    }
+  }
+}
