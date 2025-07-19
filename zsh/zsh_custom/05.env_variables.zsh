@@ -2,7 +2,7 @@
 export PIP_DISABLE_PIP_VERSION_CHECK=1  # disables the annoying info about pip being upgradable
 
 # ---- pipx variables ----
-export PIPX_DEFAULT_PYTHON="/home/$(whoami)/.pyenv/versions/3.11.9/bin/python"
+export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.11.9/bin/python"
 
 # ---- ssh ----
 export SSH_ASKPASS_REQUIRE=force
@@ -24,4 +24,4 @@ export FZF_DEFAULT_OPTS='
 export BAT_THEME="Nord"
 
 # ---- git delta pager ----
-export DELTA_FEATURES=
+export DELTA_FEATURES=  # to be toggled by delta_features_toggle
