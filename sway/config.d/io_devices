@@ -16,7 +16,7 @@ workspace 7 output HDMI-A-1
 workspace 8 output eDP-1
 workspace 9 output eDP-1
 
-input "1267:12932:ASUE1306:00_04F3:3284_Touchpad" {
+input * {
     dwt enabled
     tap enabled
     middle_emulation enabled
