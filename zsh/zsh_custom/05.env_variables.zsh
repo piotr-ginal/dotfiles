@@ -6,7 +6,7 @@ export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.11.9/bin/python"
 
 # ---- ssh ----
 export SSH_ASKPASS_REQUIRE=force
-export SSH_ASKPASS=/usr/bin/systemd-ask-password
+[ -f "/usr/bin/systemd-ask-password" ] && export SSH_ASKPASS=/usr/bin/systemd-ask-password
 
 # ---- ansible ----
 export ANSIBLE_CALLBACK_RESULT_FORMAT=yaml

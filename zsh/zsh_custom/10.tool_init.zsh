@@ -3,15 +3,18 @@
 # ---- pyenv ----
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PATH=$(pyenv root)/shims:$PATH
+
+if command -v pyenv &>/dev/null; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+  export PATH=$(pyenv root)/shims:$PATH
+fi
 
 # ---- fzf (for zsh) ----
-source <(fzf --zsh)
+command -v fzf &>/dev/null && source <(fzf --zsh)
 
 # ---- rust -----
-source $HOME/.cargo/env
+[ -f "$HOME/.cargo/env" ] && source $HOME/.cargo/env
 
 # ---- editor ----
 export EDITOR=hx
