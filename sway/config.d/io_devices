@@ -16,11 +16,17 @@ workspace 7 output HDMI-A-1
 workspace 8 output eDP-1
 workspace 9 output eDP-1
 
+# touchpad
 input * {
     dwt enabled
     tap enabled
     middle_emulation enabled
     natural_scroll enabled
+}
+
+# keyboard
+input * {
+    xkb_layout pl
 }
 
 focus_follows_mouse no
