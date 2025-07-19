@@ -37,7 +37,7 @@ git_add_and_commit_command() {
 
 fzf_git_changed_file() {
   local changed_files
-  changed_files=$(git status --short --no-renames | rg -v "^ *D")
+  changed_files=$(git status --short --no-renames | rg -v "^ *D" | rg -v "^. ")  # show only files with unstaged changes
   if [ -z "$changed_files" ]; then
     return 1
   fi
