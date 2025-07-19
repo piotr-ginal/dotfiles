@@ -15,3 +15,6 @@ source $HOME/.cargo/env
 
 # ---- editor ----
 export EDITOR=hx
+
+# ---- helix ----
+export HELIX_RUNTIME="$HOME/.config/helix_runtime"

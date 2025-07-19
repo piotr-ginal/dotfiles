@@ -9,22 +9,6 @@ fi
 # ---- update submodules ----
 git submodule update --init --recursive
 
-# ---- helix config and languages config ----
-HELIX_CONFIG_DIR="$HOME/.config/helix"
-for file in config.toml languages.toml; do
-    TARGET="$HELIX_CONFIG_DIR/$file"
-    SOURCE="$(pwd)/helix/$file"
-    if [[ -L "$TARGET" && "$(readlink "$TARGET")" != "$SOURCE" ]]; then
-        rm "$TARGET"
-    fi
-    if [[ ! -e "$TARGET" ]]; then
-        ln -s "$SOURCE" "$TARGET"
-        echo "Created symbolic link for $file."
-    else
-        echo "Symbolic link for $file already exists."
-    fi
-done
-
 # ---- before oh my zsh script building ----
 
 BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
@@ -81,7 +65,7 @@ else
 fi
 
 # ---- Create symlinks for config directories ----
-CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer")
+CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer" "helix")
 for config_dir in "${CONFIG_DIRS[@]}"; do
     TARGET="$HOME/.config/$config_dir"
     SOURCE="$(pwd)/$config_dir"
