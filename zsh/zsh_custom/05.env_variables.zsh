@@ -4,10 +4,6 @@ export PIP_DISABLE_PIP_VERSION_CHECK=1  # disables the annoying info about pip b
 # ---- pipx variables ----
 export PIPX_DEFAULT_PYTHON="/home/$(whoami)/.pyenv/versions/3.11.9/bin/python"
 
-# ---- nvim ----
-export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$PATH:/home/$(whoami)/.local/nvim/usr/bin"
-
 # ---- ssh ----
 export SSH_ASKPASS_REQUIRE=force
 export SSH_ASKPASS=/usr/bin/systemd-ask-password
