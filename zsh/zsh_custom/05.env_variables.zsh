@@ -2,7 +2,7 @@
 export PIP_DISABLE_PIP_VERSION_CHECK=1  # disables the annoying info about pip being upgradable
 
 # ---- pipx variables ----
-export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.11.9/bin/python"
+[ -f "$HOME/.pyenv/versions/3.12.9/bin/python" ] && export PIPX_DEFAULT_PYTHON="$HOME/.pyenv/versions/3.12.9/bin/python"
 
 # ---- ssh ----
 export SSH_ASKPASS_REQUIRE=force
