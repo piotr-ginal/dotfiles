@@ -82,3 +82,19 @@ wget -P "${FONT_DIR}" "${JB_NL_ITALIC}"
 
 fc-cache -fv
 ```
+
+### Prevent Accidental Pushes of Sensitive Data
+
+To avoid pushing sensitive data, always create a separate branch for such changes.
+The hook below blocks pushes from a specific branch (`<branch-name>`):
+
+*Place it in .git/hooks/pre-push*
+
+```sh
+#!/bin/sh
+branch="$(git symbolic-ref --short HEAD)"
+if [ "$branch" = "<branch-name>" ]; then
+  echo "Pushing branch '$branch' is blocked!"
+  exit 1
+fi
+```
