@@ -1,6 +1,13 @@
 # ---- git command functions ----
 short_log_command_git() {
-  git --no-pager log --oneline -n ${1:-10}
+  local n
+  if [[ "$1" =~ ^[0-9]+$ ]]; then
+    n=$1
+    shift
+  else
+    n=10
+  fi
+  git --no-pager log --oneline -n "$n" "$@"
 }
 
 short_log_command_git_names() {
