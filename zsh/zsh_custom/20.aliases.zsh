@@ -63,6 +63,26 @@ git_delta_pager_toggle_feature () {
   eval "export DELTA_FEATURES='$(delta_features_toggle $1)'"
 }
 
+git_log_interactive() {
+  local selected=$(git log -n ${1:-100} --pretty=format:'%h %s' | \
+    fzf --ansi \
+        --preview 'git show {1} | delta --paging=never' \
+        --preview-window=right:60% \
+        --delimiter=' ' \
+        --with-nth=1,2.. \
+        --layout=reverse \
+        --bind "ctrl-d:preview-down,ctrl-u:preview-up")
+
+  if [[ -z $selected ]]; then
+    return 1
+  fi
+
+  local short_hash="${selected%% *}"
+  local full_hash=$(git rev-parse "$short_hash")
+
+  echo "$full_hash"
+}
+
 # ---- ps aliases ----
 alias psall="ps aux"
 alias pstree="ps axjf"
@@ -145,6 +165,7 @@ alias reporoot="git rev-parse --show-toplevel"
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
+alias glogi=git_log_interactive
 alias gaf="fzf_git_add_changed_file"
 alias gafp="fzf_git_add_changed_file -p"
 alias dtgl=git_delta_pager_toggle_feature
