@@ -31,4 +31,5 @@ input * {
 
 focus_follows_mouse no
 
-seat seat0 hide_cursor 3000  # hide the mouse pointer after 3 seconds
+# hide the mouse pointer after 3 seconds
+seat seat0 hide_cursor 3000
