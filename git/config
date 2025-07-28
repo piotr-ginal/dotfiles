@@ -1,41 +1,41 @@
 [core]
-        editor = hx
-        pager = delta
-        compression = 9
-        whitespace = error
+	editor = hx
+	pager = delta
+	compression = 9
+	whitespace = error
 
 [interactive]
-        diffFilter = delta --color-only
+	diffFilter = delta --color-only
 
 [delta]
-        navigate = true
+	navigate = true
 
 [merge]
-        conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-        colorMoved = default
-        context = 3
+	colorMoved = default
+	context = 3
 
 [init]
-        defaultBranch = main
+	defaultBranch = main
 
 [advice]
-        addEmptyPathspec = false
-        pushNonFastForward = false
-        statusHints = false
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
 
 [status]
-        showStash = true
+	showStash = true
 
 [url "git@github.com:"]
-        insteadOf = "gh:"
+	insteadOf = "gh:"
 
 [url "git@github.com:piotr-ginal/"]
-        insteadOf = "pg:"
+	insteadOf = "pg:"
 
 [color "diff"]
-        commit = cyan
+	commit = cyan
 
 [rebase]
 	autoStash = true
