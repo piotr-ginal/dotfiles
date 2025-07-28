@@ -23,6 +23,7 @@ rg -i --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
                    echo 'No match found in preview'; \
                fi" \
     --layout=reverse \
+    --bind "ctrl-d:preview-down,ctrl-u:preview-up" \
     --preview-window=up:${percentage}% \
     --bind "enter:execute(file=\$(echo {} | cut -d: -f1); \
             line=\$(echo {} | cut -d: -f2); \
