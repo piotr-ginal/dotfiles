@@ -1,5 +1,11 @@
 interval=5
 
+[smiley]
+separator=false
+command=~/.config/i3blocks/scripts/smiley.sh
+markup=pango
+interval=-2
+
 [volume]
 separator=false
 command=~/.config/i3blocks/scripts/recording.sh
