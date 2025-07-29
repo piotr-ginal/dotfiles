@@ -29,14 +29,6 @@ signal=10
 interval=once
 markup=pango
 
-[mic]
-separator=false
-command=~/.config/i3blocks/scripts/mic.sh
-separator=true
-signal=11
-interval=once
-markup=pango
-
 [battery]
 separator=false
 command=~/.config/i3blocks/scripts/battery.sh
@@ -53,6 +45,13 @@ interval=1
 separator=false
 command=~/.config/i3blocks/scripts/time.sh
 markup=pango
+
+[mic_and_touchpad]
+separator=false
+command=~/.config/i3blocks/scripts/mic_and_touchpad.sh
+markup=pango
+interval=once
+signal=11
 
 [custom]
 separator=false
