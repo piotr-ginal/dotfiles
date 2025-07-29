@@ -6,5 +6,5 @@ if [[ -n "$network" ]]
 then
     echo "<span background='#232D38'> wifi </span><span background='#0F1419'> ${network} </span>"
 else
-    echo "<span background='#232D38'> wifi </span><span background='#0F1419'> disconnected </span>"
+    echo "<span background='#232D38'> wifi </span><span background='#0F1419'> - </span>"
 fi
