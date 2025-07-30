@@ -1,0 +1,27 @@
+theme = "Hydrogen"
+
+long_kernel = false
+long_uptime = true
+
+show = [
+  "DiskSpace",
+  "Distribution",
+  "GPU",
+  "Host",
+  "Kernel",
+  "LocalIP",
+  "Memory",
+  "OperatingSystem",
+  "Packages",
+  "Processor",
+  "Shell",
+  "Terminal",
+  "WindowManager",
+  # "Backlight",
+  # "Battery",
+  # "DesktopEnvironment",
+  # "Machine",
+  # "ProcessorLoad",
+  # "Resolution",
+  # "Uptime",
+]
