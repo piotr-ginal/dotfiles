@@ -1,19 +1,21 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-    echo "Usage: opr <regex>"
+    echo "Usage: $(basename $0) <regex> [percentage]"
     exit 1
 fi
 
+regex="$1"
+shift
+
 percentage="40"
 
-if [ -n "$2" ]; then
-    percentage="$2"
+if [[ -n "$1" && "$1" =~ ^[0-9]{1,2}$ ]]; then  # treat second arg as percentage only if its a number 0-99
+    percentage="$1"
+    shift
 fi
 
-regex="$1"
-
-rg -i --no-heading --line-number "$regex" . | cut -d':' -f1-2 | sort | fzf \
+rg --no-heading --line-number "$regex" . $@ | cut -d':' -f1-2 | sort | fzf \
     --preview "file=\$(echo {} | cut -d: -f1); \
                line=\$(echo {} | cut -d: -f2); \
                if [ -n \"\$line\" ]; then \
