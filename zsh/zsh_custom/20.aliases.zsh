@@ -66,11 +66,15 @@ git_delta_pager_toggle_feature () {
 git_log_interactive() {
   local selected=$(git log -n ${1:-100} --pretty=format:'%h %s' | \
     fzf --ansi \
-        --preview 'git show {1} | delta --paging=never' \
+        --preview 'git show {1} --pretty=format: | delta --paging=never' \
         --preview-window=right:60% \
         --delimiter=' ' \
         --with-nth=1,2.. \
         --layout=reverse \
+        --header-label ' commit ' \
+        --bind 'focus:+bg-transform-header:if [[ -n {} ]]; then
+                  git show {1} -q | head -n5 | delta --paging=never
+                fi' \
         --bind "ctrl-d:preview-down,ctrl-u:preview-up")
 
   if [[ -z $selected ]]; then
