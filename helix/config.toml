@@ -70,7 +70,7 @@ C-space = "signature_help"
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
 center = ["file-name"]
-right = ["file-encoding", "file-line-ending", "file-type"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 separator = "|"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
