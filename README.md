@@ -44,6 +44,7 @@ Clone this repo and run the `setup.sh` script
 - sway
 
 ### Tools
+- tealdeer
 - eza
 - git
 - github cli
@@ -58,11 +59,19 @@ Clone this repo and run the `setup.sh` script
 - delta pager
 - tmux
 - yazi
+- slurp
+- imagemagick
+- batcat
+- docker
 
 ### Other
 - cargo
+- fuzzel
 - i3blocks
+- macchina
 - swaync
+- network manager
+- keepassxc
 
 ### Browsers
 - firefox
