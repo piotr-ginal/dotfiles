@@ -25,3 +25,8 @@ export BAT_THEME="Nord"
 
 # ---- git delta pager ----
 export DELTA_FEATURES=  # to be toggled by delta_features_toggle
+
+# ---- eza ----
+# eza prioritises LS(_)COLORS env variables over the theme file
+unset LS_COLORS
+unset LSCOLORS
