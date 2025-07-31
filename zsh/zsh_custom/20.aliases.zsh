@@ -250,6 +250,8 @@ cpp() { realpath "$@" | copy; }
 alias dot="cd $DOTFILES_REPO_ROOT"
 alias rec="cd ~/.screenrecordings"
 alias scr="cd ~/.screenshots"
+
+# ---- ls aliases ----
 alias ls='eza'
 alias l='eza --icons -lah'
 alias la='eza --icons -lAh'
