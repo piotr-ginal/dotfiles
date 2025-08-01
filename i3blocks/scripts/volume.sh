@@ -9,4 +9,4 @@ else
     volume=$(amixer get Master | grep -o '[0-9]*%' | head -n 1)
 fi
 
-echo "<span background='#232D38'> volume </span><span background='#0F1419'> ${volume} </span>"
+echo "<span background='#232D38'> vol </span><span background='#0F1419'> ${volume} </span>"
