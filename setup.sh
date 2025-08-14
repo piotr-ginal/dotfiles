@@ -64,6 +64,9 @@ else
     echo "Warning: $RCFILE does not exist. Skipping configuration."
 fi
 
+# ---- Ensure .config directory exists ----
+[ -d "$HOME/.config" ] || mkdir "$HOME/.config"
+
 # ---- Create symlinks for config directories ----
 CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer" "helix" "macchina")
 for config_dir in "${CONFIG_DIRS[@]}"; do
