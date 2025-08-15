@@ -38,8 +38,8 @@ V = ["extend_to_line_end"]
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
-"A-u" = "page_cursor_half_up"
-"A-d" = "page_cursor_half_down"
+"A-u" = ["page_cursor_half_up", "align_view_center"]
+"A-d" = ["page_cursor_half_down", "align_view_center"]
 
 [keys.normal.g]
 "k" = "goto_next_change"
@@ -50,8 +50,8 @@ C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_befor
 "A-x" = "extend_to_line_bounds"
 "X" = "select_line_above"
 
-"A-u" = "page_cursor_half_up"
-"A-d" = "page_cursor_half_down"
+"A-u" = ["page_cursor_half_up", "align_view_center"]
+"A-d" = ["page_cursor_half_down", "align_view_center"]
 
 V = ["extend_to_line_end"]
 
@@ -64,8 +64,8 @@ V = ["extend_to_line_end"]
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
 
-"A-u" = "page_cursor_half_up"
-"A-d" = "page_cursor_half_down"
+"A-u" = ["page_cursor_half_up", "align_view_center"]
+"A-d" = ["page_cursor_half_down", "align_view_center"]
 
 C-space = "signature_help"
 
