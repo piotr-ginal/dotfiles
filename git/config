@@ -3,6 +3,8 @@
 	pager = delta
 	compression = 9
 	whitespace = error
+	autocrlf = input
+	safecrlf = true
 
 [interactive]
 	diffFilter = delta --color-only
