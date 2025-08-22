@@ -5,3 +5,4 @@ binary_target_dir: "/usr/local/bin"
 become_to_move: true
 force: false
 version_check_flags: ["--version"]
+extra_paths: []
