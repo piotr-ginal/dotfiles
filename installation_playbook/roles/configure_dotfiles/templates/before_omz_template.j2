@@ -2,5 +2,5 @@
 ZSH_CUSTOM={{ dotfiles_repo_root }}/zsh/zsh_custom
 PATH="{{ dotfiles_repo_root }}/scripts:$PATH"
 export DOTFILES_REPO_ROOT={{ dotfiles_repo_root }}
-plugins=(zsh-ssh git $plugins)
+plugins=(colored-man-pages zsh-ssh git docker $plugins)
 precmd() { print -n "\033[5 q" }
