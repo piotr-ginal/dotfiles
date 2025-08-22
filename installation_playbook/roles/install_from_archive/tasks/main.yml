@@ -39,8 +39,14 @@
         url: "{{ archive_url }}"
         dest: "{{ archive_dest }}"
         mode: "0644"
+        force: true
 
-    - name: Create extraction directory
+    - name: Remove extraction directory if it exists
+      ansible.builtin.file:
+        path: "{{ extract_dest }}"
+        state: absent
+
+    - name: Create extraction directory (empty)
       ansible.builtin.file:
         path: "{{ extract_dest }}"
         state: directory
