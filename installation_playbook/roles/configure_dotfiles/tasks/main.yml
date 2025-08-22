@@ -31,4 +31,12 @@
     src: before_omz_template.j2
     dest: "{{ before_omz_file_path }}"
     mode: "0644"
-  tags: dotfiles
+  tags: dotfiles, shell_only
+
+- name: Source before_ohmyzsh.zsh before Oh My Zsh in .zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ home_dir }}/.zshrc"
+    line: 'source {{ before_omz_file_path }}'
+    insertbefore: '^source \$ZSH/oh-my-zsh\.sh'
+    state: present
+  tags: dotfiles, shell_only
