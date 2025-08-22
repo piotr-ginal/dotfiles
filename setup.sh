@@ -6,9 +6,6 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
-# ---- update submodules ----
-git submodule update --init --recursive
-
 # ---- before oh my zsh script building ----
 
 BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
