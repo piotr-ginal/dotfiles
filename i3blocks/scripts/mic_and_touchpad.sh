@@ -23,7 +23,7 @@ fi
 touchpad_status=$(swaymsg -t get_inputs | jq -r '.[] | select(.type=="touchpad") | .libinput.send_events')
 
 # touchpad turned off is OK
-if [ "$touchpad_status" = "enabled" ]; then
+if [[ "$touchpad_status" == *enabled* ]]; then
     fg_color_touchpad=$NOK_COLOR
 else
     fg_color_touchpad=$OK_COLOR
