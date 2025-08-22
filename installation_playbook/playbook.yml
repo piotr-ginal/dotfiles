@@ -87,8 +87,6 @@
     - name: Install oh my zsh
       ansible.builtin.include_role:
         name: install_oh_my_zsh
-      vars:
-        force_zshrc: true
       tags: oh_my_zsh, shell_only
 
     - name: Place configs
