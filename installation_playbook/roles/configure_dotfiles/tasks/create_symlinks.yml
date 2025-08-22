@@ -15,22 +15,3 @@
     state: link
     force: true
   tags: dotfiles
-
-- name: Link helix configs
-  tags: dotfiles, shell_only
-  block:
-    - name: Ensure helix config directory exists
-      ansible.builtin.file:
-        path: "{{ target_config_directory }}/helix"
-        state: directory
-        mode: "0755"
-
-    - name: Link helix config toml
-      ansible.builtin.file:
-        src: "{{ dotfiles_repo_root }}/{{ item }}"
-        dest: "{{ target_config_directory }}/{{ item }}"
-        state: link
-        force: true
-      loop:
-        - "helix/config.toml"
-        - "helix/languages.toml"
