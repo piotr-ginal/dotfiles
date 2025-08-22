@@ -40,3 +40,11 @@
     insertbefore: '^source \$ZSH/oh-my-zsh\.sh'
     state: present
   tags: dotfiles, shell_only
+
+# zsh syntax highlighting docs RECCOMEND sourcing last
+- name: Source zsh syntax highlighting script
+  ansible.builtin.lineinfile:
+    path: "{{ home_dir }}/.zshrc"
+    line: "source {{ syntax_script_path }}"
+    state: present
+  tags: dotfiles, shell_only
