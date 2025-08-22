@@ -129,3 +129,18 @@
         binary_path_from_extract: "eza"
         expected_version: "0.23.0"
       tags: archive_bin
+
+    - name: Install yazi from archive
+      ansible.builtin.include_role:
+        name: install_from_archive
+        apply:
+          tags:
+            - archive_bin
+      vars:
+        archive_url: "https://github.com/sxyazi/yazi/releases/download/v25.5.31/yazi-x86_64-unknown-linux-gnu.zip"
+        binary_path_from_extract: "yazi-x86_64-unknown-linux-gnu/yazi"
+        expected_version: "25.5.31"
+        extra_paths:
+          - src: "yazi-x86_64-unknown-linux-gnu/ya"
+            dest: "/usr/local/bin/ya"
+            become: true
