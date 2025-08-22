@@ -68,6 +68,7 @@
           - bat
           - fd-find
           - zsh-syntax-highlighting
+          - unzip
       become: true
       tags: packages_install, shell_only
 
