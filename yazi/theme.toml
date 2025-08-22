@@ -1,2 +1,110 @@
-[flavor]
-dark = "nord"
+# from AdithyanA2005/nord
+[mgr]
+cwd = { fg = "#88C0D0" } # nord8
+
+hovered = { reversed = true }
+preview_hovered = { underline = true }
+
+find_keyword = { fg = "#EBCB8B", bold = true, italic = true, underline = true } # nord13 (Yellow)
+find_position = { fg = "#B48EAD", bg = "reset", bold = true, italic = true }    # nord15 (Purple)
+
+marker_copied = { fg = "#A3BE8C", bg = "#A3BE8C" }   # nord14 (Green)
+marker_cut = { fg = "#BF616A", bg = "#BF616A" }      # nord11 (Red)
+marker_marked = { fg = "#8FBCBB", bg = "#8FBCBB" }   # nord7 (Frost Mint)
+marker_selected = { fg = "#EBCB8B", bg = "#EBCB8B" } # nord13 (Yellow)
+
+tab_active = { reversed = true }
+tab_inactive = { fg = "#4C566A" } # nord3
+tab_width = 1
+
+count_copied = { fg = "#2E3440", bg = "#A3BE8C" }   # nord0 on nord14
+count_cut = { fg = "#2E3440", bg = "#BF616A" }      # nord0 on nord11
+count_selected = { fg = "#2E3440", bg = "#EBCB8B" } # nord0 on nord13
+
+border_symbol = "│"
+border_style = { fg = "#4C566A" } # nord3
+
+
+[tabs]
+active = { fg = "#2E3440", bg = "#8FBCBB", bold = true } # nord0 on nord7 (Teal/Mint)
+inactive = { fg = "#8FBCBB", bg = "#3B4252" }            # nord7 on nord1
+
+
+[mode]
+normal_main = { fg = "#2E3440", bg = "#8FBCBB", bold = true } # nord0 on nord7 (Teal/Mint)
+normal_alt = { fg = "#8FBCBB", bg = "#3B4252" }               # nord7 on nord1
+
+select_main = { fg = "#2E3440", bg = "#8FBCBB", bold = true } # nord0 on nord7 (Teal/Mint)
+select_alt = { fg = "#8FBCBB", bg = "#3B4252" }               # nord7 on nord1
+
+unset_main = { fg = "#2E3440", bg = "#BF616A", bold = true } # nord0 on nord11 (Red)
+unset_alt = { fg = "#BF616A", bg = "#3B4252" }               # nord11 on nord1
+
+
+[status]
+perm_sep = { fg = "#4C566A" }   # nord3
+perm_type = { fg = "#81A1C1" }  # nord9 (Blue) - Directory/type indicator
+perm_read = { fg = "#EBCB8B" }  # nord13 (Yellow) - Read permission
+perm_write = { fg = "#BF616A" } # nord11 (Red) - Write permission (often more restricted)
+perm_exec = { fg = "#A3BE8C" }  # nord14 (Green) - Execute permission
+
+progress_label = { fg = "#ECEFF4", bold = true }     # nord6
+progress_normal = { fg = "#88C0D0", bg = "#434C5E" } # nord8 on nord2
+progress_error = { fg = "#BF616A", bg = "#434C5E" }  # nord11 on nord2
+
+
+[pick]
+border = { fg = "#81A1C1" }              # nord9
+active = { fg = "#B48EAD", bold = true } # nord15 (Purple)
+inactive = { fg = "#D8DEE9" }            # nord4 - Default text color
+
+
+[input]
+border = { fg = "#81A1C1" }    # nord9
+title = { fg = "#D8DEE9" }     # nord4
+value = { fg = "#ECEFF4" }     # nord6 - Slightly brighter for input value
+selected = { reversed = true }
+
+
+[cmp]
+border = { fg = "#81A1C1" } # nord9
+
+
+[tasks]
+border = { fg = "#81A1C1" }                    # nord9
+title = { fg = "#ECEFF4" }                     # nord6
+hovered = { fg = "#B48EAD", underline = true } # nord15 (Purple)
+
+
+[which]
+mask = { bg = "#3B4252" }            # nord1 - Slightly lighter background for overlay
+cand = { fg = "#8FBCBB" }            # nord7 (Frost Mint) - Candidate keys
+rest = { fg = "#4C566A" }            # nord3 - Remaining keys in sequence (muted)
+desc = { fg = "#B48EAD" }            # nord15 (Purple) - Command description
+separator = "  "                    # Or " > " or " :: "
+separator_style = { fg = "#434C5E" } # nord2 - Darker separator
+
+
+[help]
+on = { fg = "#8FBCBB" }                     # nord7 (Frost Mint) - Keybinding section label
+run = { fg = "#B48EAD" }                    # nord15 (Purple) - Command section label
+hovered = { reversed = true, bold = true }  # Hovered key/command
+footer = { fg = "#2E3440", bg = "#ECEFF4" } # nord0 on nord6 - High contrast footer
+
+
+[notify]
+title_info = { fg = "#A3BE8C" }  # nord14 (Green)
+title_warn = { fg = "#EBCB8B" }  # nord13 (Yellow)
+title_error = { fg = "#BF616A" } # nord11 (Red)
+
+
+[filetype]
+
+rules = [
+  { mime = "image/*", fg = "#8FBCBB" }, # nord7
+  { mime = "{audio,video}/*", fg = "#EBCB8B" }, # nord13
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#B48EAD" }, # nord15
+  { mime = "application/{pdf,doc,rtf,odt,docx,xlsx,pptx}", fg = "#A3BE8C" }, # nord14
+  { name = "*", fg = "#D8DEE9" }, # nord4
+  { name = "*/", fg = "#81A1C1", bold = true }, # nord9
+]

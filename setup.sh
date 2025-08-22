@@ -101,11 +101,6 @@ else
     echo "Created symbolic link for wallpapers."
 fi
 
-# ---- yazi packages ----
-
-ya pkg install >/dev/null  # sync packages, yazi/package.toml
-
-
 # ---- shell completions ----
 SCRIPT_PATH="$PWD/zsh/zsh_custom/completions/_gh"
 command -v gh >/dev/null 2>&1 && gh completion -s zsh > "$SCRIPT_PATH"
