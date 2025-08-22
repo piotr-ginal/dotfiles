@@ -7,3 +7,4 @@ target_config_directory: "{{ home_dir }}/.config"
 wallpaper_dir_link_dest: "{{ home_dir }}/.wallpapers"
 before_omz_file_path: "{{ dotfiles_repo_root }}/zsh/before_ohmyzsh.zsh"
 update_repo: false
+syntax_script_path: "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
