@@ -47,3 +47,25 @@ argument_specs:
         elements: str
         required: false
         description: "Command-line flags to pass to the binary when checking its version. Defaults to ['--version']"
+
+      extra_paths:
+        type: list
+        elements: dict
+        required: false
+        description: >
+          List of mappings from relative paths in the archive to paths on disk.
+          Each mapping should have:
+            - src: Relative path from the archive
+            - dest: Path on disk
+        options:
+          src:
+            type: str
+            required: true
+            description: "Relative path within the archive"
+          dest:
+            type: str
+            required: true
+            description: "Destination path on disk"
+          become:
+            type: bool
+            required: true

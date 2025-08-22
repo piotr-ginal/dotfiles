@@ -60,6 +60,16 @@
         remote_src: true
       become: "{{ become_to_move }}"
 
+    - name: Copy extra paths from archive to destination
+      ansible.builtin.copy:
+        src: "{{ extract_dest }}/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        remote_src: true
+        mode: preserve
+      loop: "{{ extra_paths }}"
+      when: extra_paths | length > 0
+      become: "{{ item.become | default(false) }}"
+
     - name: Remove archive
       ansible.builtin.file:
         path: "{{ archive_dest }}"
