@@ -2,7 +2,7 @@
 home_dir: "{{ ansible_env.HOME }}"
 dotfiles_repo_root: "{{ home_dir }}/.dotfiles"
 dotfiles_repo_mirror: "https://github.com/piotr-ginal/dotfiles.git"
-config_directories: ["fuzzel", "i3blocks", "kitty", "sway", "alacritty", "eza", "git"]
+config_directories: ["fuzzel", "i3blocks", "kitty", "sway", "alacritty", "eza", "git", "ptpython", "yazi", "tmux", "swaync", "tealdeer", "helix", "macchina", "waybar"]
 target_config_directory: "{{ home_dir }}/.config"
 wallpaper_dir_link_dest: "{{ home_dir }}/.wallpapers"
 before_omz_file_path: "{{ dotfiles_repo_root }}/zsh/before_ohmyzsh.zsh"
