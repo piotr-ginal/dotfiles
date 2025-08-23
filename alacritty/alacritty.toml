@@ -58,4 +58,4 @@ opacity = 0.95
 WINIT_X11_SCALE_FACTOR="1.0"
 
 [selection]
-semantic_escape_chars=",│`|:\"' ()[]{}<>\t/"
+semantic_escape_chars=",│`|:\"' ()[]{}<>\t/="
