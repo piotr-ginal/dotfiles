@@ -1,0 +1,9 @@
+#!/bin/bash
+
+firefox_instance=$(swaymsg -t get_tree | grep -m 1 '"app_id": "firefox"')
+
+if [ -n "$firefox_instance" ]; then
+    swaymsg "[app_id=\"firefox\"] focus"
+else
+    swaymsg exec firefox
+fi

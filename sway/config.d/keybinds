@@ -100,5 +100,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym $mod+w exec ~/.dotfiles/scripts/focus_or_open_firefox_sway
+
 # open sway cheat sheet
 bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
