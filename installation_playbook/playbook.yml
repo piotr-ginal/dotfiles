@@ -69,6 +69,7 @@
           - fd-find
           - zsh-syntax-highlighting
           - unzip
+          - xz-utils
       become: true
       tags: packages_install, shell_only
 
@@ -144,3 +145,19 @@
           - src: "yazi-x86_64-unknown-linux-gnu/ya"
             dest: "/usr/local/bin/ya"
             become: true
+
+    - name: Install helix from archive
+      ansible.builtin.include_role:
+        name: install_from_archive
+        apply:
+          tags:
+            - archive_bin
+      vars:
+        archive_url: "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-linux.tar.xz"
+        binary_path_from_extract: "helix-25.07.1-x86_64-linux/hx"
+        expected_version: "25.07.1"
+        extra_paths:
+          - src: "helix-25.07.1-x86_64-linux/runtime"
+            dest: "{{ ansible_env.HOME }}/.config/helix_runtime"
+            become: false
+      tags: archive_bin
