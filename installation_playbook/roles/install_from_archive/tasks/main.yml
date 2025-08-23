@@ -66,6 +66,14 @@
         remote_src: true
       become: "{{ become_to_move }}"
 
+    - name: Remove extra dest paths before moving new ones
+      ansible.builtin.file:
+        path: "{{ item.dest }}"
+        state: absent
+      loop: "{{ extra_paths }}"
+      when: extra_paths | length > 0
+      become: "{{ item.become | default(false) }}"
+
     - name: Move extra paths from archive to destination # noqa no-changed-when
       ansible.builtin.command:  # mv used to work with directories
         cmd: mv "{{ extract_dest }}/{{ item.src }}" "{{ item.dest }}"
