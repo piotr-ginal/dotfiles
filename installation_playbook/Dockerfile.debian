@@ -11,7 +11,7 @@ RUN apt-get update && \
 USER linuxuser
 WORKDIR /home/linuxuser
 
-RUN pipx install --include-deps ansible && \
+RUN pipx install --include-deps ansible-core && \
     rm -rf ~/.cache/pipx
 
 ENV PATH="/home/linuxuser/.local/bin:${PATH}"
