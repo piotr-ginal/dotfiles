@@ -1,2 +1,2 @@
 ---
-repo_type: "deb"
+add_apt_repository_repo_type: "deb"

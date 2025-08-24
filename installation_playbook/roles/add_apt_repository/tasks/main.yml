@@ -9,8 +9,8 @@
 
 - name: Download key file
   ansible.builtin.get_url:
-    url: "{{ key_url }}"
-    dest: "/etc/apt/keyrings/{{ key_filename }}"
+    url: "{{ add_apt_repository_key_url }}"
+    dest: "/etc/apt/keyrings/{{ add_apt_repository_key_filename }}"
     mode: "go+r"
   become: true
   tags: apt_sources
@@ -18,14 +18,14 @@
 - name: Capture architecture from dpkg
   ansible.builtin.command:
     cmd: dpkg --print-architecture
-  register: arch_out
+  register: add_apt_repository_arch_out
   changed_when: false
   tags: apt_sources
 
 - name: Render repo list template
   ansible.builtin.template:
     src: apt_list_template.j2
-    dest: "/etc/apt/sources.list.d/{{ repo_filename }}"
+    dest: "/etc/apt/sources.list.d/{{ add_apt_repository_repo_filename }}"
     mode: "0644"
   become: true
   tags: apt_sources
