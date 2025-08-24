@@ -104,9 +104,9 @@
           tags:
             - archive_bin
       vars:
-        archive_url: "https://github.com/junegunn/fzf/releases/download/v0.65.1/fzf-0.65.1-linux_amd64.tar.gz"
-        binary_path_from_extract: "fzf"
-        expected_version: "0.65.1"
+        install_from_archive_archive_url: "https://github.com/junegunn/fzf/releases/download/v0.65.1/fzf-0.65.1-linux_amd64.tar.gz"
+        install_from_archive_binary_path_from_extract: "fzf"
+        install_from_archive_expected_version: "0.65.1"
       tags: archive_bin
 
     - name: Install delta from archive
@@ -116,9 +116,9 @@
           tags:
             - archive_bin
       vars:
-        archive_url: "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-gnu.tar.gz"
-        binary_path_from_extract: "delta-0.18.2-x86_64-unknown-linux-gnu/delta"
-        expected_version: "0.18.2"
+        install_from_archive_archive_url: "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-gnu.tar.gz"
+        install_from_archive_binary_path_from_extract: "delta-0.18.2-x86_64-unknown-linux-gnu/delta"
+        install_from_archive_expected_version: "0.18.2"
       tags: archive_bin
 
     - name: Install eza from archive
@@ -128,9 +128,9 @@
           tags:
             - archive_bin
       vars:
-        archive_url: "https://github.com/eza-community/eza/releases/download/v0.23.0/eza_x86_64-unknown-linux-gnu.tar.gz"
-        binary_path_from_extract: "eza"
-        expected_version: "0.23.0"
+        install_from_archive_archive_url: "https://github.com/eza-community/eza/releases/download/v0.23.0/eza_x86_64-unknown-linux-gnu.tar.gz"
+        install_from_archive_binary_path_from_extract: "eza"
+        install_from_archive_expected_version: "0.23.0"
       tags: archive_bin
 
     - name: Install yazi from archive
@@ -140,13 +140,14 @@
           tags:
             - archive_bin
       vars:
-        archive_url: "https://github.com/sxyazi/yazi/releases/download/v25.5.31/yazi-x86_64-unknown-linux-gnu.zip"
-        binary_path_from_extract: "yazi-x86_64-unknown-linux-gnu/yazi"
-        expected_version: "25.5.31"
-        extra_paths:
+        install_from_archive_archive_url: "https://github.com/sxyazi/yazi/releases/download/v25.5.31/yazi-x86_64-unknown-linux-gnu.zip"
+        install_from_archive_binary_path_from_extract: "yazi-x86_64-unknown-linux-gnu/yazi"
+        install_from_archive_expected_version: "25.5.31"
+        install_from_archive_extra_paths:
           - src: "yazi-x86_64-unknown-linux-gnu/ya"
             dest: "/usr/local/bin/ya"
             become: true
+      tags: archive_bin
 
     - name: Install helix from archive
       ansible.builtin.include_role:
@@ -155,10 +156,10 @@
           tags:
             - archive_bin
       vars:
-        archive_url: "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-linux.tar.xz"
-        binary_path_from_extract: "helix-25.07.1-x86_64-linux/hx"
-        expected_version: "25.07.1"
-        extra_paths:
+        install_from_archive_archive_url: "https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-linux.tar.xz"
+        install_from_archive_binary_path_from_extract: "helix-25.07.1-x86_64-linux/hx"
+        install_from_archive_expected_version: "25.07.1"
+        install_from_archive_extra_paths:
           - src: "helix-25.07.1-x86_64-linux/runtime"
             dest: "{{ ansible_env.HOME }}/.config/helix_runtime"
             become: false
