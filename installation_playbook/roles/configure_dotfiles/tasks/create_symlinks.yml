@@ -1,17 +1,17 @@
 ---
 - name: Create symlinks for config directories
   ansible.builtin.file:
-    src: "{{ dotfiles_repo_root }}/{{ item }}"
-    dest: "{{ target_config_directory }}/{{ item }}"
+    src: "{{ configure_dotfiles_repo_root }}/{{ item }}"
+    dest: "{{ configure_dotfiles_target_config_directory }}/{{ item }}"
     state: link
     force: true
-  loop: "{{ config_directories }}"
+  loop: "{{ configure_dotfiles_config_directories }}"
   tags: dotfiles, shell_only
 
 - name: Create wallpapers dir symlink
   ansible.builtin.file:
-    src: "{{ dotfiles_repo_root }}/wallpapers"
-    dest: "{{ wallpaper_dir_link_dest }}"
+    src: "{{ configure_dotfiles_repo_root }}/wallpapers"
+    dest: "{{ configure_dotfiles_wallpaper_dir_link_dest }}"
     state: link
     force: true
   tags: dotfiles
