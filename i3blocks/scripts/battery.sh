@@ -21,7 +21,7 @@ else
 fi
 
 if [[ "$battery_status" == "Charging" ]]; then
-    background_color="#008000"
+    background_color="#329932"
     rm -f "$notification_state_normal" "$notification_state_critical"
 else
     if [ "$battery" -le "$minimal_warning_critical" ] && [ ! -f "$notification_state_critical" ]; then

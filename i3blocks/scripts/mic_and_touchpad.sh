@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-OK_COLOR="#008000"
+OK_COLOR="#329932"
 NOK_COLOR="#FF0000"
 
 wrap_in_span() {
