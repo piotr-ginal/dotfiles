@@ -104,3 +104,5 @@ bindsym $mod+w exec ~/.dotfiles/scripts/focus_or_open_firefox_sway
 
 # open sway cheat sheet
 bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
+
+bindsym $mod+shift+period exec ~/.dotfiles/scripts/emoji_picker
