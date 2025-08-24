@@ -1,0 +1,14 @@
+/* Nord Theme */
+@define-color background           #0f1419;
+@define-color background-alt       #0f1419;
+@define-color foreground           #d8dee9;
+@define-color foreground-alt       #93a1a1;
+
+@define-color warning              #ffae42;
+@define-color critical             #ff0000;
+@define-color good                 #329932;
+@define-color mainfg               #bfbdb6;
+
+@define-color urgent               #efbf2f;
+
+@define-color bg-workspace-visible #232d38;

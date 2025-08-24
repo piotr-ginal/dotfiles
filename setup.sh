@@ -65,7 +65,7 @@ fi
 [ -d "$HOME/.config" ] || mkdir "$HOME/.config"
 
 # ---- Create symlinks for config directories ----
-CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer" "helix" "macchina")
+CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer" "helix" "macchina" "waybar")
 for config_dir in "${CONFIG_DIRS[@]}"; do
     TARGET="$HOME/.config/$config_dir"
     SOURCE="$(pwd)/$config_dir"

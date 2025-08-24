@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "modules-left": [
+    "memory",
+    "cpu",
+    "load",
+    "temperature"
+  ],
+  "modules-center": [
+    "sway/workspaces"
+  ],
+  "modules-right": [
+    "battery",
+    "pulseaudio",
+    "network",
+    "clock",
+    "custom/mouseandmic"
+  ],
+  "clock": {
+      "format": "{:%H:%M on %d.%m}"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "cpu | {usage}",
+    "tooltip-format": "{usage}%",
+  },
+  "load": {
+    "interval": 5,
+    "format": "load | {load1}",
+    "max-length": 20
+  },
+  "temperature": {
+    "interval": 5,
+    "format": "temp | {temperatureC}°C",
+    "max-length": 20,
+    "warning-threshold": 60,
+    "critical-threshold": 80,
+  },
+  "memory": {
+    "interval": 1,
+    "format": "mem | {percentage}%",
+    "tooltip-format": "{used}/{total} GiB",
+  },
+  "network": {
+    "format-wifi": "wifi | {essid}",
+    "format-ethernet": "eth | {essid}",
+    "format-disconnected": "wifi | disc",
+    "interval": 5,
+    "tooltip-format-wifi": " {bandwidthDownBytes} |  {bandwidthUpBytes}",
+  },
+  "network#speed": {
+    "format-wifi": " {bandwidthDownBytes} |  {bandwidthUpBytes}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "vol | {volume}",
+    "format-muted": "vol | M",
+    "tooltip-format": "{desc}"
+  },
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 80,
+      "warning": 15,
+      "critical": 10
+    },
+    "format": "bat | {capacity}",
+    "format-charging": "bat | {capacity}",
+    "format-discharging": "bat | {capacity}",
+    "format-critical": "bat | {capacity}",
+    "format-charging-warning": "bat | {capacity}",
+    "format-charging-critical": "bat | {capacity}",
+    "format-discharging-critical": "bat | {capacity}",
+    "tooltip-format": "{time} remaining",
+    "tooltip-format-charging": "{time} until full",
+    "tooltip-format-discharging": "{time} remaining",
+  },
+  "custom/mouseandmic": {
+    "exec": "~/.config/i3blocks/scripts/mic_and_touchpad.sh",
+    "interval": "once",
+    "signal": 11
+  }
+}
