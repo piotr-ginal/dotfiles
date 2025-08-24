@@ -1,8 +1,8 @@
 ---
-home_dir: "{{ ansible_env.HOME }}"
-oh_my_zsh_directory: "{{ home_dir }}/.oh-my-zsh"
-oh_my_zsh_mirror: "https://github.com/ohmyzsh/ohmyzsh.git"
-zshrc_full_path: "{{ home_dir }}/.zshrc"
-oh_my_zsh_theme: "git-root-nor-green"
-terminal_type: "xterm-256color"
-force_zshrc: false
+install_oh_my_zsh_home_dir: "{{ ansible_env.HOME }}"
+install_oh_my_zsh_directory: "{{ install_oh_my_zsh_home_dir }}/.oh-my-zsh"
+install_oh_my_zsh_mirror: "https://github.com/ohmyzsh/ohmyzsh.git"
+install_oh_my_zsh_zshrc_full_path: "{{ install_oh_my_zsh_home_dir }}/.zshrc"
+install_oh_my_zsh_theme: "git-root-nor-green"
+install_oh_my_zsh_terminal_type: "xterm-256color"
+install_oh_my_zsh_force_zshrc: false
