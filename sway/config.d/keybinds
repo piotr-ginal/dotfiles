@@ -3,8 +3,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle; exec pkill
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%; exec pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%; exec pkill -SIGRTMIN+10 i3blocks
 
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle; exec pkill -SIGRTMIN+11 i3blocks
-bindsym $mod+t input type:touchpad events toggle enabled disabled; exec pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle; exec pkill -SIGRTMIN+11 waybar
+bindsym $mod+t input type:touchpad events toggle enabled disabled; exec pkill -SIGRTMIN+11 waybar
 
 # open terminal
 bindsym $mod+Return exec $term

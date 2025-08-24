@@ -1,24 +1,6 @@
 set $accent "#bfbdb6"
 
-bar {
-    position top
-
-    status_command i3blocks
-
-    font pango:JetBrainsMonoNL Nerd Font Mono Bold 10
-
-    colors {
-        background #141c21f3
-        statusline #93a1a1
-        separator #141c21
-
-        # colour of border, background, and text
-        focused_workspace #141c21 $accent #141c21
-        active_workspace #141c21 #232d38 #bfbaac
-        inactive_workspace #141c21 #141c21 #bfbaac
-        urgent_workspace #141c21 #b08500 #bfbaac
-    }
-}
+exec --no-startup-id waybar
 
 # colour of border, background, text, indicator, and child_border
 client.focused $accent #263640 #93a1a1 $accent $accent
