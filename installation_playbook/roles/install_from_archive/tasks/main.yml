@@ -1,92 +1,98 @@
 ---
 - name: Set final binary path fact
   ansible.builtin.set_fact:
-    binary_target_path: "{{ binary_target_dir }}/{{ binary_path_from_extract | basename }}"
+    install_from_archive_binary_target_path: "{{ install_from_archive_binary_target_dir }}/{{ install_from_archive_binary_path_from_extract | basename }}"
 
 - name: Run install check
-  when: not force
+  when: not install_from_archive_force
   block:
     - name: Check if binary already exists
       ansible.builtin.stat:
-        path: "{{ binary_target_path }}"
-      register: binary_target_state
+        path: "{{ install_from_archive_binary_target_path }}"
+      register: install_from_archive_binary_target_state
 
-    - name: Set is executable fact
+    - name: Set is executable fact (with vars)
       ansible.builtin.set_fact:
-        is_executable: "{{ binary_target_state.stat.exists and binary_target_state.stat.executable }}"
+        install_from_archive_is_executable: "{{ exists and executable }}"
+      vars:
+        exists: "{{ install_from_archive_binary_target_state.stat.exists }}"
+        executable: "{{ install_from_archive_binary_target_state.stat.executable }}"
 
     - name: Check binary version
-      ansible.builtin.command: "{{ binary_target_path }} {{ version_check_flags | join(' ') }}"
-      register: command_output
+      ansible.builtin.command: "{{ install_from_archive_binary_target_path }} {{ install_from_archive_version_check_flags | join(' ') }}"
+      register: install_from_archive_command_output
       changed_when: false
-      when: is_executable and expected_version is defined
+      when: install_from_archive_is_executable and install_from_archive_expected_version is defined
 
     - name: Set proceed with install fact - version check
       ansible.builtin.set_fact:
-        proceed_with_install: "{{ not (is_executable and expected_version in command_output.stdout) }}"
-      when: expected_version is defined
+        install_from_archive_proceed_with_install: "{{ not (is_executable and expected_version_present) }}"
+      vars:
+        is_executable: "{{ install_from_archive_is_executable }}"
+        expected_version_present: "{{ install_from_archive_expected_version in install_from_archive_command_output.stdout }}"
+      when: install_from_archive_expected_version is defined
 
     - name: Set proceed with install fact - no version check
       ansible.builtin.set_fact:
-        proceed_with_install: "{{ not is_executable }}"
-      when: expected_version is not defined
+        install_from_archive_proceed_with_install: "{{ not is_executable }}"
+      when: install_from_archive_expected_version is not defined
 
 - name: Download and install binary
-  when: force or proceed_with_install
+  when: install_from_archive_force or install_from_archive_proceed_with_install
   block:
     - name: Download archive
       ansible.builtin.get_url:
-        url: "{{ archive_url }}"
-        dest: "{{ archive_dest }}"
+        url: "{{ install_from_archive_archive_url }}"
+        dest: "{{ install_from_archive_archive_dest }}"
         mode: "0644"
         force: true
 
     - name: Remove extraction directory if it exists
       ansible.builtin.file:
-        path: "{{ extract_dest }}"
+        path: "{{ install_from_archive_extract_dest }}"
         state: absent
 
     - name: Create extraction directory (empty)
       ansible.builtin.file:
-        path: "{{ extract_dest }}"
+        path: "{{ install_from_archive_extract_dest }}"
         state: directory
         mode: "0755"
 
     - name: Extract tar.gz archive
       ansible.builtin.unarchive:
-        src: "{{ archive_dest }}"
-        dest: "{{ extract_dest }}"
+        src: "{{ install_from_archive_archive_dest }}"
+        dest: "{{ install_from_archive_extract_dest }}"
         remote_src: true
 
     - name: Move binary to target path
       ansible.builtin.copy:
-        src: "{{ extract_dest }}/{{ binary_path_from_extract }}"
-        dest: "{{ binary_target_path }}"
+        src: "{{ install_from_archive_extract_dest }}/{{ install_from_archive_binary_path_from_extract }}"
+        dest: "{{ install_from_archive_binary_target_path }}"
         mode: "0755"
         remote_src: true
-      become: "{{ become_to_move }}"
+      become: "{{ install_from_archive_become_to_move }}"
 
     - name: Remove extra dest paths before moving new ones
       ansible.builtin.file:
         path: "{{ item.dest }}"
         state: absent
-      loop: "{{ extra_paths }}"
-      when: extra_paths | length > 0
+      loop: "{{ install_from_archive_extra_paths }}"
+      when: install_from_archive_extra_paths | length > 0
       become: "{{ item.become | default(false) }}"
 
     - name: Move extra paths from archive to destination # noqa no-changed-when
       ansible.builtin.command:  # mv used to work with directories
-        cmd: mv "{{ extract_dest }}/{{ item.src }}" "{{ item.dest }}"
-      loop: "{{ extra_paths }}"
-      when: extra_paths | length > 0
+        cmd: mv "{{ install_from_archive_extract_dest }}/{{ item.src }}" "{{ item.dest }}"
+      loop: "{{ install_from_archive_extra_paths }}"
+      when: install_from_archive_extra_paths | length > 0
       become: "{{ item.become | default(false) }}"
 
     - name: Remove archive
       ansible.builtin.file:
-        path: "{{ archive_dest }}"
+        path: "{{ install_from_archive_archive_dest }}"
         state: "absent"
 
     - name: Remove archive extract dest
       ansible.builtin.file:
-        path: "{{ extract_dest }}"
+        path: "{{ install_from_archive_extract_dest }}"
         state: "absent"
