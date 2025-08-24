@@ -73,6 +73,11 @@
       become: true
       tags: packages_install, shell_only
 
+    - name: Install pipx tools
+      ansible.builtin.import_role:
+        name: pipx_tools
+      tags: packages_install, shell_only
+
     - name: Install apt packages - GUI
       ansible.builtin.apt:
         pkg:

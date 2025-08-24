@@ -1,0 +1,7 @@
+---
+
+- name: Install pipx packages
+  ansible.builtin.command: pipx install {{ item }}
+  register: pipx_result
+  changed_when: "'already seems to be installed' not in pipx_result.stdout"
+  loop: "{{ pipx_tools_tool_list }}"
