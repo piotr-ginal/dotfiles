@@ -222,9 +222,12 @@ alias y=yazi_wrapper_change_pwd
 alias reload="source ~/.zshrc"
 
 # ---- editor aliases ----
-fzf_helix_open_file() {
-  sel=$(fzf --print0 --height=~40%)
-  [ -n "$sel" ] && printf '%s' "$sel" | xargs -0 -o hx "$@"
+fzf_helix_open_files() {
+  local files
+  files=$(fd --type f . | fzf --multi --height=~40% --bind 'ctrl-a:select-all,ctrl-d:deselect-all')
+  if [[ -n "$files" ]]; then
+    hx ${(f)files}
+  fi
 }
 fzf_helix_git_changed_open_file() {
   local file
@@ -234,7 +237,7 @@ fzf_helix_git_changed_open_file() {
   fi
 }
 alias h=hx
-alias op="fzf_helix_open_file"
+alias op="fzf_helix_open_files"
 alias opr="fzf_regex_open"
 alias opc="fzf_helix_git_changed_open_file"
 
