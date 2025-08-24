@@ -1,1 +1,1 @@
-{{ repo_type }} [arch={{ arch_out.stdout }} signed-by=/etc/apt/keyrings/{{ key_filename }}] {{ repo_url }} {{ repo_distribution }} {{ components | join(' ') }}
+{{ add_apt_repository_repo_type }} [arch={{ add_apt_repository_arch_out.stdout }} signed-by=/etc/apt/keyrings/{{ add_apt_repository_key_filename }}] {{ add_apt_repository_repo_url }} {{ add_apt_repository_repo_distribution }} {{ add_apt_repository_components | join(' ') }}

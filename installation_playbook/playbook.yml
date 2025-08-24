@@ -15,39 +15,36 @@
       ansible.builtin.include_role:
         name: add_apt_repository
       vars:
-        repo_type: "deb"
-        repo_url: "https://cli.github.com/packages"
-        key_url: "https://cli.github.com/packages/githubcli-archive-keyring.gpg"
-        key_filename: "githubcli-archive-keyring.gpg"
-        repo_distribution: "stable"
-        repo_filename: "github-cli.list"
-        components: ["main"]
+        add_apt_repository_repo_url: "https://cli.github.com/packages"
+        add_apt_repository_key_url: "https://cli.github.com/packages/githubcli-archive-keyring.gpg"
+        add_apt_repository_key_filename: "githubcli-archive-keyring.gpg"
+        add_apt_repository_repo_distribution: "stable"
+        add_apt_repository_repo_filename: "github-cli.list"
+        add_apt_repository_components: ["main"]
       tags: apt_sources, shell_only
 
     - name: Add firefox apt repo
       ansible.builtin.include_role:
         name: add_apt_repository
       vars:
-        repo_type: "deb"
-        repo_url: "https://packages.mozilla.org/apt"
-        key_url: "https://packages.mozilla.org/apt/repo-signing-key.gpg"
-        key_filename: "packages.mozilla.org.asc"
-        repo_distribution: "mozilla"
-        repo_filename: "mozilla.list"
-        components: ["main"]
+        add_apt_repository_repo_url: "https://packages.mozilla.org/apt"
+        add_apt_repository_key_url: "https://packages.mozilla.org/apt/repo-signing-key.gpg"
+        add_apt_repository_key_filename: "packages.mozilla.org.asc"
+        add_apt_repository_repo_distribution: "mozilla"
+        add_apt_repository_repo_filename: "mozilla.list"
+        add_apt_repository_components: ["main"]
       tags: apt_sources
 
     - name: Add docker apt repo
       ansible.builtin.include_role:
         name: add_apt_repository
       vars:
-        repo_type: "deb"
-        repo_url: "https://download.docker.com/linux/debian"
-        key_url: "https://download.docker.com/linux/debian/gpg"
-        key_filename: "docker.asc"
-        repo_distribution: "bookworm"
-        repo_filename: "docker.list"
-        components: ["stable"]
+        add_apt_repository_repo_url: "https://download.docker.com/linux/debian"
+        add_apt_repository_key_url: "https://download.docker.com/linux/debian/gpg"
+        add_apt_repository_key_filename: "docker.asc"
+        add_apt_repository_repo_distribution: "bookworm"
+        add_apt_repository_repo_filename: "docker.list"
+        add_apt_repository_components: ["stable"]
       tags: apt_sources
 
     - name: Update local apt index files

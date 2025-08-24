@@ -3,7 +3,7 @@ argument_specs:
   main:
     options:
 
-      repo_type:
+      add_apt_repository_repo_type:
         type: "str"
         choices:
           - "deb"
@@ -11,27 +11,27 @@ argument_specs:
         required: false
         default: "deb"
 
-      repo_url:
+      add_apt_repository_repo_url:
         type: "str"
         required: true
 
-      key_url:
+      add_apt_repository_key_url:
         type: "str"
         required: true
 
-      key_filename:
+      add_apt_repository_key_filename:
         type: str
         required: true
 
-      repo_distribution:
+      add_apt_repository_repo_distribution:
         type: str
         required: true
 
-      repo_filename:
+      add_apt_repository_repo_filename:
         type: str
         required: true
 
-      components:
+      add_apt_repository_components:
         type: "list"
         elements: "str"
         required: true
