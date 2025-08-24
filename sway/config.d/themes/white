@@ -15,8 +15,7 @@ set $border_width 2
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] floating enable
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] focus
 for_window [class=".*"] border pixel $border_width
-hide_edge_borders smart
+hide_edge_borders none
 gaps inner 5
-smart_gaps on
 
 default_border pixel $border_width
