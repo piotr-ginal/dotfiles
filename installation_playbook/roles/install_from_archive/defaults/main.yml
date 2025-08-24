@@ -1,8 +1,8 @@
 ---
-archive_dest: "/tmp/archive"
-extract_dest: "/tmp/archive_extract"
-binary_target_dir: "/usr/local/bin"
-become_to_move: true
-force: false
-version_check_flags: ["--version"]
-extra_paths: []
+install_from_archive_archive_dest: "/tmp/archive"
+install_from_archive_extract_dest: "/tmp/archive_extract"
+install_from_archive_binary_target_dir: "/usr/local/bin"
+install_from_archive_become_to_move: true
+install_from_archive_force: false
+install_from_archive_version_check_flags: ["--version"]
+install_from_archive_extra_paths: []
