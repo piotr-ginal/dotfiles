@@ -1,22 +1,22 @@
 ---
 - name: Check if .zshrc already exists
   ansible.builtin.stat:
-    path: "{{ zshrc_full_path }}"
-  register: zshrc_status
+    path: "{{ install_oh_my_zsh_zshrc_full_path }}"
+  register: install_oh_my_zsh_zshrc_status
   tags: oh_my_zsh, shell_only
 
 - name: Template zshrc file
   ansible.builtin.template:
     src: zshrc.j2
-    dest: "{{ zshrc_full_path }}"
+    dest: "{{ install_oh_my_zsh_zshrc_full_path }}"
     mode: "0644"
-  when: not zshrc_status.stat.exists or force_zshrc
+  when: not install_oh_my_zsh_zshrc_status.stat.exists or install_oh_my_zsh_force_zshrc
   tags: oh_my_zsh, shell_only
 
 - name: Clone oh my zsh repo # noqa latest[git]
   ansible.builtin.git:
-    repo: "{{ oh_my_zsh_mirror }}"
-    dest: "{{ oh_my_zsh_directory }}"
+    repo: "{{ install_oh_my_zsh_mirror }}"
+    dest: "{{ install_oh_my_zsh_directory }}"
   environment:
     GIT_TERMINAL_PROMPT: "0"
   tags: oh_my_zsh, shell_only
