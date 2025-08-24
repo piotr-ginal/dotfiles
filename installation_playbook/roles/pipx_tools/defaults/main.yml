@@ -1,0 +1,2 @@
+---
+pipx_tools_tool_list: ["cookiecutter", "pre-commit", "ptpython", "pyrefly", "python-lsp-server", "rich-cli", "ruff==0.11.11"]
