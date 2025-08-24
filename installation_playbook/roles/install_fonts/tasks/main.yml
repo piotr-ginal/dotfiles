@@ -1,7 +1,7 @@
 ---
 - name: Ensure fonts directory exists
   ansible.builtin.file:
-    path: "{{ fonts_directory }}"
+    path: "{{ install_fonts_fonts_directory }}"
     state: directory
     mode: "0751"
     recurse: true
@@ -16,19 +16,19 @@
 
 - name: Filter urls
   ansible.builtin.stat:
-    path: "{{ fonts_directory }}/{{ item | basename }}"
-  register: url_check
-  loop: "{{ ttf_urls }}"
+    path: "{{ install_fonts_fonts_directory }}/{{ item | basename }}"
+  register: install_fonts_url_check
+  loop: "{{ install_fonts_ttf_urls }}"
   no_log: true
   tags: fonts
 
 - name: Download fonts
   ansible.builtin.get_url:
     url: "{{ item.item }}"
-    dest: "{{ fonts_directory }}/{{ item.item | basename }}"
+    dest: "{{ install_fonts_fonts_directory }}/{{ item.item | basename }}"
     mode: "0644"
-  loop: "{{ url_check.results }}"
-  when: not item.stat.exists or force_check
+  loop: "{{ install_fonts_url_check.results }}"
+  when: not item.stat.exists or install_fonts_force_check
   notify: Refresh font cache
   retries: 3
   delay: 5
