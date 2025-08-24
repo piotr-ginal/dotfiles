@@ -47,12 +47,8 @@ function build_time_segment {
   echo -n "[${PROMPT_TIME_COLOR}%T${RESET_COLOR}]"
 }
 
-function build_host_segment {
-  echo -n "[${PROMPT_TIME_COLOR}%m:%n${RESET_COLOR}"
-}
-
 function build_cwd_segment {
-  echo -n "${PROMPT_CWD_COLOR}%c${RESET_COLOR}"
+  echo -n "[${PROMPT_CWD_COLOR}%c${RESET_COLOR}"
 }
 
 function build_git_segment {
@@ -68,12 +64,11 @@ function assemble_prompt {
 
   SSH_SEGMENT='$(build_ssh_segment)'
   TIME_SEGMENT='$(build_time_segment)'
-  HOST_SEGMENT='$(build_host_segment)'
   CWD_SEGMENT='$(build_cwd_segment)'
   GIT_SEGMENT='$(build_git_segment)$(git_prompt_info)${RESET_COLOR}]'
   PROMPT_CHAR_SEGMENT='$(build_prompt_char_segment)'
 
-  PROMPT="${SSH_SEGMENT}${TIME_SEGMENT}${HOST_SEGMENT}:${CWD_SEGMENT}${GIT_SEGMENT}
+  PROMPT="${SSH_SEGMENT}${TIME_SEGMENT}${CWD_SEGMENT}${GIT_SEGMENT}
 ${PROMPT_CHAR_SEGMENT}${RESET_COLOR} "
 }
 
