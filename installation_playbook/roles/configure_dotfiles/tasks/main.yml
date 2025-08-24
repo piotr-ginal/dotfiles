@@ -7,9 +7,9 @@
 
 - name: Clone dotfiles repo # noqa latest[git]
   ansible.builtin.git:
-    repo: "{{ dotfiles_repo_mirror }}"
-    dest: "{{ dotfiles_repo_root }}"
-    update: "{{ update_repo }}"
+    repo: "{{ configure_dotfiles_repo_mirror }}"
+    dest: "{{ configure_dotfiles_repo_root }}"
+    update: "{{ configure_dotfiles_update_repo }}"
     accept_hostkey: true
   environment:
     GIT_TERMINAL_PROMPT: "0"
@@ -17,7 +17,7 @@
 
 - name: Ensure config directory exists
   ansible.builtin.file:
-    path: "{{ target_config_directory }}"
+    path: "{{ configure_dotfiles_target_config_directory }}"
     state: directory
     mode: "0755"
   tags: dotfiles, shell_only
@@ -29,14 +29,14 @@
 - name: Template before oh my zsh script file
   ansible.builtin.template:
     src: before_omz_template.j2
-    dest: "{{ before_omz_file_path }}"
+    dest: "{{ configure_dotfiles_before_omz_file_path }}"
     mode: "0644"
   tags: dotfiles, shell_only
 
 - name: Source before_ohmyzsh.zsh before Oh My Zsh in .zshrc
   ansible.builtin.lineinfile:
-    path: "{{ home_dir }}/.zshrc"
-    line: 'source {{ before_omz_file_path }}'
+    path: "{{ configure_dotfiles_home_dir }}/.zshrc"
+    line: 'source {{ configure_dotfiles_before_omz_file_path }}'
     insertbefore: '^source \$ZSH/oh-my-zsh\.sh'
     state: present
   tags: dotfiles, shell_only
@@ -44,7 +44,7 @@
 # zsh syntax highlighting docs RECCOMEND sourcing last
 - name: Source zsh syntax highlighting script
   ansible.builtin.lineinfile:
-    path: "{{ home_dir }}/.zshrc"
-    line: "source {{ syntax_script_path }}"
+    path: "{{ configure_dotfiles_home_dir }}/.zshrc"
+    line: "source {{ configure_dotfiles_syntax_script_path }}"
     state: present
   tags: dotfiles, shell_only
