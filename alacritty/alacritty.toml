@@ -59,3 +59,12 @@ WINIT_X11_SCALE_FACTOR="1.0"
 
 [selection]
 semantic_escape_chars=",│`|:\"' ()[]{}<>\t/="
+
+[[hints.enabled]]
+command = "firefox"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
