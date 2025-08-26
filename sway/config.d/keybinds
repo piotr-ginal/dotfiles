@@ -65,7 +65,7 @@ bindsym $mod+o exec grimshot save area ~/.screenshots/screenshot_$(date +%Y%m%d_
 # basic color picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 # toggle screen recording
-bindsym $mod+Shift+r exec ~/.dotfiles/scripts/toggle_screenrecording; exec pkill -SIGRTMIN+12 i3blocks
+bindsym $mod+Shift+r exec toggle_screenrecording; exec pkill -SIGRTMIN+12 i3blocks
 
 # change split direction
 bindsym $mod+b splith
@@ -100,10 +100,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bindsym $mod+w exec ~/.dotfiles/scripts/focus_or_open_firefox_sway
-bindsym $mod+n exec ~/.dotfiles/scripts/attempt_switch_to_empty_workspace_sway
+bindsym $mod+w exec focus_or_open_firefox_sway
+bindsym $mod+n exec attempt_switch_to_empty_workspace_sway
 
 # open sway cheat sheet
 bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
 
-bindsym $mod+shift+period exec ~/.dotfiles/scripts/emoji_picker
+bindsym $mod+shift+period exec emoji_picker
