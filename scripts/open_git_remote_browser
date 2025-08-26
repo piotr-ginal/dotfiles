@@ -37,7 +37,7 @@ fi
 
 if [[ -n "$selected_url" ]]; then
   final_url=$(modify_repo_url_for_branch "$selected_url")
-  firefox "$final_url"
+  focus_or_open_firefox_sway "$final_url"
 else
   exit 1
 fi

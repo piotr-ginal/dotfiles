@@ -1,9 +1,19 @@
 #!/bin/bash
 
+url="$1"
+
 firefox_instance=$(swaymsg -t get_tree | grep -m 1 '"app_id": "firefox"')
 
 if [ -n "$firefox_instance" ]; then
-    swaymsg "[app_id=\"firefox\"] focus"
+    swaymsg '[app_id="firefox"] focus'
+    if [ -n "$url" ]; then
+        swaymsg exec "firefox \"$url\""
+    fi
 else
-    swaymsg exec firefox
+    attempt_switch_to_empty_workspace_sway
+    if [ -n "$url" ]; then
+        swaymsg exec "firefox \"$url\""
+    else
+        swaymsg exec firefox
+    fi
 fi

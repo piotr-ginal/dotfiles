@@ -14,4 +14,4 @@ ACCOUNT_LIST_FILE="$HOME/.scriptfiles/gmail_accounts"
 
 selected_user=$(column -t -s ';' "$ACCOUNT_LIST_FILE" | fzf --height=~40% | awk '{print $1}')
 
-[ -n "$selected_user" ] && firefox "${GOOGLE_SERVICE_BASE_URL}?authuser=${selected_user}"
+[ -n "$selected_user" ] && focus_or_open_firefox_sway "${GOOGLE_SERVICE_BASE_URL}?authuser=${selected_user}"
