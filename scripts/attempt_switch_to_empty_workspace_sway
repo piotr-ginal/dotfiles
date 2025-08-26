@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ALL_WS=$(seq 1 9)
+USED_WS=$(swaymsg -t get_workspaces | jq '.[].num')
+for ws in $ALL_WS; do
+    if ! echo "$USED_WS" | grep -q "^$ws$"; then
+        FIRST_EMPTY=$ws
+        break
+    fi
+done
+
+if [ -n "$FIRST_EMPTY" ]; then
+    swaymsg workspace number $FIRST_EMPTY
+fi
