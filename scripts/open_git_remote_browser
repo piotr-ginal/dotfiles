@@ -32,7 +32,7 @@ if (( num_lines == 0 )); then
 elif (( num_lines == 1 )); then
   selected_url="${lines_array[0]}"
 else
-  selected_url=$(printf "%s\n" "${lines_array[@]}" | fzf)
+  selected_url=$(printf "%s\n" "${lines_array[@]}" | fzf --height=~40% --layout=reverse --info inline)
 fi
 
 if [[ -n "$selected_url" ]]; then
