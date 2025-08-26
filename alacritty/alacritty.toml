@@ -60,6 +60,9 @@ WINIT_X11_SCALE_FACTOR="1.0"
 [selection]
 semantic_escape_chars=",│`|:\"' ()[]{}<>\t/="
 
+[hints]
+alphabet="sadjklewcmpgh"
+
 [[hints.enabled]]
 command = "firefox"
 hyperlinks = true
@@ -68,3 +71,12 @@ persist = false
 mouse.enabled = true
 binding = { key = "O", mods = "Control|Shift" }
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"
+
+[[hints.enabled]]
+hyperlinks = false
+action = "MoveViModeCursor"
+post_processing = true
+persist = false
+mouse.enabled = false
+binding = { key = "o", mode = "Vi" }
+regex = "\\w{2,}"
