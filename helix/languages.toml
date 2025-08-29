@@ -65,3 +65,7 @@ language-servers = [
   { name = "ansible-language-server"}
 ]
 injection-regex = "yml|yaml"
+
+[[language]]
+name = "git-commit"
+formatter = { command = "fold", timeout = 5, args = ["-w", "72", "-s"]}
