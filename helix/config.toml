@@ -1,4 +1,4 @@
-theme = "ayu_dark"
+theme = "ayu_dark_custom"
 
 [editor]
 mouse = false
