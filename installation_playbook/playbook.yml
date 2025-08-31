@@ -79,6 +79,7 @@
       ansible.builtin.apt:
         pkg:
           - sway
+          - waybar
           - wl-clipboard
           - pulseaudio-utils
           - grimshot
