@@ -67,5 +67,16 @@ language-servers = [
 injection-regex = "yml|yaml"
 
 [[language]]
+name = "git-config"
+file-types = [
+  "gitconfig",
+  { glob = ".gitmodules" },
+  { glob = ".gitconfig" },
+  { glob = ".git/config" },
+  { glob = "git/config" },
+  { glob = ".config/git/config" },
+]
+
+[[language]]
 name = "git-commit"
 formatter = { command = "fold", timeout = 5, args = ["-w", "72", "-s"]}
