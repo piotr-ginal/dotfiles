@@ -55,7 +55,7 @@ git_status_fzf() {
     echo "error: no regex provided"
     return 1
   fi
-  git_status_rg "$1" | fzf --exit-0 --height=~40% | cut -c4- | awk '{
+  git_status_rg "$1" | fzf --exit-0 --multi --height=~40% --bind 'ctrl-a:select-all,ctrl-d:deselect-all' | cut -c4- | awk '{
     if (match($0, /^.+-> +(.+)$/, m)) {
       print m[1]
     } else {
@@ -65,26 +65,26 @@ git_status_fzf() {
 }
 
 fzf_git_add_changed_file() {
-  local file
-  file=$(git_status_fzf "^.[^ ]")
-  if [ -n "$file" ]; then
-    git add "$file" "$@"
+  local files
+  files=$(git_status_fzf "^.[^ ]")
+  if [ -n "$files" ]; then
+    git add "${(f)files}" "$@"
   fi
 }
 
 fzf_git_patch_add_changed_file() {
-  local file
-  file=$(git_status_fzf "^.M")
-  if [ -n "$file" ]; then
-    git add -p "$file" "$@"
+  local files
+  files=$(git_status_fzf "^.M")
+  if [ -n "$files" ]; then
+    git add -p "${(f)files}" "$@"
   fi
 }
 
 fzf_git_remove_untracked_file() {
-  local file
-  file=$(git_status_fzf "^\?\?")
-  if [ -n "$file" ]; then
-    rm "$file" "$@"
+  local files
+  files=$(git_status_fzf "^\?\?")
+  if [ -n "$files" ]; then
+    rm "${(f)files}" "$@"
   fi
 }
 
@@ -260,11 +260,11 @@ fzf_helix_open_files() {
   fi
 }
 fzf_helix_git_changed_open_file() {
-  local file
+  local files
   # all files except deleted
-  file=$(git_status_fzf "^[^D]{2}")
-  if [ -n "$file" ]; then
-    hx "$file" "$@"
+  files=$(git_status_fzf "^[^D]{2}")
+  if [ -n "$files" ]; then
+    hx "${(f)files}" "$@"
   fi
 }
 alias h=hx
