@@ -78,5 +78,5 @@ action = "MoveViModeCursor"
 post_processing = true
 persist = false
 mouse.enabled = false
-binding = { key = "o", mode = "Vi" }
+binding = { key = "o", mode = "Vi|~Search" }
 regex = "\\w{2,}"
