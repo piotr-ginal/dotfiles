@@ -64,7 +64,7 @@ git_delta_pager_toggle_feature () {
 }
 
 git_log_interactive() {
-  local selected=$(git log -n ${1:-100} --pretty=format:'%h %s' | \
+  local selected=$(git log -n 100 --pretty=format:'%h %s' "$@" | \
     fzf --ansi \
         --preview 'git show {1} --pretty=format: | delta --paging=never' \
         --preview-window=right:60% \
