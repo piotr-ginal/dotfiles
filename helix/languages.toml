@@ -22,8 +22,12 @@ args = ["lsp"]
 name = "python"
 language-servers = [
   { name = "scls" },
-  { name = "pylsp", except-features = ["format"] },
-  { name = "pyrefly", only-features = ["diagnostics"] },
+  { name = "pylsp", except-features = [
+    "format",
+  ] },
+  { name = "pyrefly", only-features = [
+    "diagnostics",
+  ] },
   { name = "ruff" },
 ]
 
@@ -55,14 +59,16 @@ file-types = [
   { glob = ".clangd" },
   { glob = ".clang-format" },
   { glob = ".clang-tidy" },
-  "sublime-syntax"
+  "sublime-syntax",
 ]
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
 language-servers = [
   { name = "scls" },
-  { name = "yaml-language-server", except-features = ["hover"]},
-  { name = "ansible-language-server"}
+  { name = "yaml-language-server", except-features = [
+    "hover",
+  ] },
+  { name = "ansible-language-server" },
 ]
 injection-regex = "yml|yaml"
 
@@ -79,4 +85,4 @@ file-types = [
 
 [[language]]
 name = "git-commit"
-formatter = { command = "fold", timeout = 5, args = ["-w", "72", "-s"]}
+formatter = { command = "fold", timeout = 5, args = ["-w", "72", "-s"] }

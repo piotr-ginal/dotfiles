@@ -101,10 +101,10 @@ title_error = { fg = "#BF616A" } # nord11 (Red)
 [filetype]
 
 rules = [
-  { mime = "image/*", fg = "#8FBCBB" }, # nord7
-  { mime = "{audio,video}/*", fg = "#EBCB8B" }, # nord13
+  { mime = "image/*", fg = "#8FBCBB" },                                                                                     # nord7
+  { mime = "{audio,video}/*", fg = "#EBCB8B" },                                                                             # nord13
   { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#B48EAD" }, # nord15
-  { mime = "application/{pdf,doc,rtf,odt,docx,xlsx,pptx}", fg = "#A3BE8C" }, # nord14
-  { name = "*", fg = "#D8DEE9" }, # nord4
-  { name = "*/", fg = "#81A1C1", bold = true }, # nord9
+  { mime = "application/{pdf,doc,rtf,odt,docx,xlsx,pptx}", fg = "#A3BE8C" },                                                # nord14
+  { name = "*", fg = "#D8DEE9" },                                                                                           # nord4
+  { name = "*/", fg = "#81A1C1", bold = true },                                                                             # nord9
 ]

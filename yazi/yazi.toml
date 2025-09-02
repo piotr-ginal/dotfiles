@@ -6,6 +6,6 @@ ratio = [2, 4, 3]
 linemode = "mtime"
 
 [input]
-cd_title  = "cd:"
+cd_title = "cd:"
 cd_origin = "bottom-left"
-cd_offset = [ 0, 2, 50, 3 ]
+cd_offset = [0, 2, 50, 3]

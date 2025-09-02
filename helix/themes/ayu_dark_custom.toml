@@ -29,12 +29,12 @@
 "markup.link.text" = "yellow"
 "markup.link.label" = "green"
 "markup.quote" = "yellow"
-"diff.plus" =  "green"
+"diff.plus" = "green"
 "diff.minus" = "red"
 "diff.delta" = "yellow"
 
 # Interface
-"ui.background"= { bg = "background" }
+"ui.background" = { bg = "background" }
 "ui.cursor" = { fg = "dark_gray", bg = "yellow" }
 "ui.cursor.primary" = { fg = "dark_gray", bg = "orange" }
 "ui.cursor.match" = "orange"
@@ -53,7 +53,7 @@
 "ui.text.info" = "foreground"
 "ui.virtual.whitespace" = "dark_gray"
 "ui.virtual.ruler" = { bg = "black" }
-"ui.virtual.inlay-hint" = { fg = "#e6b450", bg = "#302a20" }  # original bg #e6b45033
+"ui.virtual.inlay-hint" = { fg = "#e6b450", bg = "#302a20" }                # original bg #e6b45033
 "ui.menu" = { fg = "foreground", bg = "black" }
 "ui.menu.selected" = { bg = "gray", fg = "background" }
 "ui.selection" = { bg = "dark_gray" }
@@ -61,10 +61,10 @@
 "error" = { fg = "red", modifiers = ["bold"] }
 "info" = { fg = "blue", modifiers = ["bold"] }
 "hint" = { fg = "blue", modifiers = ["bold"] }
-"diagnostic.hint" = { underline = { color = "blue", style="curl"} }
-"diagnostic.info"= { underline = { color = "blue", style="curl"} }
-"diagnostic.warning"= { underline = { color = "yellow", style="curl"} }
-"diagnostic.error"= { underline = { color = "red", style="curl"} }
+"diagnostic.hint" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 "ui.bufferline" = { fg = "gray", bg = "background" }

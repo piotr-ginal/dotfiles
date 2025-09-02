@@ -3,7 +3,7 @@ theme = "ayu_dark_custom"
 [editor]
 mouse = false
 cursorline = true
-bufferline="always"
+bufferline = "always"
 line-number = "relative"
 jump-label-alphabet = "sadjklewcmpgh"
 # rulers = [120]
@@ -33,13 +33,18 @@ V = ["extend_to_line_end"]
 "A-l" = "jump_view_right"
 "A-h" = "jump_view_left"
 "A-j" = "jump_view_down"
-"A-k"= "jump_view_up"
+"A-k" = "jump_view_up"
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
 "A-W" = ":buffer-close!"
 C-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-C-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+C-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 
 "A-u" = ["page_cursor_half_up", "align_view_center"]
 "A-d" = ["page_cursor_half_down", "align_view_center"]
@@ -62,7 +67,7 @@ V = ["extend_to_line_end"]
 "A-l" = "jump_view_right"
 "A-h" = "jump_view_left"
 "A-j" = "jump_view_down"
-"A-k"= "jump_view_up"
+"A-k" = "jump_view_up"
 "A-," = "goto_previous_buffer"
 "A-." = "goto_next_buffer"
 "A-w" = ":buffer-close"
@@ -75,7 +80,14 @@ C-space = "signature_help"
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
 center = ["file-name"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
 separator = "|"
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
