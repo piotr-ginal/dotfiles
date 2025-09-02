@@ -17,6 +17,7 @@ select = "underline"
 q = ":quit"
 "A-Q" = ":quit!"
 "A-p" = ":sh pwd | tr -d '\n' | wl-copy"
+l.r = ":reset-diff-change"
 l.l = ":sh helix_git_log.sh %{buffer_name}"
 
 [keys.normal]
