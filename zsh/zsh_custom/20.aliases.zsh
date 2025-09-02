@@ -47,7 +47,7 @@ git_status_rg() {
     echo "error: no regex provided"
     return 1
   fi
-  git status --short --porcelain | rg "$1"
+  git status --short | rg "$1"
 }
 
 git_status_fzf() {
