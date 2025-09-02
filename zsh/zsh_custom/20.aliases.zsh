@@ -42,20 +42,41 @@ git_add_and_commit_command() {
   git commit "${options_for_git[@]}"
 }
 
-fzf_git_changed_file() {
-  local changed_files
-  changed_files=$(git status --short --no-renames | rg -v "^ *D" | rg -v "^. ")  # show only files with unstaged changes
-  if [ -z "$changed_files" ]; then
+git_status_rg() {
+  if [[ -z "$1" ]]; then
+    echo "error: no regex provided"
     return 1
   fi
-  echo "$changed_files" | fzf "$@" | sed -e 's/^...//'
+  git status --short --porcelain | rg "$1"
+}
+
+git_status_fzf() {
+  if [[ -z "$1" ]]; then
+    echo "error: no regex provided"
+    return 1
+  fi
+  git_status_rg "$1" | fzf --exit-0 --height=~40% | cut -c4- | awk '{
+    if (match($0, /^.+-> +(.+)$/, m)) {
+      print m[1]
+    } else {
+      print
+    }
+  }' # handle renames - return just the new filename
 }
 
 fzf_git_add_changed_file() {
   local file
-  file=$(fzf_git_changed_file --height=~40%)
+  file=$(git_status_fzf "^.[^ ]")
   if [ -n "$file" ]; then
-    git add "$@" "$file"
+    git add "$file" "$@"
+  fi
+}
+
+fzf_git_patch_add_changed_file() {
+  local file
+  file=$(git_status_fzf "^.M")
+  if [ -n "$file" ]; then
+    git add -p "$file" "$@"
   fi
 }
 
@@ -171,7 +192,7 @@ alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
 alias glogi=git_log_interactive
 alias gaf="fzf_git_add_changed_file"
-alias gafp="fzf_git_add_changed_file -p"
+alias gafp="fzf_git_patch_add_changed_file"
 alias dtgl=git_delta_pager_toggle_feature
 
 unalias grs
@@ -231,7 +252,8 @@ fzf_helix_open_files() {
 }
 fzf_helix_git_changed_open_file() {
   local file
-  file=$(fzf_git_changed_file --height=~40%)
+  # all files except deleted
+  file=$(git_status_fzf "^[^D]{2}")
   if [ -n "$file" ]; then
     hx "$file" "$@"
   fi
