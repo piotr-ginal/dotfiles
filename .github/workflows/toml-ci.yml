@@ -1,0 +1,26 @@
+name: CI for TOML Changes
+
+on:
+  push:
+    paths:
+      - '**/*.toml'
+
+jobs:
+  taplo:
+    name: Taplo
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Taplo
+        env:
+          version: "0.10.0"
+        run: |
+          curl -Ls "https://github.com/tamasfe/taplo/releases/download/${{ env.version }}/taplo-linux-x86_64.gz" | \
+          gzip -d > taplo && \
+          chmod +x taplo && \
+          sudo mv taplo /usr/local/bin/taplo
+      - name: Run Taplo validate
+        run: taplo validate --colors never --no-schema
+      - name: Run Taplo format dry run
+        run: taplo format --check --colors never
