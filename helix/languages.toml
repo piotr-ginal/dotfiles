@@ -85,4 +85,4 @@ file-types = [
 
 [[language]]
 name = "git-commit"
-formatter = { command = "fold", timeout = 5, args = ["-w", "72", "-s"] }
+formatter = { command = "git_commit_formatter", timeout = 5 }
