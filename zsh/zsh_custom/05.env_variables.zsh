@@ -24,4 +24,4 @@ export FZF_DEFAULT_OPTS='
 export BAT_THEME="Nord"
 
 # ---- git delta pager ----
-export DELTA_FEATURES=  # to be toggled by delta_features_toggle
+export DELTA_FEATURES="+line-numbers"  # to be toggled by delta_features_toggle
