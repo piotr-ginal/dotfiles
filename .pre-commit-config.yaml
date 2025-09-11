@@ -21,5 +21,8 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-      # - id: check-yaml
-      # - id: check-added-large-files
+  - repo: https://github.com/ComPWA/taplo-pre-commit
+    rev: v0.9.3
+    hooks:
+      - id: taplo-format
+      - id: taplo-lint
