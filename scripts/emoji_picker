@@ -12,6 +12,7 @@ LIST=$(cat <<EOF
 😃; grinning face with big eyes
 😅; grinning face with sweat
 😸; grinning cat face with smiling eyes
+😭; loudly crying face emoji
 😺; grinning cat face
 😊; smiling face with smiling eyes
 😁; beaming face with smiling eyes
