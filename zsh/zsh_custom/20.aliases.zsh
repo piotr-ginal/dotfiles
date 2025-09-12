@@ -88,6 +88,14 @@ fzf_git_remove_untracked_file() {
   fi
 }
 
+fzf_git_switch() {
+  local branch
+  branch=$(git branch --list --color | fzf --ansi --height=~40% | awk '{print $NF}')
+  if [ -n "$branch" ]; then
+    git switch "$branch"
+  fi
+}
+
 git_delta_pager_toggle_feature () {
   eval "export DELTA_FEATURES='$(delta_features_toggle $1)'"
 }
@@ -203,6 +211,7 @@ alias gaf="fzf_git_add_changed_file"
 alias gafp="fzf_git_patch_add_changed_file"
 alias rmn="fzf_git_remove_untracked_file"
 alias dtgl=git_delta_pager_toggle_feature
+alias gswf=fzf_git_switch
 
 unalias grs
 
