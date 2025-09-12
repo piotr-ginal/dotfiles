@@ -3,6 +3,7 @@
 import sys
 import textwrap
 
+COMMENT_TOKEN: str = "#"  # noqa: S105
 SCISSORS_LINE: str = "# ------------------------ >8 ------------------------"
 
 
@@ -25,7 +26,7 @@ def format_text(input_text: str) -> str:
             result_lines.append(line)
             continue
 
-        if scissors_found:
+        if scissors_found or line.startswith(COMMENT_TOKEN):
             result_lines.append(line)
         elif first_line:
             wrapped = wrap_text_to_lines(line, 50)
