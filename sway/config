@@ -9,7 +9,7 @@ set $right l
 set $term alacritty
 set $menu fuzzel -I -l 5 | xargs swaymsg exec
 
-include /etc/sway/config-vars.d/*
+include /etc/sway/config.d/*
 
 exec swaync
 
