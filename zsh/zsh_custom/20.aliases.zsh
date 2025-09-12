@@ -88,6 +88,14 @@ fzf_git_remove_untracked_file() {
   fi
 }
 
+fzf_git_diff() {
+  local files
+  files=$(git_status_fzf "^.[^ ?]")
+  if [ -n "$files" ]; then
+    git diff "${(f)files}" "$@"
+  fi
+}
+
 fzf_git_switch() {
   local branch
   branch=$(git branch --list --color | fzf --ansi --height=~40% | awk '{print $NF}')
@@ -212,6 +220,7 @@ alias gafp="fzf_git_patch_add_changed_file"
 alias rmn="fzf_git_remove_untracked_file"
 alias dtgl=git_delta_pager_toggle_feature
 alias gswf=fzf_git_switch
+alias gdf=fzf_git_diff
 
 unalias grs
 
