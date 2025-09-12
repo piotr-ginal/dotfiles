@@ -26,24 +26,24 @@
   },
   "cpu": {
     "interval": 1,
-    "format": "cpu | {usage}",
+    "format": "cpu | {usage:2}",
     "tooltip-format": "{usage}%",
   },
   "load": {
     "interval": 5,
-    "format": "load | {load1}",
+    "format": "load | {load1:4}",
     "max-length": 20
   },
   "temperature": {
     "interval": 5,
-    "format": "temp | {temperatureC}°C",
+    "format": "temp | {temperatureC:2}°C",
     "max-length": 20,
     "warning-threshold": 60,
     "critical-threshold": 80,
   },
   "memory": {
     "interval": 1,
-    "format": "mem | {percentage}%",
+    "format": "mem | {percentage:2}%",
     "tooltip-format": "{used}/{total} GiB",
   },
   "network": {
