@@ -6,19 +6,19 @@
   "margin-left": 5,
   "margin-right": 5,
   "modules-left": [
-    "memory",
     "cpu",
     "load",
-    "temperature"
-  ],
-  "modules-center": [
+    "temperature",
     "sway/workspaces"
   ],
+  "modules-center": [
+    "clock",
+  ],
   "modules-right": [
+    "memory",
     "battery",
     "pulseaudio",
     "network",
-    "clock",
     "custom/mouseandmic"
   ],
   "clock": {
