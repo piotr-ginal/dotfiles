@@ -32,7 +32,11 @@ window#waybar {
   background: @background-alt;
 }
 
-#memory {
+#clock {
+  padding: 0px 5px;
+}
+
+#cpu {
   margin-left: 0px;
 }
 
