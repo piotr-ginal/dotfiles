@@ -42,8 +42,6 @@ window#waybar {
 
 #workspaces {
   padding: 2px;
-  margin: 0;
-  margin-right: 0px;
   border: 2px solid @foreground;
 }
 
