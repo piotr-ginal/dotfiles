@@ -89,9 +89,9 @@ right = [
   "file-type",
 ]
 separator = "|"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
 
 [editor.soft-wrap]
 enable = true
