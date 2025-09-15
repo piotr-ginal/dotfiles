@@ -214,7 +214,7 @@ alias reporoot="git rev-parse --show-toplevel"
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
 alias glog='git log --all --graph --pretty="format:%C(blue)%h %C(white) %an %ar%C(auto) %D%n%s%n"'
-alias glogi=git_log_interactive
+alias glogi="DELTA_FEATURES=+line-numbers git_log_interactive"
 alias gaf="fzf_git_add_changed_file"
 alias gafp="fzf_git_patch_add_changed_file"
 alias rmn="fzf_git_remove_untracked_file"
