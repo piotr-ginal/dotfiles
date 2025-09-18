@@ -1,5 +1,4 @@
 from prompt_toolkit.styles import Style
-
 from ptpython.repl import PythonRepl
 
 __all__ = ["configure"]
