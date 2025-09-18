@@ -15,5 +15,6 @@ lint.ignore = [
   "FIX002",
   "TD003",
   "CPY001",
+  "INP001",
 ]
 preview = true
