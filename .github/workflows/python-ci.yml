@@ -1,0 +1,21 @@
+name: Python lint
+
+on:
+  push:
+    paths:
+      - '**/*.py'
+
+jobs:
+  ruff:
+    name: Ruff Check
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.11.9-alpine
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Ruff 0.11.11
+        run: pip install ruff==0.11.11
+
+      - name: Run Ruff
+        run: ruff check .
