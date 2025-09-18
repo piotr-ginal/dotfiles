@@ -96,6 +96,14 @@ fzf_git_diff() {
   fi
 }
 
+fzf_git_diff_staged() {
+  local files
+  files=$(git_status_fzf "^[^ ?].")
+  if [ -n "$files" ]; then
+    git diff --staged "${(f)files}" "$@"
+  fi
+}
+
 fzf_git_switch() {
   local branch
   branch=$(git branch --list --color | fzf --ansi --height=~40% | awk '{print $NF}')
@@ -221,6 +229,7 @@ alias rmn="fzf_git_remove_untracked_file"
 alias dtgl=git_delta_pager_toggle_feature
 alias gswf=fzf_git_switch
 alias gdf=fzf_git_diff
+alias gdsf="fzf_git_diff_staged"
 
 unalias grs
 
