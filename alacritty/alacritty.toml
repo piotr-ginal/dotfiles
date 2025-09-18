@@ -57,6 +57,12 @@ opacity = 0.95
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
 
+[keyboard]
+bindings = [
+  { key = "H", mods = "Shift", mode = "Vi|~Search", action = "FirstOccupied" },
+  { key = "L", mods = "Shift", mode = "Vi|~Search", action = "Last" },
+]
+
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t/="
 
