@@ -23,8 +23,9 @@ start_recording() {
     local timestamp=$(date +"%Y%m%d-%H%M%S")
     local filename="recording-${timestamp}.mp4"
     local filepath="$RECORDING_DIR/$filename"
+    local output=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 
-    wf-recorder -f "$filepath" &
+    wf-recorder -f "$filepath" -o "$output" &
     local pid=$!
     echo "$pid" > "$PIDFILE"
 }
