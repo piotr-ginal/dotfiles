@@ -25,3 +25,6 @@ export BAT_THEME="Nord"
 
 # ---- git delta pager ----
 export DELTA_FEATURES="+line-numbers"  # to be toggled by delta_features_toggle
+
+# ---- last accessed path file ----
+export PATH_CACHE_FILE_PATH="/tmp/last_path_zsh"
