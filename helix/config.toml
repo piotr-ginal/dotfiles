@@ -21,6 +21,7 @@ q = ":quit"
 l.r = ":reset-diff-change"
 l.l = ":sh helix_git_log.sh %{buffer_name}"
 l.b = ":sh helix_blame_info.sh %{buffer_name} %{cursor_line}"
+T = "@map_s|<backspace>\\|<ret>&<esc>,maps<minus>+<ret>mi|r<minus>,;gh" # macro for formatting tables in markdown
 
 [keys.normal]
 "G" = "goto_last_line"
