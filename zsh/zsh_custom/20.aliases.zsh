@@ -90,7 +90,7 @@ fzf_git_remove_untracked_file() {
 
 fzf_git_diff() {
   local files
-  files=$(git_status_fzf "^.[^ ?]")
+  files=$(git_status_fzf "^.[^D ?]")
   if [ -n "$files" ]; then
     git diff "${(f)files}" "$@"
   fi
