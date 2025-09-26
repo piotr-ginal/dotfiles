@@ -63,7 +63,6 @@
           - gh
           - pipx
           - bat
-          - fd-find
           - zsh-syntax-highlighting
           - unzip
           - xz-utils
@@ -164,4 +163,16 @@
           - src: "helix-25.07.1-x86_64-linux/runtime"
             dest: "{{ ansible_env.HOME }}/.config/helix_runtime"
             become: false
+      tags: archive_bin
+
+    - name: Install fd from archive
+      ansible.builtin.include_role:
+        name: install_from_archive
+        apply:
+          tags:
+            - archive_bin
+      vars:
+        install_from_archive_archive_url: "https://github.com/sharkdp/fd/releases/download/v10.3.0/fd-v10.3.0-x86_64-unknown-linux-gnu.tar.gz"
+        install_from_archive_binary_path_from_extract: "fd-v10.3.0-x86_64-unknown-linux-gnu/fd"
+        install_from_archive_expected_version: "10.3.0"
       tags: archive_bin
