@@ -272,6 +272,7 @@ alias bat="batcat"
 alias forall='do_for_all() { for d in */; do (cd "$d" && eval "$@"); done }; do_for_all' # execute command in each child directory eg forall "ls && gst"
 alias fb="fzf --preview 'batcat {} --color=always' --height=45%"
 alias f='selected_dir=$(fd --type d --hidden --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla --exclude .meteor --exclude .nv | fzf --height=55% --preview "eza --color=always {}" --preview-window=down:50%) && [ -n "$selected_dir" ] && cd "$selected_dir"'
+alias fh='cd ~ && f'
 alias rmproxy="export http_proxy= && export https_proxy= && export HTTP_PROXY= && export HTTPS_PROXY="
 alias cppwd='pwd | copy'
 alias curs="printf '\033[0 q'"
