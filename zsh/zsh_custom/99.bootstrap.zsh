@@ -1,6 +1,6 @@
 # ---- restore last path ----
 
-if [ -z "$DOTFILES_FIRST_INIT_FLAG" ] && [ -f "$PATH_CACHE_FILE_PATH" ]; then
+if [ -z "$DOTFILES_INIT_FLAG" ] && [ -f "$PATH_CACHE_FILE_PATH" ]; then
   cd "$(cat "$PATH_CACHE_FILE_PATH")"
 fi
 
