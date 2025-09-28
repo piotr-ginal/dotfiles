@@ -2,7 +2,7 @@
 
 # ---- repo root check ----
 if [ ! -d ".git" ]; then
-        echo "Please run this script from the root directory of the dotfiles repository."
+    echo "Please run this script from the root directory of the dotfiles repository."
     exit 1
 fi
 
