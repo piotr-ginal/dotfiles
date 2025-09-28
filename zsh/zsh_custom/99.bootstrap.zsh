@@ -1,4 +1,7 @@
 # ---- restore last path ----
-if [ -f "$PATH_CACHE_FILE_PATH" ]; then
-  cd $(cat "$PATH_CACHE_FILE_PATH")
+
+if [ -z "$DOTFILES_FIRST_INIT_FLAG" ] && [ -f "$PATH_CACHE_FILE_PATH" ]; then
+  cd "$(cat "$PATH_CACHE_FILE_PATH")"
 fi
+
+export DOTFILES_INIT_FLAG=1
