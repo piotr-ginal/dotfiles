@@ -1,0 +1,18 @@
+#!/bin/bash
+
+TOUCHPAD_ID=$(xinput list | grep -i touchpad | grep -o 'id=[0-9]*' | cut -d= -f2 | head -n1)
+
+if [ -z "$TOUCHPAD_ID" ]; then
+    notify-send "Touchpad not found!"
+    exit 1
+fi
+
+ENABLED=$(xinput list-props $TOUCHPAD_ID | grep "Device Enabled" | awk '{print $4}')
+
+if [ "$ENABLED" = "1" ]; then
+    xinput --disable $TOUCHPAD_ID
+    # notify-send "Touchpad disabled"
+else
+    xinput --enable $TOUCHPAD_ID
+    # notify-send "Touchpad enabled"
+fi

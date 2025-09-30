@@ -1,0 +1,42 @@
+[global]
+font = JetBrainsMonoNL Nerd Font Mono Bold 10
+
+width = (100, 600)
+origin = center
+
+follow = keyboard
+
+frame_width = 2
+separator_height = 2
+height = 800
+
+separator_color = frame
+background = "#0f1419"
+foreground = "#bfbdb6"
+frame_color = "#bfbdb6"
+
+padding = 6
+horizontal_padding = 6
+gap_size = 12
+transparency = 0
+font = monospace 20
+fullscreen = show
+
+close = ctrl+space
+
+[urgency_low]
+background = "#0f1419"
+foreground = "#bfbdb6"
+frame_color = "#bfbdb6"
+
+[urgency_normal]
+background = "#0f1419"
+foreground = "#bfbdb6"
+frame_color = "#bfbdb6"
+
+[urgency_critical]
+background = "#0f1419"
+foreground = "#bfbdb6"
+frame_color = "#bfbdb6"
+
+timeout = 0

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+url="$1"
+
+firefox_window=$(wmctrl -lx | grep -m 1 "Navigator.firefox")
+
+if [ -n "$firefox_window" ]; then
+    i3-msg '[class="firefox"] focus'
+    if [ -n "$url" ]; then
+        firefox "$url"
+    fi
+else
+    attempt_switch_to_empty_workspace_i3
+
+    if [ -n "$url" ]; then
+        i3-msg exec "firefox \"$url\""
+    else
+        i3-msg exec firefox
+    fi
+fi

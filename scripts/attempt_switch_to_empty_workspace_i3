@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ALL_WS=$(seq 1 9)
+
+USED_WS=$(i3-msg -t get_workspaces | jq '.[].num')
+
+for ws in $ALL_WS; do
+    if ! echo "$USED_WS" | grep -q "^$ws$"; then
+        FIRST_EMPTY=$ws
+        break
+    fi
+done
+
+if [ -z "$FIRST_EMPTY" ]; then
+    FIRST_EMPTY=1
+fi
+
+i3-msg workspace number $FIRST_EMPTY
