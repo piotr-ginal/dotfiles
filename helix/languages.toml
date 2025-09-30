@@ -86,3 +86,14 @@ file-types = [
 [[language]]
 name = "git-commit"
 formatter = { command = "git_commit_formatter", timeout = 5 }
+
+[[grammar]]
+name = "ical"
+source = { git = "https://github.com/TitouanReal/tree-sitter-ical", rev = "49cf7c426bf30e1d3dcb118519d0ab64498219d3" }
+
+[[language]]
+name = "ical"
+scope = "cource.ics"
+file-types = ["ics"]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
