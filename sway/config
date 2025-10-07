@@ -11,7 +11,7 @@ set $menu fuzzel -I -l 5 | xargs swaymsg exec
 
 include /etc/sway/config.d/*
 
-exec swaync
+exec mako
 
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
