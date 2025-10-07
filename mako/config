@@ -1,0 +1,22 @@
+font=JetBrainsMonoNL Nerd Font Mono 17
+
+background-color=#0f1419ff
+border-color=#bfbdb6ff
+text-color=#bfbdb6ff
+
+width=400
+height=200
+
+border-radius=2
+border-size=2
+
+margin=14
+
+default-timeout=5000
+
+anchor=top-right
+
+[app-name="Firefox"]
+anchor=center
+ignore-timeout=1
+default-timeout=0
