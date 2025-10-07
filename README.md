@@ -69,7 +69,7 @@ Clone this repo and run the `setup.sh` script
 - fuzzel
 - i3blocks
 - macchina
-- swaync
+- mako
 - network manager
 - keepassxc
 
