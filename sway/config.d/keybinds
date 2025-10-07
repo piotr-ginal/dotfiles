@@ -102,6 +102,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+w exec focus_or_open_firefox_sway
 bindsym $mod+n exec attempt_switch_to_empty_workspace_sway
 
+bindsym Alt+Space exec makoctl dismiss
+bindsym Alt+Shift+Space exec makoctl dismiss -a
+
 # open sway cheat sheet
 bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
 
