@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILES="$HOME/.dotfiles/mako/config"
+CONFIG_FILES="$DOTFILES_REPO_ROOT/mako/config"
 
 while true; do
     clear
