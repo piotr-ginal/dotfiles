@@ -314,9 +314,31 @@ alias lock="swaylock -c 000000"
 cpp() { realpath "$@" | copy; }
 
 # ---- cd aliases ----
+_cd_fzf_select() {
+  if ! [ -s "$PATH_CACHE_FILE_PATH" ]; then
+    return 1
+  fi
+
+  local selected_path=$(sort -u "$PATH_CACHE_FILE_PATH" | fzf --height=~40% --tac)
+
+  if [ -n "$selected_path" ]; then
+    echo "$selected_path"
+  else
+    return 1
+  fi
+}
+cd_last_accessed_path() {
+  local target_dir=$(_cd_fzf_select)
+
+  if [ $? -eq 0 ] && [ -n "$target_dir" ]; then
+    cd "$target_dir"
+  fi
+}
 alias dot="cd $DOTFILES_REPO_ROOT"
 alias rec="cd ~/.screenrecordings"
 alias scr="cd ~/.screenshots"
+
+alias cdl=cd_last_accessed_path
 
 # ---- ls aliases ----
 alias ls='eza'

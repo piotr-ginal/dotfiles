@@ -1,3 +1,3 @@
 chpwd() {
-  echo $(pwd) > $PATH_CACHE_FILE_PATH
+  echo "${PWD}" >> $PATH_CACHE_FILE_PATH
 }
