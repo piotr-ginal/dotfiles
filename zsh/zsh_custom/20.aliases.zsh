@@ -74,7 +74,7 @@ fzf_git_add_changed_file() {
 
 fzf_git_patch_add_changed_file() {
   local files
-  files=$(git_status_fzf "^.M")
+  files=$(git_status_fzf "^.[MA]")
   if [ -n "$files" ]; then
     git add -p "${(f)files}" "$@"
   fi
