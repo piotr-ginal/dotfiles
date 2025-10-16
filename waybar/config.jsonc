@@ -9,7 +9,8 @@
     "cpu",
     "load",
     "temperature",
-    "sway/workspaces"
+    "sway/workspaces",
+    "sway/mode",
   ],
   "modules-center": [
     "clock",
