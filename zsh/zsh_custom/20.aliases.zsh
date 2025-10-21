@@ -281,6 +281,11 @@ alias rgg=rg_with_delta
 alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
+open_file_in_zathura() {
+  zathura $@ &>/dev/null &
+  disown
+}
+alias zth=open_file_in_zathura
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
