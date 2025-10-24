@@ -2,8 +2,8 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym $mod+z exec brightnessctl -q -n s 10%-; exec brightness_notification.sh
-bindsym $mod+a exec brightnessctl -q -n s +10%; exec brightness_notification.sh
+bindsym $mod+z exec brightnessctl -q -n s 5%-; exec brightness_notification.sh
+bindsym $mod+a exec brightnessctl -q -n s +5%; exec brightness_notification.sh
 
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle; exec pkill -SIGRTMIN+11 -x waybar
 bindsym $mod+t input type:touchpad events toggle enabled disabled; exec pkill -SIGRTMIN+11 -x waybar
