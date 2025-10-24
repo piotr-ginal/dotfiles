@@ -1,0 +1,21 @@
+#!/bin/bash
+
+STATIONS_FILE="$HOME/.scriptfiles/train_stations.txt"
+
+if [[ ! -f "$STATIONS_FILE" ]]; then
+  echo "error: $STATIONS_FILE not found"
+  exit 1
+fi
+
+select_station() {
+  local prompt="$1"
+  fzf --height=~40% --prompt "$prompt" --layout=reverse < "$STATIONS_FILE"
+}
+
+start=$(select_station "Start >> ")
+[[ -z "$start" ]] && exit 0
+
+end=$(select_station "End >> ")
+[[ -z "$end" ]] && exit 0
+
+focus_or_open_firefox_sway "https://koleo.pl/rozklad-pkp/$start/$end"
