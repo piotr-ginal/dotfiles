@@ -6,6 +6,17 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
+if [[ $EUID -eq 0 ]]; then
+    echo "Run as sudo"
+
+    if [[ -d "/etc/ly" ]]; then
+        cp "$(pwd)/ly/config.ini" "/etc/ly/config.ini"
+        echo "Ly config updated"
+    fi
+
+    exit 0
+fi
+
 # ---- before oh my zsh script building ----
 
 BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
