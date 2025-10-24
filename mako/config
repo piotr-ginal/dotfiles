@@ -20,3 +20,8 @@ anchor=top-right
 anchor=center
 ignore-timeout=1
 default-timeout=0
+
+[app-name="brightness-notify"]
+anchor=center
+width=360
+text-alignment=center
