@@ -25,3 +25,8 @@ default-timeout=0
 anchor=center
 width=360
 text-alignment=center
+
+[app-name="volume-notify"]
+anchor=center
+width=360
+text-alignment=center
