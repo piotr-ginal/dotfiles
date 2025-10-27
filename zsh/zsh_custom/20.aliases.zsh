@@ -285,7 +285,12 @@ open_file_in_zathura() {
   zathura $@ &>/dev/null &
   disown
 }
+start_typst_preview() {
+  typst watch $@ &>/dev/null &
+  disown
+}
 alias zth=open_file_in_zathura
+alias typstw=start_typst_preview
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
