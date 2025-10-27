@@ -82,8 +82,8 @@ V = ["extend_to_line_end"]
 C-space = "signature_help"
 
 [editor.statusline]
-left = ["mode", "spinner", "version-control"]
-center = ["file-name"]
+left = ["mode", "spinner", "file-name"]
+center = ["version-control"]
 right = [
   "diagnostics",
   "selections",
