@@ -10,6 +10,7 @@ bindsym $mod+t input type:touchpad events toggle enabled disabled; exec pkill -S
 
 # open terminal
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term2
 
 # close window
 bindsym $mod+Shift+q kill
