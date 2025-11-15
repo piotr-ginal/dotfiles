@@ -234,6 +234,16 @@ alias dtgl=git_delta_pager_toggle_feature
 alias gswf=fzf_git_switch
 alias gdf=fzf_git_diff
 alias gdsf="fzf_git_diff_staged"
+alias gbnm="git branch --no-merged"
+alias gc="git commit --verbose"
+alias gbl="git blame -w"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gf="git fetch"
+alias gsh="git show"
+alias gss="git status --short"
+alias gst="git status"
+alias gsw="git switch"
 
 unalias grs
 
