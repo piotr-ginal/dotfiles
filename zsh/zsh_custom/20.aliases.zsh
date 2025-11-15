@@ -362,6 +362,10 @@ alias dot="cd $DOTFILES_REPO_ROOT"
 alias rec="cd ~/.screenrecordings"
 alias scr="cd ~/.screenshots"
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
 alias cdl=cd_last_accessed_path
 
 # ---- ls aliases ----
