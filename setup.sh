@@ -31,9 +31,6 @@ echo "export DISABLE_LS_COLORS=true" >> "$BEFORE_OHMYZSH_PATH"
 DOTFILES_PATH_EXPORT="export DOTFILES_REPO_ROOT=$(pwd)"
 echo "$DOTFILES_PATH_EXPORT" >> "$BEFORE_OHMYZSH_PATH"
 
-ENABLED_PLUGINS="zsh-ssh git docker"
-echo "plugins=($ENABLED_PLUGINS \$plugins)" >> "$BEFORE_OHMYZSH_PATH"
-
 echo 'precmd() { print -n "\033[5 q" }' >> "$BEFORE_OHMYZSH_PATH"
 
 # ---- before oh my zsh file insertion ----
