@@ -1,5 +1,8 @@
 # tools setup - does not include configuration
 
+# ---- starship (VERY fast prompt) ----
+eval "$(starship init zsh)"
+
 # ---- fzf (for zsh) ----
 command -v fzf &>/dev/null && source <(fzf --zsh)
 
