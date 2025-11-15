@@ -245,8 +245,6 @@ alias gss="git status --short"
 alias gst="git status"
 alias gsw="git switch"
 
-unalias grs
-
 # ---- github aliases ----
 github_search_repo_fzf() {
   gh search repos --json fullName,stargazersCount,description "$@" \
