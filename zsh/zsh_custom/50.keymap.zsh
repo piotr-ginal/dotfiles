@@ -1,3 +1,5 @@
+autoload -U edit-command-line
+zle -N edit-command-line
 bindkey "^E" edit-command-line
 
 autoload -U up-line-or-beginning-search
