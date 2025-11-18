@@ -30,3 +30,18 @@ export DELTA_FEATURES="+line-numbers"  # to be toggled by delta_features_toggle
 export PATH_CACHE_FILE_PATH="/tmp/last_path_zsh"
 
 export MANPAGER="nvim +Man!"
+
+
+# ---- zsh ----
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=50000
+export SAVEHIST=10000
+
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_VERIFY
+setopt HIST_REDUCE_BLANKS
