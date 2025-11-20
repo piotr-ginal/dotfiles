@@ -244,6 +244,8 @@ alias gsh="git show"
 alias gss="git status --short"
 alias gst="git status"
 alias gsw="git switch"
+alias ga="git add"
+alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 
 # ---- github aliases ----
 github_search_repo_fzf() {
