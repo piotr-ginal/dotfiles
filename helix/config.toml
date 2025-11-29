@@ -16,6 +16,7 @@ select = "underline"
 [keys.normal.space]
 q = ":quit"
 "A-Q" = ":quit!"
+W = ":write"
 "A-p" = ":sh pwd | tr -d '\n' | wl-copy"
 "A-P" = ":sh wl-copy `pwd`/%{buffer_name}"
 l.r = ":reset-diff-change"
