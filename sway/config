@@ -9,6 +9,7 @@ set $right l
 set $term alacritty
 set $menu fuzzel -I -l 5 | xargs swaymsg exec
 set $term2 DONT_SAVE_PATH=true alacritty --class AlacrittyFloating --option font.size=12.0
+set $copilot alacritty --class AlacrittyFloating --option font.size=12.0 -e copilot_wrapper.sh
 
 include /etc/sway/config.d/*
 
