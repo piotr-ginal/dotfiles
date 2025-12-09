@@ -9,3 +9,9 @@ linemode = "mtime"
 cd_title = "cd:"
 cd_origin = "bottom-left"
 cd_offset = [0, 2, 50, 3]
+
+[opener]
+zth = [{ run = 'zathura "$@"', orphan = true }]
+
+[open]
+prepend_rules = [{ name = "*.pdf", use = ["zth"] }]
