@@ -7,7 +7,7 @@
 
 - Sway
 - Alacritty
-- Zsh (with Oh My Zsh)
+- Zsh (without Oh My Zsh)
 - Helix (hx)
 
 ## Target Operating Systems
