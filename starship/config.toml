@@ -1,0 +1,38 @@
+format = '$python$time\[$directory$git_branch$git_status\]$jobs$line_break$character'
+add_newline = false
+
+[time]
+disabled = false
+format = '\[[$time]($style)\]'
+time_format = "%H:%M"
+style = "fg:#ABB2BF"
+
+[directory]
+truncate_to_repo = true
+truncation_length = 1
+format = '[$path]($style)'
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style)"
+style = "fg:reset"
+repo_root_style = "dimmed white"
+
+[git_branch]
+format = ' \([$branch]($style)'
+style = "fg:#59DCD8"
+
+[git_status]
+format = '([( $all_status$ahead_behind)]($style))\)'
+style = "fg:reset"
+
+[character]
+success_symbol = '[\$](fg:reset)'
+error_symbol = '[\$](bold red)'
+
+[python]
+format = '[\(($virtualenv )$version\)]($style) '
+style = 'reset'
+version_format = '$major.$minor'
+
+[jobs]
+number_threshold = 1
+style = "fg:#B3E5FC"
+symbol = "+"

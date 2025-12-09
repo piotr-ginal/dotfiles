@@ -37,3 +37,6 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=50000
 export SAVEHIST=10000
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
+
+# ---- starship ----
+export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
