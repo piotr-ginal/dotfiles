@@ -24,6 +24,11 @@ input * {
     natural_scroll enabled
 }
 
+input "6940:7163:CORSAIR_M55_WL_Mouse" {
+    accel_profile "flat"
+    pointer_accel 0
+}
+
 # keyboard
 input * {
     xkb_layout pl
