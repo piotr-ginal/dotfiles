@@ -65,7 +65,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # grim select area screenshot, img copied to clipboard
 bindsym $mod+p exec grimshot copy area
 # grim select area screenshot, img saved to ~/.screenshots
-bindsym $mod+o exec grimshot save area ~/.screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png
+bindsym $mod+o exec screenshot_with_notification.sh
 # basic color picker
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 # toggle screen recording
