@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 STATIONS_FILE="$HOME/.scriptfiles/train_stations.txt"
 

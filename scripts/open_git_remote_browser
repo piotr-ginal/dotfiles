@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 modify_repo_url_for_branch() {
   local url="$1"
