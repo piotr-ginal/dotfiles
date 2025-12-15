@@ -1,22 +1,33 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   echo "error: not a git repository." >&2
   exit 1
 fi
 
-for remote_name in $(git remote); do
-  current_url=$(git remote get-url "$remote_name" 2>/dev/null)
+declare -A seen=()
 
-  if [[ -z "$current_url" ]]; then
-    continue
+emit_unique() {
+  local url="$1"
+  [[ -z "$url" ]] && return 0
+
+  if [[ -z "${seen["$url"]+x}" ]]; then
+    seen["$url"]=1
+    printf '%s\n' "$url"
   fi
+}
+
+for remote_name in $(git remote); do
+  current_url=$(git remote get-url "$remote_name" 2>/dev/null || true)
+  [[ -z "$current_url" ]] && continue
 
   if [[ "$current_url" =~ ^https:// ]]; then
-    echo "${current_url%.git}"
+    emit_unique "${current_url%.git}"
+
   elif [[ "$current_url" =~ ^git@ ]]; then
     trimmed_url="${current_url%.git}"
     https_url=$(echo "$trimmed_url" | sed -E 's/^git@([^:]+):(.+)$/https:\/\/\1\/\2/')
-    echo "$https_url"
+    emit_unique "$https_url"
   fi
 done
