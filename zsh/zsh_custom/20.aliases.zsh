@@ -336,6 +336,19 @@ alias rescan="nmcli device wifi list --rescan yes"
 alias scanfor=wait_for_wifi_network
 alias lock="swaylock -c 000000"
 cpp() { realpath "$@" | copy; }
+poweroff() {
+  local answer
+  vared -p "fr? [y/N]: " -c answer
+  case "${answer:l}" in
+    y|yes)
+      command poweroff "$@"
+      ;;
+    *)
+      print "aborted"
+      return 1
+      ;;
+  esac
+}
 
 # ---- cd aliases ----
 _cd_fzf_select() {
