@@ -16,6 +16,7 @@ for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchi
 for_window [class=gwenview|Eog|Sxiv|feh|spectacle|mpv|vlc|ark|File-roller|Xarchiver] focus
 for_window [class=".*"] border pixel $border_width
 for_window [app_id=AlacrittyFloating] floating enable
+for_window [title="^imv_floating$"] floating enable
 hide_edge_borders none
 gaps inner 5
 
