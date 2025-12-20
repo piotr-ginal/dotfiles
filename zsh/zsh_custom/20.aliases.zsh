@@ -222,6 +222,7 @@ alias gac=git_add_and_commit_command
 alias gurl='convert_git_remotes_ssh_to_http'
 alias opgurl='open_git_remote_browser'
 alias gb="git --no-pager branch"
+alias gba="git --no-pager branch --all"
 alias reporoot="git rev-parse --show-toplevel"
 alias rpwd='echo $(git rev-parse --show-toplevel | xargs -I{} realpath --relative-to={} .)'
 alias gap="git add -p"
