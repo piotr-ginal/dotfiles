@@ -14,3 +14,5 @@ bindkey -M emacs "${terminfo[kcud1]:-^[[B}" down-line-or-beginning-search
 
 bindkey -M emacs '^[[1;5C' forward-word
 bindkey -M emacs '^[[1;5D' backward-word
+
+bindkey '^[[Z' reverse-menu-complete
