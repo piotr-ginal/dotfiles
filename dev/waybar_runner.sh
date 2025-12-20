@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! type inotifywait &>/dev/null; then
+  echo "error: inotifywait not found in PATH" >&2
+  exit 1
+fi
+
 CONFIG_FILES="$DOTFILES_REPO_ROOT/waybar/config.jsonc $DOTFILES_REPO_ROOT/waybar/style.css $DOTFILES_REPO_ROOT/waybar/themes/white.css"
 
 trap "killall waybar" EXIT
