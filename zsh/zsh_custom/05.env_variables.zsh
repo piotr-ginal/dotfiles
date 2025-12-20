@@ -1,3 +1,6 @@
+# ---- terminal ----
+export TERM="xterm-256color"
+
 # ---- pip variables ----
 export PIP_DISABLE_PIP_VERSION_CHECK=1  # disables the annoying info about pip being upgradable
 
