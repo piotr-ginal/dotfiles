@@ -1,4 +1,3 @@
-autoload -Uz compinit && compinit -C
 zmodload -i zsh/complist
 
 unsetopt menu_complete

@@ -7,3 +7,6 @@ source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
 # ---- plugins ----
 zcomet load zsh-users/zsh-syntax-highlighting
+
+
+zcomet compinit
