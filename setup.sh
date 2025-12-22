@@ -14,6 +14,11 @@ if [[ $EUID -eq 0 ]]; then
         echo "Ly config updated"
     fi
 
+    if [[ -d "/etc/ly" ]]; then
+        cp "$(pwd)/keyd/default.conf" "/etc/keyd/default.conf"
+        echo "keyd config updated"
+    fi
+
     exit 0
 fi
 
