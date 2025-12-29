@@ -158,7 +158,15 @@ def build_compaction_renames(existing: list[int], reserved: list[int]) -> list[t
         if source != target:
             renames.append((source, target))
 
-    renames.sort(key=operator.itemgetter(0), reverse=True)
+    if not renames:
+        return []
+
+    moving_down = any(t < s for s, t in renames)
+    if moving_down:
+        renames.sort(key=operator.itemgetter(0))  # source ascending
+    else:
+        renames.sort(key=operator.itemgetter(0), reverse=True)  # source descending
+
     return renames
 
 
@@ -173,7 +181,15 @@ def build_fallback_renames(existing: list[int]) -> list[tuple[int, int]]:
             renames.append((source, target))
         target += 1
 
-    renames.sort(key=operator.itemgetter(0), reverse=True)
+    if not renames:
+        return []
+
+    moving_down = any(t < s for s, t in renames)
+    if moving_down:
+        renames.sort(key=operator.itemgetter(0))  # source ascending
+    else:
+        renames.sort(key=operator.itemgetter(0), reverse=True)
+
     return renames
 
 
