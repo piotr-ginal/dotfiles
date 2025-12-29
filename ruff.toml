@@ -18,9 +18,4 @@ lint.ignore = [
   "INP001",
 ]
 preview = true
-include = [
-  "**/*.py",
-  "scripts/delta_features_toggle",
-  "scripts/format_json",
-  "scripts/git_commit_formatter",
-]
+include = ["**/*.py"]

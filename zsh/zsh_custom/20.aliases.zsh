@@ -113,7 +113,7 @@ fzf_git_switch() {
 }
 
 git_delta_pager_toggle_feature () {
-  eval "export DELTA_FEATURES='$(delta_features_toggle $1)'"
+  eval "export DELTA_FEATURES='$(delta_features_toggle.py $1)'"
 }
 
 git_log_interactive() {

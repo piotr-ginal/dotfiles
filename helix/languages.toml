@@ -81,4 +81,4 @@ file-types = [
 
 [[language]]
 name = "git-commit"
-formatter = { command = "git_commit_formatter", timeout = 5 }
+formatter = { command = "git_commit_formatter.py", timeout = 5 }
