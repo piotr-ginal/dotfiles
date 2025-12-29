@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """To toggle delta features such as `side-by-side` on and off, one solution is to use a shell function like.
 
 delta-toggle () {
