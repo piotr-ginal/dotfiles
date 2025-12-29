@@ -13,6 +13,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term2
 bindsym $mod+m exec $copilot
 
+bindsym $mod+c exec sway_workspace_compact.py
+
 # close window
 bindsym $mod+Shift+q kill
 
