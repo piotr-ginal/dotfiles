@@ -1,4 +1,4 @@
-format = '$python$time\[$directory$git_branch$git_status\]$jobs$line_break$character'
+format = '$localip$python$time\[$directory$git_branch$git_status\]$jobs$line_break$character'
 add_newline = false
 
 [time]
@@ -36,3 +36,9 @@ version_format = '$major.$minor'
 number_threshold = 1
 style = "fg:#B3E5FC"
 symbol = "+"
+
+[localip]
+ssh_only = true
+format = '\([$localipv4]($style)\) '
+style = "bold red"
+disabled = false
