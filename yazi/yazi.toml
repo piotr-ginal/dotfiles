@@ -14,4 +14,4 @@ cd_offset = [0, 2, 50, 3]
 zth = [{ run = 'zathura "$@"', orphan = true }]
 
 [open]
-prepend_rules = [{ name = "*.pdf", use = ["zth"] }]
+prepend_rules = [{ url = "*.pdf", use = ["zth"] }]
