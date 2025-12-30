@@ -105,6 +105,6 @@ rules = [
   { mime = "{audio,video}/*", fg = "#EBCB8B" },                                                                             # nord13
   { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#B48EAD" }, # nord15
   { mime = "application/{pdf,doc,rtf,odt,docx,xlsx,pptx}", fg = "#A3BE8C" },                                                # nord14
-  { name = "*", fg = "#D8DEE9" },                                                                                           # nord4
-  { name = "*/", fg = "#81A1C1", bold = true },                                                                             # nord9
+  { url = "*", fg = "#D8DEE9" },                                                                                            # nord4
+  { url = "*/", fg = "#81A1C1", bold = true },                                                                              # nord9
 ]
