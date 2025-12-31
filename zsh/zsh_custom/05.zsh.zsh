@@ -2,6 +2,7 @@ setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
+setopt interactive_comments
 
 # ---- history ----
 setopt EXTENDED_HISTORY
