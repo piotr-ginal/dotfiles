@@ -6,10 +6,13 @@ Every Sway keybinding combination starts with the MOD key. In this configuration
 General
 -------
 - Open Terminal: MOD+Return
+- Open Floating Terminal: MOD+Shift+Return
+- Open Copilot: MOD+m
 - Close Window: MOD+Shift+q
 - Open program launcher: MOD+d
 - Reload Sway: MOD+Shift+c
 - Exit Wayland Session: MOD+Shift+e
+- Show this Cheat Sheet: MOD+/
 
 Window Focus
 ------------
@@ -17,6 +20,7 @@ Window Focus
 - Focus Down: MOD+j
 - Focus Up: MOD+k
 - Focus Right: MOD+l
+- Focus (or open and focus) Firefox: MOD+w
 
 Move Window
 -----------
@@ -31,12 +35,15 @@ Workspaces
 - Move Container to Workspace n: MOD+Shift+n (where n is 1-9)
 - Switch to the next workspace: MOD+.
 - Switch to the previous workspace: MOD+,
+- Switch to Empty Workspace: MOD+n
+- Compact Workspaces: MOD+c
 
 Screenshots
 -----------
 - Copy Area Screenshot to Clipboard: MOD+p
 - Save Area Screenshot to ~/.screenshots: MOD+o
 - Color Picker: MOD+Shift+p
+- Toggle Screen Recording: MOD+Shift+r
 
 Split Direction
 ---------------
@@ -47,6 +54,29 @@ Split Direction
 Layouts
 -------
 - Fullscreen: MOD+f
+- Toggle Floating: MOD+Shift+Space
+- Toggle Focus Tiling/Floating: MOD+Space
+
+Scratchpad
+----------
+- Move to Scratchpad: MOD+Shift+-
+- Show Scratchpad: MOD+-
+
+Volume and Brightness
+---------------------
+- Toggle Mute: XF86AudioMute
+- Volume Up: XF86AudioRaiseVolume
+- Volume Down: XF86AudioLowerVolume
+- Toggle Mic Mute: XF86AudioMicMute
+- Brightness Up: MOD+a
+- Brightness Down: MOD+z
+
+Misc
+----
+- Toggle Touchpad: MOD+t
+- Dismiss Notification: Alt+Space
+- Dismiss All Notifications: Alt+Shift+Space
+- Emoji Picker: MOD+Shift+.
 
 Resize Mode
 -----------
