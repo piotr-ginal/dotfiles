@@ -307,6 +307,7 @@ start_typst_preview() {
 alias zth=open_file_in_zathura
 alias typstw=start_typst_preview
 alias imvf='imv -w imv_floating'
+alias topub='ssh-keygen -y -f'
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
