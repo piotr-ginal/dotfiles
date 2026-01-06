@@ -200,6 +200,27 @@ remove_pyenv_environment() {
   fi
 }
 
+# ---- python functions ----
+
+list_available_pypi_wheel() {
+    local package=$1
+    local version=$2
+    local url=""
+
+    if [[ -z "$package" ]]; then
+        echo "Usage: $0 <package> [version]"
+        return 1
+    fi
+
+    if [[ -z "$version" ]]; then
+        url="https://pypi.org/pypi/${package}/json"
+    else
+        url="https://pypi.org/pypi/${package}/${version}/json"
+    fi
+
+    curl -s "$url" | jq -r '.urls[] | select(.packagetype == "bdist_wheel") | .filename' | sort
+}
+
 # ---- misc functions ----
 rg_with_delta() {
   local pattern="$1"
@@ -280,6 +301,7 @@ alias puninst='python -m pip uninstall'
 alias pippurge='python -m pip freeze > /tmp/pippurge.txt; if [ -s /tmp/pippurge.txt ]; then python -m pip uninstall -r /tmp/pippurge.txt -y; else echo "Pip freeze is empty, no need to uninstall anything"; fi; rm /tmp/pippurge.txt'; alias purgepip=pippurge;
 alias versions="python -m pip --disable-pip-version-check index versions $1 2>/dev/null"
 alias pyclean="find . \( -name __pycache__ -o -name .ruff_cache -o -name .mypy_cache -o -name .pytest_cache \) -exec rm -r {} +"; alias cleanpy=pyclean;
+alias lswheel=list_available_pypi_wheel
 
 # ---- misc aliases ----
 alias c=clear
