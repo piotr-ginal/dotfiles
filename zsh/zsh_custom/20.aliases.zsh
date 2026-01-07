@@ -358,7 +358,7 @@ start_typst_preview() {
   print -r -- "$pid" >| "$pidfile"
 }
 alias zth=open_file_in_zathura
-alias typstw=start_typst_preview
+alias tpw=start_typst_preview
 alias imvf='imv -w imv_floating'
 alias topub='ssh-keygen -y -f'
 
