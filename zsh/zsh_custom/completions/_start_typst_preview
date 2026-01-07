@@ -1,0 +1,3 @@
+#compdef start_typst_preview
+
+_files -g '*.typ'
