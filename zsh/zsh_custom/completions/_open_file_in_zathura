@@ -1,0 +1,3 @@
+#compdef open_file_in_zathura
+
+_files -g '*.pdf'
