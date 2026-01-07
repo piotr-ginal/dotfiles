@@ -323,8 +323,39 @@ open_file_in_zathura() {
   disown
 }
 start_typst_preview() {
-  typst watch $@ &>/dev/null &
+  local typst_file_path="$1"
+  if [[ -z "$typst_file_path" ]]; then
+    echo "usage: $0 <path-to-file.typ>" >&2
+    return 2
+  fi
+  if [[ ! -f "$typst_file_path" ]]; then
+    echo "file '$typst_file_path' does not exist" >&2
+    return 1
+  fi
+
+  local abs_path
+  abs_path="$(realpath -- "$typst_file_path" 2>/dev/null || print -r -- "$typst_file_path")"
+
+  local key pidfile
+  key="$(print -rn -- "$abs_path" | shasum -a 256 | awk '{print $1}')"
+  pidfile="${XDG_RUNTIME_DIR:-/tmp}/typst-watch-${key}.pid"
+
+  if [[ -f "$pidfile" ]]; then
+    local oldpid
+    oldpid="$(<"$pidfile")"
+    if [[ -n "$oldpid" ]] && kill -0 "$oldpid" 2>/dev/null; then
+      echo "already running $abs_path ($oldpid)" >&2
+      return 0
+    else
+      rm -f -- "$pidfile"
+    fi
+  fi
+
+  typst watch "$abs_path" &>/dev/null &
+  local pid=$!
   disown
+
+  print -r -- "$pid" >| "$pidfile"
 }
 alias zth=open_file_in_zathura
 alias typstw=start_typst_preview
