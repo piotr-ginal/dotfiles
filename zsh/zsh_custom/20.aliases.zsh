@@ -303,6 +303,9 @@ alias versions="python -m pip --disable-pip-version-check index versions $1 2>/d
 alias pyclean="find . \( -name __pycache__ -o -name .ruff_cache -o -name .mypy_cache -o -name .pytest_cache \) -exec rm -r {} +"; alias cleanpy=pyclean;
 alias lswheel=list_available_pypi_wheel
 
+# ---- waybar aliases ----
+alias wot="waybar_output_block_toggle.sh"
+
 # ---- misc aliases ----
 alias c=clear
 alias bat="batcat"
