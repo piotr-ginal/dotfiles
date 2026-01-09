@@ -24,6 +24,7 @@ window#waybar {
 #pulseaudio,
 #battery,
 #custom-mouseandmic,
+#custom-display,
 #clock {
   padding: 0px 3px;
   margin: 3px;
@@ -99,12 +100,18 @@ window#waybar {
 #network,
 #load,
 #temperature,
+#custom-display,
 #pulseaudio,
 #battery,
 #custom-mouseandmic,
 #clock {
   color: @foreground-alt;
   border: 2px solid @mainfg;
+}
+
+#custom-display {
+  color: @critical;
+  border: 2px solid @critical;
 }
 
 #temperature.warning {
