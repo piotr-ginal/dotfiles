@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 RECORDING_DIR="$HOME/.screenrecordings"
-PIDFILE="/tmp/wf-recorder.pid"
+PIDFILE="${XDG_RUNTIME_DIR:-/tmp}/wf-recorder.pid"
 
 mkdir -p "$RECORDING_DIR"
 

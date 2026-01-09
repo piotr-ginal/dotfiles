@@ -30,7 +30,7 @@ export BAT_THEME="Nord"
 export DELTA_FEATURES="+line-numbers"  # to be toggled by delta_features_toggle.py
 
 # ---- last accessed path file ----
-export PATH_CACHE_FILE_PATH="/tmp/last_path_zsh"
+export PATH_CACHE_FILE_PATH="${XDG_RUNTIME_DIR:-/tmp}/last_path_zsh"
 
 export MANPAGER="nvim +Man!"
 

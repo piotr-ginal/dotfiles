@@ -3,8 +3,8 @@
 minimal_warning=15
 minimal_warning_critical=10
 
-notification_state_normal="/tmp/battery_notification_state_normal"
-notification_state_critical="/tmp/battery_notification_state_critical"
+notification_state_normal="${XDG_RUNTIME_DIR:-/tmp}/battery_notification_state_normal"
+notification_state_critical="${XDG_RUNTIME_DIR:-/tmp}/battery_notification_state_critical"
 
 battery=$(cat /sys/class/power_supply/BAT*/capacity)
 
