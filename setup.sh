@@ -7,14 +7,14 @@ if [ ! -d ".git" ]; then
 fi
 
 if [[ $EUID -eq 0 ]]; then
-    echo "Run as sudo"
+    echo "Runing as sudo"
 
     if [[ -d "/etc/ly" ]]; then
         cp "$(pwd)/ly/config.ini" "/etc/ly/config.ini"
         echo "Ly config updated"
     fi
 
-    if [[ -d "/etc/ly" ]]; then
+    if [[ -d "/etc/keyd" ]]; then
         cp "$(pwd)/keyd/default.conf" "/etc/keyd/default.conf"
         echo "keyd config updated"
     fi
