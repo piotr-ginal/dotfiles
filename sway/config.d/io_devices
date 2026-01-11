@@ -6,13 +6,13 @@ output HDMI-A-1 Position 0,0
 output eDP-1 Position 2560,0
 
 # bind workspaces to monitors
-workspace 1 output HDMI-A-1
-workspace 2 output HDMI-A-1
-workspace 3 output HDMI-A-1
-workspace 4 output HDMI-A-1
-workspace 5 output HDMI-A-1
-workspace 6 output HDMI-A-1
-workspace 7 output HDMI-A-1
+workspace 1 output HDMI-A-1 eDP-1
+workspace 2 output HDMI-A-1 eDP-1
+workspace 3 output HDMI-A-1 eDP-1
+workspace 4 output HDMI-A-1 eDP-1
+workspace 5 output HDMI-A-1 eDP-1
+workspace 6 output HDMI-A-1 eDP-1
+workspace 7 output HDMI-A-1 eDP-1
 workspace 8 output eDP-1
 workspace 9 output eDP-1
 
