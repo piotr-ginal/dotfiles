@@ -101,9 +101,17 @@ The hook below blocks pushes from a specific branch (`<branch-name>`):
 
 ```sh
 #!/bin/sh
-branch="$(git symbolic-ref --short HEAD)"
-if [ "$branch" = "<branch-name>" ]; then
-  echo "Pushing branch '$branch' is blocked!"
-  exit 1
-fi
+
+FORBIDDEN_BRANCH="<branch-name>"
+
+while read local_ref local_sha remote_ref remote_sha; do
+
+    if [ "$local_ref" = "refs/heads/$FORBIDDEN_BRANCH" ]; then
+        echo "Pushing branch '$FORBIDDEN_BRANCH' is blocked!"
+        exit 1
+    fi
+
+done
+
+exit 0
 ```
