@@ -29,14 +29,11 @@ Clone this repo and run the `setup.sh` script
 
 ### Shell
 - zsh
-- oh my zsh
-- [zsh syntax highlight](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
 ### Editors
 - helix
 
 ### Python
-- pyenv
 - pipx
 - ptpython
 
