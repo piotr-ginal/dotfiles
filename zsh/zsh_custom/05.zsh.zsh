@@ -13,3 +13,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt HIST_REDUCE_BLANKS
+
+# ---- misc ----
+# Specifies the non-alphanumeric characters treated as part of a word during line editing.
+export WORDCHARS='_-'
