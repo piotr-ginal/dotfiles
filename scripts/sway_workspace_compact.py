@@ -20,7 +20,7 @@ ROOT_CONFIG_FILES: tuple[Path, ...] = (
 )
 
 WORKSPACE_OUTPUT_PATTERN = re.compile(
-    r"^workspace\s+(?:number\s+)?(?P<number>\d+)\s+output\s+(?P<output>\S+)\s*$",
+    r"^workspace\s+(?:number\s+)?(?P<number>\d+)\s+output\s+(?P<outputs>.+?)\s*$",
 )
 
 LOG = logging.getLogger("sway-workspace-compact")
@@ -143,7 +143,19 @@ def _expand_include_tokens(tokens: list[str], visited_files: set[Path]) -> list[
     return expanded_lines
 
 
-def parse_reserved_workspaces_by_output(flattened_lines: list[str]) -> dict[str, list[int]]:
+def list_active_outputs() -> list[str]:
+    outputs = sway_json("get_outputs")
+    # CHANGED: only active outputs
+    names = [entry["name"] for entry in outputs if entry.get("active")]
+    LOG.info("Active outputs: %s", names)
+    return names
+
+
+def parse_reserved_workspaces_by_output(
+    flattened_lines: list[str],
+    *,
+    active_outputs: set[str],
+) -> dict[str, list[int]]:
     by_output: dict[str, set[int]] = {}
 
     for line in flattened_lines:
@@ -152,20 +164,36 @@ def parse_reserved_workspaces_by_output(flattened_lines: list[str]) -> dict[str,
             continue
 
         number = int(match.group("number"))
-        output = match.group("output")
-        by_output.setdefault(output, set()).add(number)
-        LOG.debug("Reserved workspace parsed: output=%s number=%s (from %r)", output, number, line)
+        outputs_field = match.group("outputs")
+        candidates = outputs_field.split()
+
+        chosen: str | None = None
+        for out in candidates:
+            if out in active_outputs:
+                chosen = out
+                break
+
+        if chosen is None:
+            LOG.debug(
+                "Reservation ignored (no candidate outputs active): number=%s candidates=%s line=%r",
+                number,
+                candidates,
+                line,
+            )
+            continue
+
+        by_output.setdefault(chosen, set()).add(number)
+        LOG.debug(
+            "Reserved workspace parsed: output=%s number=%s (candidates=%s from %r)",
+            chosen,
+            number,
+            candidates,
+            line,
+        )
 
     result = {output: sorted(numbers) for output, numbers in by_output.items()}
     LOG.info("Parsed reserved workspaces by output: %s", result)
     return result
-
-
-def list_active_outputs() -> list[str]:
-    outputs = sway_json("get_outputs")
-    names = [entry["name"] for entry in outputs]
-    LOG.info("Active outputs: %s", names)
-    return names
 
 
 def list_existing_workspace_numbers_on_output(output_name: str) -> list[int]:
@@ -183,7 +211,6 @@ def list_existing_workspace_numbers_on_output(output_name: str) -> list[int]:
 
 
 def rename_workspace_number(source: int, target: int) -> None:
-    # Most important log: what was renamed to what
     LOG.info("Renaming workspace: %s -> %s", source, target)
     try:
         completed = subprocess.run(  # noqa: S603
@@ -197,7 +224,6 @@ def rename_workspace_number(source: int, target: int) -> None:
         if completed.stderr.strip():
             LOG.debug("swaymsg stderr: %s", completed.stderr.strip())
     except subprocess.CalledProcessError as e:
-        # Keep the important info in logs
         stderr = (e.stderr or "").strip()
         stdout = (e.stdout or "").strip()
         LOG.exception(
@@ -288,10 +314,16 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     configure_logging(debug=args.debug)
 
-    flattened = load_flattened_config_lines()
-    reserved_by_output = parse_reserved_workspaces_by_output(flattened)
+    active_output_names = list_active_outputs()
+    active_outputs = set(active_output_names)
 
-    for output_name in list_active_outputs():
+    flattened = load_flattened_config_lines()
+    reserved_by_output = parse_reserved_workspaces_by_output(
+        flattened,
+        active_outputs=active_outputs,
+    )
+
+    for output_name in active_output_names:
         existing = list_existing_workspace_numbers_on_output(output_name)
         if not existing:
             LOG.debug("No existing workspaces on %s, skipping", output_name)
