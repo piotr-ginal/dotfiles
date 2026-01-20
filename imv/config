@@ -1,0 +1,8 @@
+[options]
+overlay_font=JetBrainsMonoNL Nerd Font Mono:24
+overlay = true
+overlay_text = [$imv_current_index/$imv_file_count] [$imv_scale%] $(basename $imv_current_file)
+background = 0f1419
+overlay_text_color = bfbdb6
+overlay_background_color = 131721
+loop_input = true
