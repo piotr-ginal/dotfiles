@@ -6,3 +6,6 @@ background = 0f1419
 overlay_text_color = bfbdb6
 overlay_background_color = 131721
 loop_input = true
+
+[binds]
+m = scaling crop
