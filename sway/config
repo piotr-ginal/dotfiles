@@ -20,4 +20,4 @@ exec swayidle -w \
     before-sleep 'swaylock -f -c 000000 -e -i ~/.wallpapers/geo_pattern_even_darker.png'
 
 include ~/.config/sway/config.d/*
-include ~/.config/sway/config.d/themes/white
+include ~/.config/sway/themes/white
