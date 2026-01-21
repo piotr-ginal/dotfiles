@@ -365,6 +365,7 @@ alias zth=open_file_in_zathura
 alias tpw=start_typst_preview
 alias imvf='imv -w imv_floating'
 alias topub='ssh-keygen -y -f'
+alias chp='chmod +x'
 
 # ---- zsh aliases ----
 alias reload="source ~/.zshrc"
