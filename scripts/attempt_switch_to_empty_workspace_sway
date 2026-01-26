@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
-CURRENT_WS=$(swaymsg -t get_workspaces | jq '.[] | select(.focused==true) | .num')
-
-CURRENT_WS_WINDOWS=$(swaymsg -t get_tree | jq ".. | select(.type? == \"workspace\" and .num? == $CURRENT_WS) | .nodes | length")
-
-if [ "$CURRENT_WS_WINDOWS" -eq 0 ]; then
-    exit 0
-fi
-
-ALL_WS=$(seq 1 9)
-USED_WS=$(swaymsg -t get_workspaces | jq '.[].num')
-for ws in $ALL_WS; do
-    if ! echo "$USED_WS" | grep -q "^$ws$"; then
-        FIRST_EMPTY=$ws
-        break
-    fi
-done
+FIRST_EMPTY=$(get_empty_workspace_sway)
 
 if [ -n "$FIRST_EMPTY" ]; then
     swaymsg workspace number $FIRST_EMPTY
