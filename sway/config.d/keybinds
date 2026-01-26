@@ -108,6 +108,7 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+w exec focus_or_open_firefox_sway
 bindsym $mod+n exec attempt_switch_to_empty_workspace_sway
+bindsym $mod+Shift+n exec move_window_to_empty_workspace
 
 bindsym Alt+Space exec makoctl dismiss
 bindsym Alt+Shift+Space exec makoctl dismiss -a
