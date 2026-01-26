@@ -79,7 +79,7 @@ Clone this repo and run the `setup.sh` script
 To install the required styles (Bold, Regular, Italic), run:
 `./dev/font_download.sh`
 
-### Prevent Accidental Pushes of Sensitive Data
+## Prevent Accidental Pushes of Sensitive Data
 
 To avoid pushing sensitive data, always create a separate branch for such changes.
 The hook below blocks pushes from a specific branch (`<branch-name>`):
