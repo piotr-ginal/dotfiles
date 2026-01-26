@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if ! ws="$(get_empty_workspace_sway)"; then
+  exit $?
+fi
+
+swaymsg "move container to workspace number $ws"
+swaymsg "workspace number $ws"
