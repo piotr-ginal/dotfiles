@@ -1,4 +1,4 @@
-format = '$localip$python$time\[$directory$git_branch$git_status\]$jobs$line_break$character'
+format = '$localip$python$time\[$directory$git_branch$git_commit$git_status\]$jobs$line_break$character'
 add_newline = false
 
 [time]
@@ -18,6 +18,15 @@ repo_root_style = "dimmed white"
 [git_branch]
 format = ' \([$branch]($style)'
 style = "fg:#59DCD8"
+only_attached = true
+
+[git_commit]
+commit_hash_length = 7
+disabled = false
+tag_disabled = false
+format = ' \([$hash( $tag)]($style)'
+style = "fg:#59DCD8"
+tag_symbol = ""
 
 [git_status]
 format = '([( $all_status$ahead_behind)]($style))\)'
