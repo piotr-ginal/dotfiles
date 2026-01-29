@@ -2,11 +2,14 @@
 
 url="$1"
 
-firefox_instance=$(swaymsg -t get_tree | jq -r '
-    recurse(.nodes[]?, .floating_nodes[]?) |
-    select(.app_id == "firefox" and .scratchpad_state == "none") |
-    .id
-' | head -n 1)
+firefox_instance=$(
+  swaymsg -t get_tree | jq -r '
+    [recurse(.nodes[]?, .floating_nodes[]?)
+     | select(.app_id == "firefox" and .scratchpad_state == "none")
+     | .id]
+    | (min? // empty)
+  '
+)
 
 if [ -n "$firefox_instance" ]; then
     swaymsg "[con_id=$firefox_instance] focus"
