@@ -61,6 +61,7 @@ WINIT_X11_SCALE_FACTOR = "1.0"
 bindings = [
   { key = "H", mods = "Shift", mode = "Vi|~Search", action = "FirstOccupied" },
   { key = "L", mods = "Shift", mode = "Vi|~Search", action = "Last" },
+  { key = "Escape", mode = "Vi|~Search", action = "ToggleViMode" },
 ]
 
 [selection]
