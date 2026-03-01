@@ -72,6 +72,9 @@ fi
 SCRIPT_PATH="$PWD/zsh/zsh_custom/completions/_gh"
 command -v gh >/dev/null 2>&1 && gh completion -s zsh > "$SCRIPT_PATH"
 
+SCRIPT_PATH="$PWD/zsh/zsh_custom/completions/_delta"
+command -v delta >/dev/null 2>&1 && delta --generate-completion zsh > "$SCRIPT_PATH"
+
 # ---- script symlinks ----
 
 SCRIPTS_DIR="$(pwd)/scripts"
