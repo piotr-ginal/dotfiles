@@ -269,6 +269,7 @@ alias gst="git status"
 alias gsw="git switch"
 alias ga="git add"
 alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
+alias gw="git worktree"
 
 # ---- github aliases ----
 github_search_repo_fzf() {
