@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+ensure_file_exists() {
+  local file_path="$1"
+
+  if [[ ! -f "$file_path" ]]; then
+    echo "error: $file_path not found" >&2
+    exit 1
+  fi
+}
+
+JAKDOJADE_CITY_FILE="$HOME/.scriptfiles/jakdojade.city.txt"
+
+ensure_file_exists "$JAKDOJADE_CITY_FILE"
+
+CITY=( $(<$JAKDOJADE_CITY_FILE) )
+JAKDOJADE_PUBLIC_TRANSPORT_STOPS_FILE="$HOME/.scriptfiles/jakdojade.$CITY.stops.txt"
+
+ensure_file_exists "$JAKDOJADE_PUBLIC_TRANSPORT_STOPS_FILE"
+
+select_stop() {
+  local prompt="$1"
+  fzf --height=~40% --prompt "$prompt" --layout=reverse < "$JAKDOJADE_PUBLIC_TRANSPORT_STOPS_FILE"
+}
+
+start=$(select_stop "Start >> ")
+[[ -z "$start" ]] && exit 0
+
+end=$(select_stop "End >> ")
+[[ -z "$end" ]] && exit 0
+
+focus_or_open_firefox_sway "https://jakdojade.pl/wroclaw/$start/$end"
