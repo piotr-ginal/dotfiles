@@ -1,5 +1,5 @@
 # wallpapers for both monitors
-output * bg ~/.wallpapers/black_mountain.jpg fill
+output * bg ~/.wallpapers/05_blue.jpg fill
 
 # virtual monitor layout - hdmi on the left, built in display to the right
 output HDMI-A-1 Position 0,0

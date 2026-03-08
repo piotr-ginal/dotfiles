@@ -52,7 +52,7 @@ shape = "Beam"
 shape = "Block"
 
 [window]
-opacity = 0.85
+opacity = 0.90
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.0"
