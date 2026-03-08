@@ -324,12 +324,10 @@ alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
 open_file_in_zathura() {
-  zathura $@ &>/dev/null &
-  disown
+  zathura $@ &>/dev/null &!
 }
 open_file_in_imv () {
-  imv $@ &> /dev/null &
-  disown
+  imv $@ &> /dev/null &!
 }
 start_typst_preview() {
   local typst_file_path="$1"
@@ -360,9 +358,8 @@ start_typst_preview() {
     fi
   fi
 
-  typst watch "$abs_path" &>/dev/null &
+  typst watch "$abs_path" &>/dev/null &!
   local pid=$!
-  disown
 
   print -r -- "$pid" >| "$pidfile"
 }
