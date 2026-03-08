@@ -327,6 +327,10 @@ open_file_in_zathura() {
   zathura $@ &>/dev/null &
   disown
 }
+open_file_in_imv () {
+  imv $@ &> /dev/null &
+  disown
+}
 start_typst_preview() {
   local typst_file_path="$1"
   if [[ -z "$typst_file_path" ]]; then
@@ -363,6 +367,7 @@ start_typst_preview() {
   print -r -- "$pid" >| "$pidfile"
 }
 alias zth=open_file_in_zathura
+alias im=open_file_in_imv
 alias tpw=start_typst_preview
 alias imvf='imv -w imv_floating'
 alias topub='ssh-keygen -y -f'
