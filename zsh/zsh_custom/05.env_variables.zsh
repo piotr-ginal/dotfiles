@@ -37,8 +37,8 @@ export MANPAGER="nvim +Man!"
 
 # ---- zsh ----
 export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=50000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
 
 # ---- starship ----
