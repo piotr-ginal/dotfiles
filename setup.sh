@@ -45,8 +45,6 @@ for config_dir in "${CONFIG_DIRS[@]}"; do
     if [[ ! -e "$TARGET" ]]; then
         ln -s "$SOURCE" "$TARGET"
         echo "Created symbolic link for $config_dir."
-    else
-        echo "Symbolic link for $config_dir already exists."
     fi
 done
 
@@ -56,9 +54,7 @@ TARGET="$HOME/.wallpapers"
 SOURCE="$(pwd)/wallpapers"
 
 if [[ -L "$TARGET" ]]; then
-    if [[ "$(readlink "$TARGET")" == "$SOURCE" ]]; then
-        echo "Symbolic link for wallpapers already exists."
-    else
+    if [[ "$(readlink "$TARGET")" != "$SOURCE" ]]; then
         echo "$TARGET exists as a symlink to a different location, skipping."
     fi
 elif [[ -e "$TARGET" ]]; then
@@ -88,9 +84,7 @@ for src in "$SCRIPTS_DIR"/*; do
     script_name="$(basename "$src")"
     target="$TARGET_DIR/$script_name"
     if [ -e "$target" ] || [ -L "$target" ]; then
-        if [ -L "$target" ] && [ "$(readlink -- "$target")" = "$src" ]; then
-            echo "Symlink for $script_name already exists and is correct. Skipping."
-        else
+        if [ ! -L "$target" ] || [ "$(readlink -- "$target")" != "$src" ]; then
             echo "WARNING: $target already exists and is not the correct symlink. Skipping."
         fi
     else
