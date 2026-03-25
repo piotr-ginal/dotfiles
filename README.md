@@ -262,7 +262,6 @@ exit 0
         ├── 40.x11_aliases.zsh
         ├── 50.keymap.zsh
         ├── 99.bootstrap.zsh
-        ├── 99.uni.zsh
         ├── completions
         │   ├── _gh
         │   ├── _open_file_in_zathura
