@@ -263,6 +263,18 @@ age_github_pubkey_encrypt() {
 
   age -a -e --recipients-file <(printf "%s\n" "${keys}") "${file_path}"
 }
+age_github_decrypt() {
+  # assumes github.com is configured in ~/.ssh/config
+  local identityfile=$(ssh -G github.com | awk -v home="$HOME" '$1 == "identityfile" { sub(/^~/, home, $2); print $2; exit }')
+  local file_path=$1
+
+  if [[ "${file_path}" != "-" && ! -r "${file_path}" ]]; then
+    echo "error: file ${file_path} not found" >&2
+    return 1
+  fi
+
+  age -d -i $identityfile $file_path
+}
 
 # ---- git aliases ----
 alias shlog=short_log_command_git
@@ -367,6 +379,7 @@ alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
 alias ageghe=age_github_pubkey_encrypt
+alias ageghd=age_github_decrypt
 open_file_in_zathura() {
   zathura $@ &>/dev/null &!
 }
