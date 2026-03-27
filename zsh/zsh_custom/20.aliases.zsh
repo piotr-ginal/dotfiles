@@ -236,6 +236,34 @@ yazi_wrapper_change_pwd() {
   rm -f -- "$tmp"
 }
 
+age_github_pubkey_encrypt() {
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 <github_username> <file_path>" >&2
+    return 1
+  fi
+
+  local username=$1
+  local file_path=$2
+
+  if [[ "${file_path}" != "-" && ! -r "${file_path}" ]]; then
+    echo "error: file ${file_path} not found" >&2
+    return 1
+  fi
+
+  local keys
+  if ! keys=$(curl -s -f -L "https://github.com/${username}.keys"); then
+    echo "error: could not fetch keys ${username}" >&2
+    return 1
+  fi
+
+  if [[ -z "$keys" ]]; then
+    echo "error: user ${username} exists but has no pubkeys" >&2
+    return 1
+  fi
+
+  age -a -e --recipients-file <(printf "%s\n" "${keys}") "${file_path}"
+}
+
 # ---- git aliases ----
 alias shlog=short_log_command_git
 alias shlogn=short_log_command_git_names
@@ -338,6 +366,7 @@ alias rgg=rg_with_delta
 alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
+alias agegh=age_github_pubkey_encrypt
 open_file_in_zathura() {
   zathura $@ &>/dev/null &!
 }
