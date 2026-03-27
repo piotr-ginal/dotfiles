@@ -366,7 +366,7 @@ alias rgg=rg_with_delta
 alias cppass=keepassxc_select_and_copy_password
 alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
-alias agegh=age_github_pubkey_encrypt
+alias ageghe=age_github_pubkey_encrypt
 open_file_in_zathura() {
   zathura $@ &>/dev/null &!
 }
