@@ -457,6 +457,7 @@ alias copy="sed -z '$ s/\n$//' | wl-copy"
 alias rescan="nmcli device wifi list --rescan yes"
 alias scanfor=wait_for_wifi_network
 alias lock="swaylock -c 000000"
+alias nolock='pkill -f "^swayidle -w.+swaylock" || true'
 cpp() { realpath "$@" | copy; }
 poweroff() {
   local answer
