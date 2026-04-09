@@ -1,8 +1,8 @@
-if [ -z "${DONT_SAVE_PATH:-}" ]; then
-  chpwd() {
+chpwd() {
+  if [ -z "${DONT_SAVE_PATH:-}" ]; then
     printf '%s\n' "$PWD" >> "$PATH_CACHE_FILE_PATH"
-  }
-fi
+  fi
+}
 
 precmd () {
 	print -n "\033[5 q"
