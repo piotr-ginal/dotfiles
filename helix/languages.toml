@@ -67,6 +67,7 @@ language-servers = [
   { name = "ansible-language-server" },
 ]
 injection-regex = "yml|yaml"
+auto-format = false
 
 [[language]]
 name = "git-config"
