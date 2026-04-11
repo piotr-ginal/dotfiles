@@ -92,3 +92,13 @@ for src in "$SCRIPTS_DIR"/*; do
         echo "Created symlink: $target -> $src"
     fi
 done
+
+# ---- scriptfiles dir ----
+
+SCRIPTFILES_DIR="${HOME}/.scriptfiles"
+
+if [ ! -e "$SCRIPTFILES_DIR" ]; then
+    mkdir -p "$SCRIPTFILES_DIR"
+elif [ ! -d "$SCRIPTFILES_DIR" ]; then
+    echo "$SCRIPTFILES_DIR exists but is not a directory." >&2
+fi
