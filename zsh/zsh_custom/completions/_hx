@@ -1,0 +1,5 @@
+#compdef hx
+
+setopt localoptions extendedglob
+
+_files -g '*~*.(pdf|jpg|jpeg|png|gif|webp|mp3|mp4|mkv|zip|tar|gz|rar|7z|exe|dll|so|dylib|o|a|class|pyc)'
