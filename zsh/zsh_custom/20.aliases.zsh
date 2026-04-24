@@ -178,17 +178,35 @@ delete_pyenv_virtualenv() {
   pyenv virtualenv-delete -f "$1"
 }
 
-activate_python_environment() {
-  if [ -f "$(pwd)/.venv/bin/activate" ]; then
-      source "$(pwd)/.venv/bin/activate"
-  else
-    local selected_env
-    selected_env=$(lsenv 2>&1 | awk '{print $2}' | fzf --height=~40% --layout=reverse --info inline)
+find_and_activate_closest_venv() {
+    local curr="$PWD"
+    local venv_path=""
 
-    if [[ -n "$selected_env" ]]; then
-      pyenv activate "$selected_env"
+    while [[ "$curr" != "$HOME" && "$curr" != "/" && -n "$curr" ]]; do
+        if [[ -f "$curr/.venv/bin/activate" ]]; then
+            venv_path="$curr/.venv/bin/activate"
+            break
+        elif [[ -f "$curr/env/bin/activate" ]]; then
+            venv_path="$curr/env/bin/activate"
+            break
+        fi
+
+        curr="${curr%/*}"
+        [[ -z "$curr" ]] && curr="/"
+    done
+
+    if [[ -z "$venv_path" ]]; then
+        return 1
     fi
-  fi
+
+    if read -q "REPLY?found env $venv_path [y/N]: "; then
+        echo
+        source "$venv_path"
+        return 0
+    else
+        echo
+        return 1
+    fi
 }
 
 remove_pyenv_environment() {
@@ -345,7 +363,7 @@ alias grc=github_create_repo_add_remote
 alias rmenv=delete_pyenv_virtualenv
 alias mkenv=create_pyenv_virtualenv
 alias acenv=activate_pyenv_virtualenv
-alias ac='activate_python_environment'
+alias ac='find_and_activate_closest_venv'
 alias rme='remove_pyenv_environment'
 alias lsenv='pyenv virtualenvs --bare --skip-aliases | rg ".envs." -r " "'
 alias deenv="source deactivate"
