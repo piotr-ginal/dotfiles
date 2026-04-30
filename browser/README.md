@@ -1,6 +1,11 @@
 # Browser
 Browser settings / configs that cant be easily installed
 
+## Firefox options
+
+- `about:config`
+  - `browser.quitShortcut.disabled` - set to `true`, prevent closing firefox accidentally (restart is needed for the changes to take effect).
+
 ## Included Files
 
 - `vimium-options.json`
