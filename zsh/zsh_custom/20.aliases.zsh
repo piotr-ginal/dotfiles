@@ -199,14 +199,8 @@ find_and_activate_closest_venv() {
         return 1
     fi
 
-    if read -q "REPLY?found env $venv_path [y/N]: "; then
-        echo
-        source "$venv_path"
-        return 0
-    else
-        echo
-        return 1
-    fi
+    echo $venv_path
+    source "$venv_path"
 }
 
 remove_pyenv_environment() {
