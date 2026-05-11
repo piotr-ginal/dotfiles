@@ -311,6 +311,7 @@ alias gdf=fzf_git_diff
 alias gdsf="fzf_git_diff_staged"
 alias gbnm="git branch --no-merged"
 alias gc="git commit --verbose"
+alias gca="git commit --verbose --amend"
 alias gbl="git blame -w"
 alias gd="git diff"
 alias gds="git diff --staged"
