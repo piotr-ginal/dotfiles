@@ -9,6 +9,7 @@ Browser settings / configs that cant be easily installed
     - `browser.download.folderList` - set to `2`.
     - `browser.download.lastDir` - set to `/home/< your user >/downloads`.
     - `~/.config/user-dirs.dirs` - it might be neccesary to change the download path here too.
+  - `browser.fullscreen.autohide` - set to `false` - prevents firefox from hiding the tab and address bars when toggling sway's fullscreen mode.
 
 
 ## Included Files
