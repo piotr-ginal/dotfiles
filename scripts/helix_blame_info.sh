@@ -11,6 +11,8 @@ fi
 file="$1"
 line="$2"
 
+cd  $(dirname "$file")
+
 if ! git ls-files --error-unmatch -- "$file" >/dev/null 2>&1; then
   echo "$file is untracked"
   exit 0
