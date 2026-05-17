@@ -104,3 +104,20 @@ if [ ! -e "$SCRIPTFILES_DIR" ]; then
 elif [ ! -d "$SCRIPTFILES_DIR" ]; then
     echo "$SCRIPTFILES_DIR exists but is not a directory." >&2
 fi
+
+# ---- firefox ----
+
+FIREFOX_PROFILE_DIR=$(./browser/detect_firefox_profile.py)
+
+mkdir -p "${FIREFOX_PROFILE_DIR}/chrome"
+
+TARGET="${FIREFOX_PROFILE_DIR}/chrome/userChrome.css"
+SOURCE="$(pwd)/browser/userChrome.css"
+
+if [[ -L "$TARGET" ]]; then
+    [[ "$(readlink "$TARGET")" == "$SOURCE" ]] || echo "WARNING: $TARGET exists but is not the expected symlink, skipping."
+elif [[ -e "$TARGET" ]]; then
+    echo "WARNING: $TARGET exists but is not the expected symlink"
+else
+    ln -s "$SOURCE" "$TARGET"
+fi
