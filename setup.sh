@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # ---- repo root check ----
 if [ ! -d ".git" ]; then
     echo "Please run this script from the root directory of the dotfiles repository."
