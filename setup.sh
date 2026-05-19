@@ -121,3 +121,14 @@ elif [[ -e "$TARGET" ]]; then
 else
     ln -s "$SOURCE" "$TARGET"
 fi
+
+TARGET="${FIREFOX_PROFILE_DIR}/user.js"
+SOURCE="$(pwd)/browser/user.js"
+
+if [[ -L "$TARGET" ]]; then
+    [[ "$(readlink "$TARGET")" == "$SOURCE" ]] || echo "WARNING: $TARGET exists but is not the expected symlink"
+elif [[ -e "$TARGET" ]]; then
+    echo "WARNING: $TARGET exists but is not the expected symlink"
+else
+    ln -s "$SOURCE" "$TARGET"
+fi
