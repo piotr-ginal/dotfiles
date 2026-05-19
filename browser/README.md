@@ -3,12 +3,11 @@ Browser settings / configs that cant be easily installed
 
 ## Firefox options
 
-- `about:config`
+- `about:config` - Docs: [source](https://searchfox.org/firefox-main/source/modules/libpref/init/all.js), [mozillazine](https://kb.mozillazine.org/About:config_entries)
   - `browser.quitShortcut.disabled` - set to `true`, prevent closing firefox accidentally (restart is needed for the changes to take effect).
   - Download directory - i prefer my downloads folder to not start with an uppercase letter
-    - `browser.download.folderList` - set to `2`.
-    - `browser.download.lastDir` - set to `/home/< your user >/downloads`.
-    - `~/.config/user-dirs.dirs` - it might be neccesary to change the download path here too.
+    - `browser.download.folderList` - set to `1`. This tells firefox to use the system downloads directory (should be the default).
+    - `~/.config/user-dirs.dirs` - change the download path here to `$HOME/downloads`
   - `browser.fullscreen.autohide` - set to `false` - prevents firefox from hiding the tab and address bars when toggling sway's fullscreen mode.
 
 
