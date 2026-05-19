@@ -24,17 +24,44 @@ if [[ $EUID -eq 0 ]]; then
     exit 0
 fi
 
+VERBOSE=0
+for arg in "$@"; do
+    case "${arg}" in
+        -v|--verbose)
+            VERBOSE=1
+            ;;
+    esac
+done
+
+COMPACT_OUTPUT_USED=0
+
+emit_status() {
+    local PREFIX="${1}"
+    local MESSAGE="${2}"
+
+    if [[ "${VERBOSE}" -eq 1 ]]; then
+        echo "${PREFIX}${MESSAGE}"
+    else
+        COMPACT_OUTPUT_USED=1
+        printf "%s" "${PREFIX}"
+    fi
+}
+
 ensure_symlink() {
     local SOURCE="${1}"
     local TARGET="${2}"
 
     if [[ -L "${TARGET}" ]]; then
-        [[ "$(readlink "${TARGET}")" == "${SOURCE}" ]] || echo "WARNING: ${TARGET} exists but is not the expected symlink"
+        if [[ "$(readlink "${TARGET}")" == "${SOURCE}" ]]; then
+            emit_status ". " "Symlink already correct: ${TARGET} -> ${SOURCE}"
+        else
+            emit_status "x " "WARNING: ${TARGET} exists but is not the expected symlink"
+        fi
     elif [[ -e "${TARGET}" ]]; then
-        echo "WARNING: ${TARGET} exists but is not the expected symlink"
+        emit_status "x " "WARNING: ${TARGET} exists but is not the expected symlink"
     else
         ln -s "${SOURCE}" "${TARGET}"
-        echo "Created symlink: ${TARGET} -> ${SOURCE}"
+        emit_status "+ " "Created symlink: ${TARGET} -> ${SOURCE}"
     fi
 }
 
@@ -110,3 +137,7 @@ ensure_symlink "${SOURCE}" "${TARGET}"
 TARGET="${FIREFOX_PROFILE_DIR}/user.js"
 SOURCE="$(pwd)/browser/user.js"
 ensure_symlink "${SOURCE}" "${TARGET}"
+
+if [[ "${VERBOSE}" -eq 0 && "${COMPACT_OUTPUT_USED}" -eq 1 ]]; then
+    echo
+fi
