@@ -24,6 +24,20 @@ if [[ $EUID -eq 0 ]]; then
     exit 0
 fi
 
+ensure_symlink() {
+    local SOURCE="${1}"
+    local TARGET="${2}"
+
+    if [[ -L "${TARGET}" ]]; then
+        [[ "$(readlink "${TARGET}")" == "${SOURCE}" ]] || echo "WARNING: ${TARGET} exists but is not the expected symlink"
+    elif [[ -e "${TARGET}" ]]; then
+        echo "WARNING: ${TARGET} exists but is not the expected symlink"
+    else
+        ln -s "${SOURCE}" "${TARGET}"
+        echo "Created symlink: ${TARGET} -> ${SOURCE}"
+    fi
+}
+
 # ---- before oh my zsh script building ----
 
 BEFORE_OHMYZSH_PATH="$(pwd)/zsh/before_ohmyzsh.zsh"
@@ -39,32 +53,16 @@ echo "$DOTFILES_PATH_EXPORT" >> "$BEFORE_OHMYZSH_PATH"
 # ---- Create symlinks for config directories ----
 CONFIG_DIRS=("fuzzel" "i3blocks" "kitty" "sway" "alacritty" "eza" "git" "ptpython" "yazi" "tmux" "swaync" "tealdeer" "helix" "macchina" "waybar" "mako" "starship" "xdg-desktop-portal-wlr" "imv" "zathura")
 for config_dir in "${CONFIG_DIRS[@]}"; do
-    TARGET="$HOME/.config/$config_dir"
-    SOURCE="$(pwd)/$config_dir"
-    if [[ -L "$TARGET" && "$(readlink "$TARGET")" != "$SOURCE" ]]; then
-        rm "$TARGET"
-    fi
-    if [[ ! -e "$TARGET" ]]; then
-        ln -s "$SOURCE" "$TARGET"
-        echo "Created symbolic link for $config_dir."
-    fi
+    TARGET="${HOME}/.config/${config_dir}"
+    SOURCE="$(pwd)/${config_dir}"
+    ensure_symlink "${SOURCE}" "${TARGET}"
 done
 
 # ---- wallpapers ----
 
 TARGET="$HOME/.wallpapers"
 SOURCE="$(pwd)/wallpapers"
-
-if [[ -L "$TARGET" ]]; then
-    if [[ "$(readlink "$TARGET")" != "$SOURCE" ]]; then
-        echo "$TARGET exists as a symlink to a different location, skipping."
-    fi
-elif [[ -e "$TARGET" ]]; then
-    echo "$TARGET already exists as a directory, skipping."
-else
-    ln -s "$SOURCE" "$TARGET"
-    echo "Created symbolic link for wallpapers."
-fi
+ensure_symlink "${SOURCE}" "${TARGET}"
 
 # ---- shell completions ----
 SCRIPT_PATH="$PWD/zsh/zsh_custom/completions/_gh"
@@ -84,15 +82,9 @@ for src in "$SCRIPTS_DIR"/*; do
     [ -f "$src" ] || continue
     [ -x "$src" ] || continue
     script_name="$(basename "$src")"
-    target="$TARGET_DIR/$script_name"
-    if [ -e "$target" ] || [ -L "$target" ]; then
-        if [ ! -L "$target" ] || [ "$(readlink -- "$target")" != "$src" ]; then
-            echo "WARNING: $target already exists and is not the correct symlink. Skipping."
-        fi
-    else
-        ln -s "$src" "$target"
-        echo "Created symlink: $target -> $src"
-    fi
+    SOURCE="${src}"
+    TARGET="${TARGET_DIR}/${script_name}"
+    ensure_symlink "${SOURCE}" "${TARGET}"
 done
 
 # ---- scriptfiles dir ----
@@ -113,22 +105,8 @@ mkdir -p "${FIREFOX_PROFILE_DIR}/chrome"
 
 TARGET="${FIREFOX_PROFILE_DIR}/chrome/userChrome.css"
 SOURCE="$(pwd)/browser/userChrome.css"
-
-if [[ -L "$TARGET" ]]; then
-    [[ "$(readlink "$TARGET")" == "$SOURCE" ]] || echo "WARNING: $TARGET exists but is not the expected symlink, skipping."
-elif [[ -e "$TARGET" ]]; then
-    echo "WARNING: $TARGET exists but is not the expected symlink"
-else
-    ln -s "$SOURCE" "$TARGET"
-fi
+ensure_symlink "${SOURCE}" "${TARGET}"
 
 TARGET="${FIREFOX_PROFILE_DIR}/user.js"
 SOURCE="$(pwd)/browser/user.js"
-
-if [[ -L "$TARGET" ]]; then
-    [[ "$(readlink "$TARGET")" == "$SOURCE" ]] || echo "WARNING: $TARGET exists but is not the expected symlink"
-elif [[ -e "$TARGET" ]]; then
-    echo "WARNING: $TARGET exists but is not the expected symlink"
-else
-    ln -s "$SOURCE" "$TARGET"
-fi
+ensure_symlink "${SOURCE}" "${TARGET}"
