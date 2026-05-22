@@ -558,10 +558,10 @@ alias drun="docker run"
 alias dstop="docker stop"
 
 # ---- google service aliases ----
-alias gmail="open_google_service_with_account https://mail.google.com/mail/u/"
-alias gdocs="open_google_service_with_account https://docs.google.com/document/u/"
-alias gdrive="open_google_service_with_account https://drive.google.com/drive/u/"
-alias gcal="open_google_service_with_account https://calendar.google.com/calendar/u/"
+alias gmail="open_google_service_with_account https://mail.google.com/mail/"
+alias gdocs="open_google_service_with_account https://docs.google.com/document/"
+alias gdrive="open_google_service_with_account https://drive.google.com/drive/"
+alias gcal="open_google_service_with_account https://calendar.google.com/calendar/"
 
 # ---- pipe aliases ----
 alias -g C='| wl-copy'
