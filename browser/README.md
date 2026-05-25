@@ -27,3 +27,25 @@ Browser settings / configs that cant be easily installed
   4. Enable legacy user profile customizations:
     a. go to 'about:config'
     b. set `toolkit.legacyUserProfileCustomizations.stylesheets` to true
+
+## Vimium C configuration
+
+### Key mappings
+
+[Sed docs](https://github.com/gdh1995/vimium-c/wiki/Substitute-URLs-and-text-during-commands)
+
+*NOTE: `LinkHints.activate excludeOnHost` was generated using `./dev/vimium_c_hints_exclude_generator.py`*
+
+```vim
+map gw firstTab
+map gI LinkHints.activateOpenImage
+
+" remove parameters from the current url
+map gq goToRoot sed="s/\\?.*//"
+
+" when visiting a github repo, copy the ssh url
+map yS copyCurrentUrl sed="s|.*github\\.com/([^/]+)/([^/?#]+).*|git@github.com:$1/$2.git|"
+
+" ignore github contribution calendar squares
+map f LinkHints.activate excludeOnHost="github.com##.ContributionCalendar-day"
+```
