@@ -49,3 +49,9 @@ map yS copyCurrentUrl sed="s|.*github\\.com/([^/]+)/([^/?#]+).*|git@github.com:$
 " ignore github contribution calendar squares
 map f LinkHints.activate excludeOnHost="github.com##.ContributionCalendar-day"
 ```
+
+### Exclude Keys on URLs
+
+| Pattern                     | Keys                              | Note                                                           |
+|-----------------------------|-----------------------------------|----------------------------------------------------------------|
+| `:https://mail.google.com/` | `# / ? c d e g i j k l p r s u x` | Gmail has native vim-esque binds (must be enabled in settings) |
