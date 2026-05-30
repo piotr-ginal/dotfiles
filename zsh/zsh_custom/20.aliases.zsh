@@ -539,6 +539,7 @@ function d () {
 alias cdl=cd_last_accessed_path
 alias savedir="unset DONT_SAVE_PATH"
 alias nosavedir="export DONT_SAVE_PATH=true"
+alias nsd="nosavedir"
 
 # ---- ls aliases ----
 alias ls='eza'
