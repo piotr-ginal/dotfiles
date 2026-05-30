@@ -83,3 +83,11 @@ file-types = [
 [[language]]
 name = "git-commit"
 formatter = { command = "git_commit_formatter.py", timeout = 5 }
+
+[language-server.tofu-ls]
+command = "tofu-ls"
+args = ["serve"]
+
+[[language]]
+name = "hcl"
+language-servers = ["tofu-ls"]
