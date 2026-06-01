@@ -560,6 +560,7 @@ alias dlog="docker logs"
 alias dps="docker ps -a"
 alias drun="docker run"
 alias dstop="docker stop"
+alias dpss='docker ps --format "table {{.Status}}\t{{.Names}}\t{{.Image}}" -a'
 
 # ---- google service aliases ----
 alias gmail="open_google_service_with_account https://mail.google.com/mail/"
