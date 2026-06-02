@@ -91,3 +91,7 @@ args = ["serve"]
 [[language]]
 name = "hcl"
 language-servers = ["tofu-ls"]
+
+[[language]]
+name = "docker-compose"
+formatter = { command = "yamlfmt", args = ['-'] }
