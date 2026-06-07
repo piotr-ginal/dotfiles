@@ -34,7 +34,7 @@
   display: none !important;
 }
 
-#star-button-box {
+#star-button-box:not(:has(#star-button[starred="true"])) {
   display: none !important;
 }
 
