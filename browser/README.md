@@ -55,3 +55,17 @@ map f LinkHints.activate excludeOnHost="github.com##.ContributionCalendar-day"
 | Pattern                     | Keys                              | Note                                                           |
 |-----------------------------|-----------------------------------|----------------------------------------------------------------|
 | `:https://mail.google.com/` | `# / ? c d e g i j k l p r s u x` | Gmail has native vim-esque binds (must be enabled in settings) |
+
+## Modifying `userChrome.css`
+
+To modify the css file one needs to inspect the UI structure. This can be done with the builtin firefox debugging tools.
+
+### 1. Enable Debugging (One-time)
+1. Press `F12` to open Developer Tools, then press `F1` (or click the gear icon) to open Settings.
+2. Scroll to the bottom right and check **"Enable browser chrome and add-on debugging toolboxes"**.
+3. Check **"Enable remote debugging"**.
+4. Close Developer Tools.
+
+### 2. Launch the Browser Toolbox
+1. Press `Ctrl+Alt+Shift+I`.
+2. Click **OK** on the "Allow connection?" prompt. A new inspector window will open.
