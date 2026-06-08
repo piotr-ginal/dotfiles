@@ -62,6 +62,10 @@ bindings = [
   { key = "H", mods = "Shift", mode = "Vi|~Search", action = "FirstOccupied" },
   { key = "L", mods = "Shift", mode = "Vi|~Search", action = "Last" },
   { key = "Escape", mode = "Vi|~Search", action = "ToggleViMode" },
+  # Terminals can't detect Shift+Enter. This sends <Esc> + Enter instead, which can be mapped.
+  # Useful for OpenCode and Claude to trigger a newline instead of submitting the prompt.
+  # Effectively acts as the equivalent of pressing Alt+Enter.
+  { key = "Return", mods = "Shift", chars = "\u001B\r" },
 ]
 
 [selection]
