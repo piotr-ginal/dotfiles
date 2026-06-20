@@ -541,6 +541,7 @@ function d () {
 alias cdl=cd_last_accessed_path
 alias rmdircache='rm $XDG_RUNTIME_DIR/last_path_zsh -f'
 alias savedir="unset DONT_SAVE_PATH"
+alias ysd="savedir"
 alias nosavedir="export DONT_SAVE_PATH=true"
 alias nsd="nosavedir"
 
