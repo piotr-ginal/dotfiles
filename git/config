@@ -36,6 +36,9 @@
 [url "git@github.com:piotr-ginal/"]
 	insteadOf = "pg:"
 
+[url "git@codeberg.org:"]
+	insteadOf = "cb:"
+
 [color "diff"]
 	commit = cyan
 
