@@ -6,8 +6,11 @@ cursorline = true
 bufferline = "always"
 line-number = "relative"
 jump-label-alphabet = "sadjklewcmpgh"
-insecure = true
 # rulers = [120]
+
+[editor.workspace-trust]
+prompt = false
+level = "servers"
 
 [editor.cursor-shape]
 insert = "bar"
