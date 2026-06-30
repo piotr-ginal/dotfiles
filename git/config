@@ -33,9 +33,6 @@
 [url "git@github.com:"]
 	insteadOf = "gh:"
 
-[url "git@github.com:piotr-ginal/"]
-	insteadOf = "pg:"
-
 [url "git@codeberg.org:"]
 	insteadOf = "cb:"
 
