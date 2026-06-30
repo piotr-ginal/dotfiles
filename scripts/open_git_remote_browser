@@ -14,6 +14,8 @@ modify_repo_url_for_branch() {
       modified_url="${base_url}/tree/${current_branch}"
     elif [[ "$url" == *"gitlab.com"* ]]; then
       modified_url="${base_url}/-/tree/${current_branch}"
+    elif [[ "$url" == *"codeberg.org"* ]]; then
+      modified_url="${base_url}/src/branch/${current_branch}"
     fi
   fi
   echo "$modified_url"
