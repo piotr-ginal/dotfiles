@@ -44,7 +44,6 @@ Clone this repo and run the `setup.sh` script
 - tealdeer
 - eza
 - git
-- github cli
 - ripgrep
 - htop
 - batcat
