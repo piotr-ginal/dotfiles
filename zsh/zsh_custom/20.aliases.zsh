@@ -547,3 +547,9 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sort'
 alias -g U='| uniq'
+
+# ---- taskwarrior ----
+alias tl='task list'
+alias ti='task info'
+alias ta='task add'
+alias t='task'
