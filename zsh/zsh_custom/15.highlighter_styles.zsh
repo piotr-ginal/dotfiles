@@ -1,7 +1,8 @@
 # ---- zsh syntax highlighting ----
 
-# defaults can be found in
-# /usr/share/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh
+# defined style keys can be mainly found in
+# zsh-syntax-highlighting/docs/highlighters/main.md
+# (this file is available in ~/.zcomet/repos/zsh-users)
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
