@@ -11,7 +11,6 @@ bindsym $mod+t input type:touchpad events toggle enabled disabled; exec pkill -S
 # open terminal
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term2
-bindsym $mod+m exec $copilot
 
 bindsym $mod+c exec LOG_LEVEL=critical sway_workspace_compact.py
 

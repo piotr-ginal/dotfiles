@@ -177,7 +177,6 @@ exit 0
 │   ├── attempt_switch_to_empty_workspace_sway
 │   ├── brightness_notification.sh
 │   ├── convert_git_remotes_ssh_to_http
-│   ├── copilot_wrapper.sh
 │   ├── delta_features_toggle.py
 │   ├── emoji_picker
 │   ├── extract
