@@ -6,11 +6,13 @@ set $down j
 set $up k
 set $right l
 # set $term foot
-set $term alacritty
+set $term alacritty msg create-window
 set $menu fuzzel -I -l 5 | xargs swaymsg exec
-set $term2 DONT_SAVE_PATH=true alacritty --class AlacrittyFloating
+set $term2 DONT_SAVE_PATH=true alacritty msg create-window --class AlacrittyFloating
 
 include /etc/sway/config.d/*
+
+exec alacritty --daemon
 
 exec mako
 
