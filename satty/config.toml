@@ -1,0 +1,12 @@
+[general]
+fullscreen = false            # handled by sway
+initial-tool = "rectangle"
+primary-highlighter = "block"
+
+[font]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[color-palette] # swap default colors
+first = "#EB4D4B"
+second = "#F0932B"
