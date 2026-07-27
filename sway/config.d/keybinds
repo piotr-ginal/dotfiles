@@ -69,7 +69,7 @@ bindsym $mod+Shift+Up move workspace to output up
 bindsym $mod+Shift+Down move workspace to output down
 
 # grim select area screenshot, img copied to clipboard
-bindsym $mod+p exec grimshot copy area
+bindsym $mod+p exec screenshot_window.sh
 # grim select area screenshot, img saved to ~/.screenshots
 bindsym $mod+o exec screenshot_with_notification.sh
 # basic color picker
