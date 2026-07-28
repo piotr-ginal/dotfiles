@@ -104,11 +104,52 @@ fzf_git_diff_staged() {
   fi
 }
 
+fzf_git_select_branch() {
+  git branch --list --color | fzf --ansi --height=~40% | awk '{print $NF}'
+}
+
 fzf_git_switch() {
   local branch
-  branch=$(git branch --list --color | fzf --ansi --height=~40% | awk '{print $NF}')
+  branch=$(fzf_git_select_branch)
   if [ -n "$branch" ]; then
     git switch "$branch"
+  fi
+}
+
+fzf_git_select_worktree() {
+  git worktree list | fzf --height=~40% | awk '{print $1}'
+}
+
+git_worktree_add() {
+  local rev="${1:-$(fzf_git_select_branch)}"
+  if [ -z "$rev" ]; then
+    return 1
+  fi
+
+  # git-common-dir points at the main repo's .git even from inside a linked worktree,
+  # so the default sits next to the main checkout, not next to the current one
+  local main_root="${$(git rev-parse --path-format=absolute --git-common-dir):h}"
+  local worktree_path="${main_root:h}/${main_root:t}-${${rev:l}//[^a-z0-9._-]/-}"
+
+  vared -p "worktree path: " worktree_path
+  if [ -z "$worktree_path" ]; then
+    return 1
+  fi
+
+  git worktree add "$worktree_path" "$rev" && cd "$worktree_path"
+}
+
+git_worktree_switch() {
+  local worktree_path=$(fzf_git_select_worktree)
+  if [ -n "$worktree_path" ]; then
+    cd "$worktree_path"
+  fi
+}
+
+git_worktree_delete() {
+  local worktree_path=$(fzf_git_select_worktree)
+  if [ -n "$worktree_path" ]; then
+    git worktree remove "$worktree_path"
   fi
 }
 
@@ -325,6 +366,10 @@ alias gsw="git switch"
 alias ga="git add"
 alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 alias gw="git worktree"
+alias gwl="git worktree list"
+alias gwa=git_worktree_add
+alias gwf=git_worktree_switch
+alias gwd=git_worktree_delete
 alias gr="git rebase"
 alias gri="git rebase -i"
 
