@@ -481,6 +481,29 @@ cd_last_accessed_path() {
     cd "$target_dir"
   fi
 }
+# file format:
+# /home/foo/code/bar;some code lives here
+PROJECTS_FILE_PATH="$HOME/.scriptfiles/projects"
+cd_project() {
+  local projects_file="$PROJECTS_FILE_PATH"
+
+  if ! [ -s "$projects_file" ]; then
+    print -u2 "cd_project: $projects_file is missing or empty"
+    return 1
+  fi
+
+  local selected_path=$(column -t -s ';' "$projects_file" | fzf --height=~40% | awk '{print $1}')
+
+  if [ -n "$selected_path" ]; then
+    cd "${selected_path/#\~/$HOME}"
+  fi
+}
+add_project() {
+  local entry="$PWD;${*:-${PWD:t}}"
+
+  print -r -- "$entry" >> "$PROJECTS_FILE_PATH"
+  print -r -- "$PROJECTS_FILE_PATH << $entry"
+}
 alias dot="cd $DOTFILES_REPO_ROOT"
 alias rec="cd ~/.screenrecordings"
 alias scr="cd ~/.screenshots"
@@ -510,6 +533,8 @@ function d () {
 }
 
 alias cdl=cd_last_accessed_path
+alias cdp=cd_project
+alias cdpa=add_project
 alias rmdircache='rm $XDG_RUNTIME_DIR/last_path_zsh -f'
 alias savedir="unset DONT_SAVE_PATH"
 alias ysd="savedir"
