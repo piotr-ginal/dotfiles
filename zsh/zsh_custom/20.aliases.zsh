@@ -373,6 +373,35 @@ alias gwd=git_worktree_delete
 alias gr="git rebase"
 alias gri="git rebase -i"
 
+# ---- github aliases ----
+github_search_repo_fzf() {
+  gh search repos --json fullName,stargazersCount,description "$@" \
+    | jq -r '.[] | "\(.fullName) [\(.stargazersCount)] \(.description)"' \
+    | fzf --prompt="Select repository: " \
+    | sed -E 's/ \[[0-9]+\]$//'
+}
+github_create_repo_add_remote() {
+  local repo_name="$1"
+  local remote_name="${2:-github}"
+
+  if [[ -z "$repo_name" ]]; then
+    echo "usage: grc <repo-name> [remote-name]"
+    return 1
+  fi
+
+  gh repo create "$repo_name" --private || return 1
+
+  git remote add "$remote_name" "pg:$repo_name"
+}
+
+alias ghinv="gh_accept_invitation"
+alias ghcolabls="gh_collaborator_repo"
+alias ghrepols="gh repo list --json nameWithOwner -L 1000 --jq '.[].nameWithOwner' | fzf --height=~40%"
+alias ghcl='repo_name=$(ghrepols) && [ -n $repo_name ] && gh repo clone $repo_name'
+alias ghclcol='repo_name=$(gh_collaborator_repo) && [ -n $repo_name ] && gh repo clone $repo_name'
+alias ghf=github_search_repo_fzf
+alias grc=github_create_repo_add_remote
+
 # ---- pyenv virtualenv aliases ----
 alias rmenv=delete_pyenv_virtualenv
 alias mkenv=create_pyenv_virtualenv
