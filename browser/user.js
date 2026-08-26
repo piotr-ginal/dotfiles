@@ -9,3 +9,5 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("signon.rememberSignons", false);
 
 user_pref("signon.autofillForms", false);
+
+user_pref("devtools.chrome.enabled", true);
