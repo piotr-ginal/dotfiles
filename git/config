@@ -44,3 +44,12 @@
 
 [rebase]
 	autoStash = true
+
+[log]
+	date = format:%a %d.%m.%Y %z
+
+[pretty]
+	concise = "format:%C(auto)%H%d%n%an <%ae> %ad%n%n%w(0,4,4)%B"
+
+[format]
+	pretty = "concise"
