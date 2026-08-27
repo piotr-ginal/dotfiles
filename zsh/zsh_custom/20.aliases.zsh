@@ -370,6 +370,7 @@ alias gwl="git worktree list"
 alias gwa=git_worktree_add
 alias gwf=git_worktree_switch
 alias gwd=git_worktree_delete
+alias gwp="git worktree prune"
 alias gr="git rebase"
 alias gri="git rebase -i"
 
