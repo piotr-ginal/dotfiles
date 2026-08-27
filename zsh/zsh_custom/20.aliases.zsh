@@ -646,6 +646,7 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sort'
 alias -g U='| uniq'
+alias -g H='| hx'
 
 # ---- taskwarrior ----
 alias tl='task list'
