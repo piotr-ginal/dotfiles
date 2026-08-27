@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Label the focused workspace. The number is kept as the name prefix so
+# `workspace number N` bindings and `workspace N output X` assignments keep matching.
+set -euo pipefail
+
+num=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused) | .num')
+
+label=$(fuzzel --dmenu --lines=0 --width=25 --prompt="ws $num: " --log-level=none </dev/null) || exit 0
+label=${label//:/}  # ':' is the num/label separator, keep it out of the label
+
+swaymsg rename workspace to "$num${label:+:$label}"

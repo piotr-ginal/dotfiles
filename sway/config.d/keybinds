@@ -121,3 +121,6 @@ bindsym Alt+Shift+Space exec makoctl dismiss -a
 bindsym $mod+slash exec alacritty -e batcat --paging=always ~/.config/sway/doc/sway_cheat_sheet
 
 bindsym $mod+shift+period exec emoji_picker
+
+# label the focused workspace
+bindsym $mod+Shift+s exec rename_workspace_sway

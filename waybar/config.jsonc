@@ -23,6 +23,9 @@
     "network",
     "custom/mouseandmic"
   ],
+  "sway/workspaces": {
+    "format": "{value}"
+  },
   "clock": {
       "format": "{:%H:%M on %d.%m}"
   },
