@@ -45,11 +45,12 @@
 [rebase]
 	autoStash = true
 
+# see git-log.1 `^PRETTY FORMATS$`
 [log]
 	date = format:%a %d.%m.%Y %z
 
 [pretty]
-	concise = "format:%C(auto)%H%d%n%an <%ae> %ad%n%n%w(0,4,4)%B"
+	concise = "%C(auto)%H%d%n%an <%ae> %ad %G?%n%n%w(0,4,4)%B"
 
 [format]
 	pretty = "concise"
