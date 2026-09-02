@@ -443,6 +443,7 @@ alias perms='stat --printf="%04a %A %U:%G %n\n"'
 alias y=yazi_wrapper_change_pwd
 alias ageghe=age_github_pubkey_encrypt
 alias ageghd=age_github_decrypt
+alias curls='curl -so /dev/null -w "%{http_code}\n"'
 open_file_in_zathura() {
   zathura $@ &>/dev/null &!
 }
