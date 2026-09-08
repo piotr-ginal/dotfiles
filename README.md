@@ -67,6 +67,7 @@ Clone this repo and run the `setup.sh` script
 - macchina
 - mako
 - network manager
+- poweralertd
 - keepassxc
 
 ### Browsers
