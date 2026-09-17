@@ -23,6 +23,7 @@ use-grammars = { only = [
   "html",
   "ini",
   "javascript",
+  "just",
   "jq",
   "json",
   "json5",
