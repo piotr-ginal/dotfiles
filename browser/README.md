@@ -38,6 +38,7 @@ Browser settings / configs that cant be easily installed
 
 ```vim
 map gw firstTab
+map gh LinkHints.activateModeToHover
 map gI LinkHints.activateOpenImage
 
 " remove parameters from the current url
