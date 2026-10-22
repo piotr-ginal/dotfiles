@@ -2,6 +2,12 @@
 
 STATIONS_FILE="$HOME/.scriptfiles/train_stations.txt"
 
+hour="${1:-}"
+if [[ -n "$hour" && ! "$hour" =~ ^([01]?[0-9]|2[0-3]):[0-5][0-9]$ ]]; then
+  echo "error: invalid hour '$hour', expected HH:MM" >&2
+  exit 1
+fi
+
 if [[ ! -f "$STATIONS_FILE" ]]; then
   echo "error: $STATIONS_FILE not found"
   exit 1
@@ -18,4 +24,7 @@ start=$(select_station "Start >> ")
 end=$(select_station "End >> ")
 [[ -z "$end" ]] && exit 0
 
-focus_or_open_firefox_sway "https://koleo.pl/rozklad-pkp/$start/$end"
+url="https://koleo.pl/rozklad-pkp/$start/$end"
+[[ -n "$hour" ]] && url+="/$(printf '%(%d-%m-%Y)T' -1)_$hour"
+
+focus_or_open_firefox_sway "$url"
