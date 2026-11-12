@@ -7,6 +7,7 @@ text-color=#bfbdb6ff
 
 width=400
 height=200
+max-history=1000
 
 border-radius=2
 border-size=2
